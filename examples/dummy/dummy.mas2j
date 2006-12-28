@@ -1,0 +1,8 @@
+MAS dummy {
+
+    environment: 
+         org.kcl.nestor.env.scripted.ScriptedEnvironment("script.xml")
+         
+    agents: 
+         dummyAgent agentClass org.kcl.nestor.mot.gui.MotivatedAgentWrapper;
+}

@@ -1,0 +1,15 @@
+Motivation testMotivation {
+	Threshold = 10;
+	IntensityUpdate org.kcl.nestor.mot.impl.IntensityUpdateFunctionImpl {
+		eventA[_] -> 1;
+		not eventA[_] -> -1;
+	}
+	
+	GoalGeneration org.kcl.nestor.mot.impl.GoalGenerationFunctionImpl {
+		eventA[_] -> +!goalA;
+	}
+	
+	Mitigation org.kcl.nestor.mot.impl.MitigationFunctionImpl {
+		not eventA[_] -> -10;
+	}
+}
