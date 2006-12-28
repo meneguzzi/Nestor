@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="parser-d" id="org.soton.peleus.mot.parser" metadata="uml2-1.0" initialized="true" scrolledX="245" scrolledY="1211" tag="5" key="32303036313030322050656C6575732D54657374">
+  <children xsi:type="editmodel:ClassEditModel" name="TokenMgrError" location="50,3552" size="720,277" id="org.soton.peleus.mot.parser/TokenMgrError" runTimeClassModel="sTATIC_LEXER_ERROR,lEXICAL_ERROR,LexicalError(ZIIILjava.lang.String;C),TokenMgrError(ZIIILjava.lang.String;CI),addEscapes(Ljava.lang.String;),getMessage(),lOOP_DETECTED,TokenMgrError(),TokenMgrError(Ljava.lang.String;I),errorCode,iNVALID_LEXICAL_STATE">
+    <children xsi:type="editmodel:CompartmentEditModel" size="163,90">
+      <children xsi:type="editmodel:AttributeEditModel" name="errorCode" id="org.soton.peleus.mot.parser/TokenMgrError#errorCode"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="iNVALID_LEXICAL_STATE" id="org.soton.peleus.mot.parser/TokenMgrError#iNVALID_LEXICAL_STATE"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lEXICAL_ERROR" id="org.soton.peleus.mot.parser/TokenMgrError#lEXICAL_ERROR"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lOOP_DETECTED" id="org.soton.peleus.mot.parser/TokenMgrError#lOOP_DETECTED"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="sTATIC_LEXER_ERROR" id="org.soton.peleus.mot.parser/TokenMgrError#sTATIC_LEXER_ERROR"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="697,108">
+      <children xsi:type="editmodel:MethodEditModel" name="LexicalError" id="org.soton.peleus.mot.parser/TokenMgrError#LexicalError(ZIIILjava.lang.String;C)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="TokenMgrError" id="org.soton.peleus.mot.parser/TokenMgrError#TokenMgrError()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="TokenMgrError" id="org.soton.peleus.mot.parser/TokenMgrError#TokenMgrError(ZIIILjava.lang.String;CI)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="TokenMgrError" id="org.soton.peleus.mot.parser/TokenMgrError#TokenMgrError(Ljava.lang.String;I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addEscapes" id="org.soton.peleus.mot.parser/TokenMgrError#addEscapes(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMessage" id="org.soton.peleus.mot.parser/TokenMgrError#getMessage()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showAssociationMember="true" showMethods="true" showAttributes="true" showLiterals="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" name="MotivationParserConstants" location="820,3552" size="210,551" id="org.soton.peleus.mot.parser/MotivationParserConstants" runTimeClassModel="lETTER,aTOM,nUMBER,uNNAMEDVAR,tHRESHOLD,tK_NOT,mOTIVATION,eOF,cHAR,iNTENSITY_UPDATE,tK_NEG,dEFAULT,tK_INTDIV,eXPONENT,tokenImage,gOAL_GENERATION,tK_TRUE,vAR,tK_LABEL_AT,tK_FALSE,tK_INTMOD,lC_LETTER,sTRING,mITIGATION,dIGIT,uP_LETTER">
+    <children xsi:type="editmodel:CompartmentEditModel" size="137,468">
+      <children xsi:type="editmodel:AttributeEditModel" name="aTOM" id="org.soton.peleus.mot.parser/MotivationParserConstants#aTOM"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="cHAR" id="org.soton.peleus.mot.parser/MotivationParserConstants#cHAR"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="dEFAULT" id="org.soton.peleus.mot.parser/MotivationParserConstants#dEFAULT"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="dIGIT" id="org.soton.peleus.mot.parser/MotivationParserConstants#dIGIT"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="eOF" id="org.soton.peleus.mot.parser/MotivationParserConstants#eOF"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="eXPONENT" id="org.soton.peleus.mot.parser/MotivationParserConstants#eXPONENT"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="gOAL_GENERATION" id="org.soton.peleus.mot.parser/MotivationParserConstants#gOAL_GENERATION"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="iNTENSITY_UPDATE" id="org.soton.peleus.mot.parser/MotivationParserConstants#iNTENSITY_UPDATE"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lC_LETTER" id="org.soton.peleus.mot.parser/MotivationParserConstants#lC_LETTER"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lETTER" id="org.soton.peleus.mot.parser/MotivationParserConstants#lETTER"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mITIGATION" id="org.soton.peleus.mot.parser/MotivationParserConstants#mITIGATION"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mOTIVATION" id="org.soton.peleus.mot.parser/MotivationParserConstants#mOTIVATION"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nUMBER" id="org.soton.peleus.mot.parser/MotivationParserConstants#nUMBER"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="sTRING" id="org.soton.peleus.mot.parser/MotivationParserConstants#sTRING"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tHRESHOLD" id="org.soton.peleus.mot.parser/MotivationParserConstants#tHRESHOLD"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tK_FALSE" id="org.soton.peleus.mot.parser/MotivationParserConstants#tK_FALSE"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tK_INTDIV" id="org.soton.peleus.mot.parser/MotivationParserConstants#tK_INTDIV"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tK_INTMOD" id="org.soton.peleus.mot.parser/MotivationParserConstants#tK_INTMOD"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tK_LABEL_AT" id="org.soton.peleus.mot.parser/MotivationParserConstants#tK_LABEL_AT"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tK_NEG" id="org.soton.peleus.mot.parser/MotivationParserConstants#tK_NEG"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tK_NOT" id="org.soton.peleus.mot.parser/MotivationParserConstants#tK_NOT"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tK_TRUE" id="org.soton.peleus.mot.parser/MotivationParserConstants#tK_TRUE"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tokenImage" id="org.soton.peleus.mot.parser/MotivationParserConstants#tokenImage"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="uNNAMEDVAR" id="org.soton.peleus.mot.parser/MotivationParserConstants#uNNAMEDVAR"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="uP_LETTER" id="org.soton.peleus.mot.parser/MotivationParserConstants#uP_LETTER"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="vAR" id="org.soton.peleus.mot.parser/MotivationParserConstants#vAR"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showAssociationMember="true" showMethods="true" showAttributes="true" showLiterals="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.6/@sourceConnections.3 //@children.6/@sourceConnections.4 //@children.6/@sourceConnections.5 //@children.6/@sourceConnections.8 //@children.6/@sourceConnections.9 //@children.6/@sourceConnections.12 //@children.6/@sourceConnections.13 //@children.6/@sourceConnections.15 //@children.6/@sourceConnections.16 //@children.6/@sourceConnections.18 //@children.6/@sourceConnections.19 //@children.6/@sourceConnections.21 //@children.6/@sourceConnections.22 //@children.6/@sourceConnections.24 //@children.6/@sourceConnections.25 //@children.6/@sourceConnections.27 //@children.6/@sourceConnections.28 //@children.6/@sourceConnections.31 //@children.6/@sourceConnections.32 //@children.6/@sourceConnections.34 //@children.6/@sourceConnections.35 //@children.6/@sourceConnections.37 //@children.6/@sourceConnections.38 //@children.6/@sourceConnections.40 //@children.6/@sourceConnections.41 //@children.6/@sourceConnections.43 //@children.6/@sourceConnections.44" name="ParseException" location="600,570" size="572,259" id="org.soton.peleus.mot.parser/ParseException" runTimeClassModel="ParseException(),add_escapes(Ljava.lang.String;),expectedTokenSequences,specialConstructor,ParseException(Ljava.lang.String;),eol,getMessage(),currentToken,ParseException(Lorg.soton.peleus.mot.parser.Token;[[I[Ljava.lang.String;),tokenImage">
+    <children xsi:type="editmodel:CompartmentEditModel" size="177,90">
+      <children xsi:type="editmodel:AttributeEditModel" name="currentToken" id="org.soton.peleus.mot.parser/ParseException#currentToken"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="eol" id="org.soton.peleus.mot.parser/ParseException#eol"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="expectedTokenSequences" id="org.soton.peleus.mot.parser/ParseException#expectedTokenSequences"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="specialConstructor" id="org.soton.peleus.mot.parser/ParseException#specialConstructor"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tokenImage" id="org.soton.peleus.mot.parser/ParseException#tokenImage"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="549,90">
+      <children xsi:type="editmodel:MethodEditModel" name="ParseException" id="org.soton.peleus.mot.parser/ParseException#ParseException(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ParseException" id="org.soton.peleus.mot.parser/ParseException#ParseException()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ParseException" id="org.soton.peleus.mot.parser/ParseException#ParseException(Lorg.soton.peleus.mot.parser.Token;[[I[Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="add_escapes" id="org.soton.peleus.mot.parser/ParseException#add_escapes(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMessage" id="org.soton.peleus.mot.parser/ParseException#getMessage()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/ParseException->org.soton.peleus.mot.parser/Token" source="//@children.2" target="//@children.5" targetEnd="//@children.2/@sourceConnections.0/@children.2" label="//@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«access»" size="48,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,148" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="198,111"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" id="org.soton.peleus.mot.parser/ParseException->org.soton.peleus.mot.parser/Token" source="//@children.2" target="//@children.5" targetEnd="//@children.2/@sourceConnections.1/@children.2" label="//@children.2/@sourceConnections.1/@children.0" sourceEnd="//@children.2/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«access»" size="48,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,239" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="198,202"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/ParseException->org.soton.peleus.mot.parser/Token" source="//@children.2" target="//@children.5" targetEnd="//@children.2/@sourceConnections.2/@children.2" label="//@children.2/@sourceConnections.2/@children.0" sourceEnd="//@children.2/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«access»" size="48,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,128" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="198,91"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/ParseException->org.soton.peleus.mot.parser/Token" source="//@children.2" target="//@children.5" targetEnd="//@children.2/@sourceConnections.3/@children.2" label="//@children.2/@sourceConnections.3/@children.0" sourceEnd="//@children.2/@sourceConnections.3/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="41,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,152" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="198,131"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showAssociationMember="true" showMethods="true" showAttributes="true" showLiterals="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.6/@sourceConnections.1" name="MotivationParserTokenManager" location="30,1110" size="415,997" id="org.soton.peleus.mot.parser/MotivationParserTokenManager" runTimeClassModel="jjFillToken(),jjMoveStringLiteralDfa13_0(JJ),jjtoSkip,jjStartNfa_0(IJ),jjMoveStringLiteralDfa10_0(JJ),ReInit(Lorg.soton.peleus.mot.parser.SimpleCharStream;),jjMoveStringLiteralDfa4_0(JJ),jjStopStringLiteralDfa_0(IJ),jjMoveStringLiteralDfa2_0(JJ),jjMoveStringLiteralDfa8_0(JJ),setDebugStream(Ljava.io.PrintStream;),jjstrLiteralImages,jjMoveNfa_0(II),jjAddStates(II),lexStateNames,jjMoveStringLiteralDfa3_0(JJ),jjCheckNAddStates(II),MotivationParserTokenManager(Lorg.soton.peleus.mot.parser.SimpleCharStream;I),jjround,jjrounds,SwitchTo(I),jjMoveStringLiteralDfa14_0(JJ),jjMoveStringLiteralDfa12_0(JJ),jjMoveStringLiteralDfa0_0(),jjMoveStringLiteralDfa1_0(J),jjnewStateCnt,jjMoveStringLiteralDfa11_0(JJ),jjtoToken,input_stream,ReInitRounds(),ReInit(Lorg.soton.peleus.mot.parser.SimpleCharStream;I),jjMoveStringLiteralDfa5_0(JJ),curChar,jjCheckNAddStates(I),jjStopAtPos(II),jjCheckNAddTwoStates(II),jjMoveStringLiteralDfa7_0(JJ),jjStartNfaWithStates_0(III),jjMoveStringLiteralDfa6_0(JJ),jjMoveStringLiteralDfa9_0(JJ),jjnextStates,curLexState,defaultLexState,jjmatchedKind,debugStream,jjCheckNAdd(I),MotivationParserTokenManager(Lorg.soton.peleus.mot.parser.SimpleCharStream;),jjmatchedPos,jjstateSet,jjbitVec0,getNextToken()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="175,306">
+      <children xsi:type="editmodel:AttributeEditModel" name="curChar" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#curChar"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="curLexState" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#curLexState"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="debugStream" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#debugStream"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="defaultLexState" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#defaultLexState"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="input_stream" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#input_stream"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jjbitVec0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjbitVec0"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jjmatchedKind" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjmatchedKind"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jjmatchedPos" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjmatchedPos"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jjnewStateCnt" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjnewStateCnt"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jjnextStates" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjnextStates"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jjround" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjround"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jjrounds" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjrounds"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jjstateSet" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjstateSet"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jjstrLiteralImages" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjstrLiteralImages"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jjtoSkip" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjtoSkip"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jjtoToken" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjtoToken"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lexStateNames" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#lexStateNames"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="392,612">
+      <children xsi:type="editmodel:MethodEditModel" name="MotivationParserTokenManager" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#MotivationParserTokenManager(Lorg.soton.peleus.mot.parser.SimpleCharStream;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="MotivationParserTokenManager" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#MotivationParserTokenManager(Lorg.soton.peleus.mot.parser.SimpleCharStream;I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ReInit" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#ReInit(Lorg.soton.peleus.mot.parser.SimpleCharStream;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ReInit" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#ReInit(Lorg.soton.peleus.mot.parser.SimpleCharStream;I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ReInitRounds" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#ReInitRounds()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="SwitchTo" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#SwitchTo(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNextToken" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#getNextToken()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjAddStates" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjAddStates(II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjCheckNAdd" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjCheckNAdd(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjCheckNAddStates" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjCheckNAddStates(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjCheckNAddStates" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjCheckNAddStates(II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjCheckNAddTwoStates" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjCheckNAddTwoStates(II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjFillToken" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjFillToken()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjMoveNfa_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjMoveNfa_0(II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjMoveStringLiteralDfa0_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjMoveStringLiteralDfa0_0()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjMoveStringLiteralDfa10_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjMoveStringLiteralDfa10_0(JJ)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjMoveStringLiteralDfa11_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjMoveStringLiteralDfa11_0(JJ)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjMoveStringLiteralDfa12_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjMoveStringLiteralDfa12_0(JJ)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjMoveStringLiteralDfa13_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjMoveStringLiteralDfa13_0(JJ)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjMoveStringLiteralDfa14_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjMoveStringLiteralDfa14_0(JJ)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjMoveStringLiteralDfa1_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjMoveStringLiteralDfa1_0(J)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjMoveStringLiteralDfa2_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjMoveStringLiteralDfa2_0(JJ)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjMoveStringLiteralDfa3_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjMoveStringLiteralDfa3_0(JJ)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjMoveStringLiteralDfa4_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjMoveStringLiteralDfa4_0(JJ)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjMoveStringLiteralDfa5_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjMoveStringLiteralDfa5_0(JJ)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjMoveStringLiteralDfa6_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjMoveStringLiteralDfa6_0(JJ)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjMoveStringLiteralDfa7_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjMoveStringLiteralDfa7_0(JJ)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjMoveStringLiteralDfa8_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjMoveStringLiteralDfa8_0(JJ)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjMoveStringLiteralDfa9_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjMoveStringLiteralDfa9_0(JJ)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjStartNfaWithStates_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjStartNfaWithStates_0(III)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjStartNfa_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjStartNfa_0(IJ)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjStopAtPos" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjStopAtPos(II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jjStopStringLiteralDfa_0" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#jjStopStringLiteralDfa_0(IJ)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setDebugStream" id="org.soton.peleus.mot.parser/MotivationParserTokenManager#setDebugStream(Ljava.io.PrintStream;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParserTokenManager->org.soton.peleus.mot.parser/Token" source="//@children.3" target="//@children.5" targetEnd="//@children.3/@sourceConnections.0/@children.2" label="//@children.3/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«access»" size="48,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="150,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="98,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" id="org.soton.peleus.mot.parser/MotivationParserTokenManager->org.soton.peleus.mot.parser/Token" source="//@children.3" target="//@children.5" targetEnd="//@children.3/@sourceConnections.1/@children.2" label="//@children.3/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«access»" size="48,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="140,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="108,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParserTokenManager->org.soton.peleus.mot.parser/SimpleCharStream" source="//@children.3" target="//@children.4" targetEnd="//@children.3/@sourceConnections.2/@children.2" label="//@children.3/@sourceConnections.2/@children.0" sourceEnd="//@children.3/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="41,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="415,987" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="10,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParserTokenManager->org.soton.peleus.mot.parser/Token" source="//@children.3" target="//@children.5" targetEnd="//@children.3/@sourceConnections.3/@children.2" label="//@children.3/@sourceConnections.3/@children.0" sourceEnd="//@children.3/@sourceConnections.3/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«access»" size="48,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="130,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="78,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParserTokenManager->org.soton.peleus.mot.parser/Token" source="//@children.3" target="//@children.5" targetEnd="//@children.3/@sourceConnections.4/@children.2" label="//@children.3/@sourceConnections.4/@children.0" sourceEnd="//@children.3/@sourceConnections.4/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="41,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="415,15" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="118,259"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showAssociationMember="true" showMethods="true" showAttributes="true" showLiterals="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.6/@sourceConnections.2 //@children.3/@sourceConnections.2" name="SimpleCharStream" location="460,2330" size="595,1015" id="org.soton.peleus.mot.parser/SimpleCharStream" runTimeClassModel="bufcolumn,prevCharIsLF,ReInit(Ljava.io.InputStream;Ljava.lang.String;II),inputStream,available,backup(I),bufpos,adjustBeginLineColumn(II),ReInit(Ljava.io.InputStream;Ljava.lang.String;),line,inBuf,readChar(),ExpandBuff(Z),ReInit(Ljava.io.InputStream;),SimpleCharStream(Ljava.io.InputStream;II),GetSuffix(I),tabSize,getBeginLine(),getTabSize(I),ReInit(Ljava.io.Reader;),SimpleCharStream(Ljava.io.Reader;),buffer,FillBuff(),BeginToken(),maxNextCharInd,SimpleCharStream(Ljava.io.Reader;II),staticFlag,SimpleCharStream(Ljava.io.InputStream;Ljava.lang.String;II),column,SimpleCharStream(Ljava.io.InputStream;Ljava.lang.String;),UpdateLineColumn(C),getLine(),getColumn(),ReInit(Ljava.io.Reader;III),getEndColumn(),SimpleCharStream(Ljava.io.Reader;III),bufsize,getEndLine(),ReInit(Ljava.io.InputStream;III),ReInit(Ljava.io.Reader;II),SimpleCharStream(Ljava.io.InputStream;III),ReInit(Ljava.io.InputStream;Ljava.lang.String;III),bufline,SimpleCharStream(Ljava.io.InputStream;),GetImage(),Done(),prevCharIsCR,getBeginColumn(),setTabSize(I),tokenBegin,SimpleCharStream(Ljava.io.InputStream;Ljava.lang.String;III),ReInit(Ljava.io.InputStream;II)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="130,288">
+      <children xsi:type="editmodel:AttributeEditModel" name="available" id="org.soton.peleus.mot.parser/SimpleCharStream#available"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="bufcolumn" id="org.soton.peleus.mot.parser/SimpleCharStream#bufcolumn"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="buffer" id="org.soton.peleus.mot.parser/SimpleCharStream#buffer"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="bufline" id="org.soton.peleus.mot.parser/SimpleCharStream#bufline"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="bufpos" id="org.soton.peleus.mot.parser/SimpleCharStream#bufpos"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="bufsize" id="org.soton.peleus.mot.parser/SimpleCharStream#bufsize"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="column" id="org.soton.peleus.mot.parser/SimpleCharStream#column"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="inBuf" id="org.soton.peleus.mot.parser/SimpleCharStream#inBuf"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="inputStream" id="org.soton.peleus.mot.parser/SimpleCharStream#inputStream"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="line" id="org.soton.peleus.mot.parser/SimpleCharStream#line"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="maxNextCharInd" id="org.soton.peleus.mot.parser/SimpleCharStream#maxNextCharInd"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="prevCharIsCR" id="org.soton.peleus.mot.parser/SimpleCharStream#prevCharIsCR"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="prevCharIsLF" id="org.soton.peleus.mot.parser/SimpleCharStream#prevCharIsLF"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="staticFlag" id="org.soton.peleus.mot.parser/SimpleCharStream#staticFlag"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tabSize" id="org.soton.peleus.mot.parser/SimpleCharStream#tabSize"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tokenBegin" id="org.soton.peleus.mot.parser/SimpleCharStream#tokenBegin"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="572,648">
+      <children xsi:type="editmodel:MethodEditModel" name="BeginToken" id="org.soton.peleus.mot.parser/SimpleCharStream#BeginToken()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Done" id="org.soton.peleus.mot.parser/SimpleCharStream#Done()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ExpandBuff" id="org.soton.peleus.mot.parser/SimpleCharStream#ExpandBuff(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="FillBuff" id="org.soton.peleus.mot.parser/SimpleCharStream#FillBuff()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="GetImage" id="org.soton.peleus.mot.parser/SimpleCharStream#GetImage()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="GetSuffix" id="org.soton.peleus.mot.parser/SimpleCharStream#GetSuffix(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ReInit" id="org.soton.peleus.mot.parser/SimpleCharStream#ReInit(Ljava.io.InputStream;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ReInit" id="org.soton.peleus.mot.parser/SimpleCharStream#ReInit(Ljava.io.Reader;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ReInit" id="org.soton.peleus.mot.parser/SimpleCharStream#ReInit(Ljava.io.Reader;II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ReInit" id="org.soton.peleus.mot.parser/SimpleCharStream#ReInit(Ljava.io.InputStream;Ljava.lang.String;III)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ReInit" id="org.soton.peleus.mot.parser/SimpleCharStream#ReInit(Ljava.io.InputStream;Ljava.lang.String;II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ReInit" id="org.soton.peleus.mot.parser/SimpleCharStream#ReInit(Ljava.io.Reader;III)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ReInit" id="org.soton.peleus.mot.parser/SimpleCharStream#ReInit(Ljava.io.InputStream;III)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ReInit" id="org.soton.peleus.mot.parser/SimpleCharStream#ReInit(Ljava.io.InputStream;II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ReInit" id="org.soton.peleus.mot.parser/SimpleCharStream#ReInit(Ljava.io.InputStream;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="SimpleCharStream" id="org.soton.peleus.mot.parser/SimpleCharStream#SimpleCharStream(Ljava.io.InputStream;Ljava.lang.String;II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="SimpleCharStream" id="org.soton.peleus.mot.parser/SimpleCharStream#SimpleCharStream(Ljava.io.Reader;II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="SimpleCharStream" id="org.soton.peleus.mot.parser/SimpleCharStream#SimpleCharStream(Ljava.io.InputStream;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="SimpleCharStream" id="org.soton.peleus.mot.parser/SimpleCharStream#SimpleCharStream(Ljava.io.InputStream;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="SimpleCharStream" id="org.soton.peleus.mot.parser/SimpleCharStream#SimpleCharStream(Ljava.io.Reader;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="SimpleCharStream" id="org.soton.peleus.mot.parser/SimpleCharStream#SimpleCharStream(Ljava.io.InputStream;Ljava.lang.String;III)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="SimpleCharStream" id="org.soton.peleus.mot.parser/SimpleCharStream#SimpleCharStream(Ljava.io.InputStream;II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="SimpleCharStream" id="org.soton.peleus.mot.parser/SimpleCharStream#SimpleCharStream(Ljava.io.InputStream;III)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="SimpleCharStream" id="org.soton.peleus.mot.parser/SimpleCharStream#SimpleCharStream(Ljava.io.Reader;III)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="UpdateLineColumn" id="org.soton.peleus.mot.parser/SimpleCharStream#UpdateLineColumn(C)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="adjustBeginLineColumn" id="org.soton.peleus.mot.parser/SimpleCharStream#adjustBeginLineColumn(II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="backup" id="org.soton.peleus.mot.parser/SimpleCharStream#backup(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getBeginColumn" id="org.soton.peleus.mot.parser/SimpleCharStream#getBeginColumn()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getBeginLine" id="org.soton.peleus.mot.parser/SimpleCharStream#getBeginLine()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getColumn" id="org.soton.peleus.mot.parser/SimpleCharStream#getColumn()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getEndColumn" id="org.soton.peleus.mot.parser/SimpleCharStream#getEndColumn()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getEndLine" id="org.soton.peleus.mot.parser/SimpleCharStream#getEndLine()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getLine" id="org.soton.peleus.mot.parser/SimpleCharStream#getLine()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTabSize" id="org.soton.peleus.mot.parser/SimpleCharStream#getTabSize(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="readChar" id="org.soton.peleus.mot.parser/SimpleCharStream#readChar()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTabSize" id="org.soton.peleus.mot.parser/SimpleCharStream#setTabSize(I)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showAssociationMember="true" showMethods="true" showAttributes="true" showLiterals="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.6/@sourceConnections.0 //@children.3/@sourceConnections.0 //@children.2/@sourceConnections.0 //@children.6/@sourceConnections.6 //@children.6/@sourceConnections.7 //@children.3/@sourceConnections.1 //@children.2/@sourceConnections.1 //@children.2/@sourceConnections.2 //@children.3/@sourceConnections.3 //@children.6/@sourceConnections.10 //@children.6/@sourceConnections.11 //@children.6/@sourceConnections.14 //@children.6/@sourceConnections.17 //@children.6/@sourceConnections.20 //@children.6/@sourceConnections.23 //@children.6/@sourceConnections.26 //@children.2/@sourceConnections.3 //@children.3/@sourceConnections.4 //@children.6/@sourceConnections.29 //@children.6/@sourceConnections.30 //@children.6/@sourceConnections.33 //@children.6/@sourceConnections.36 //@children.6/@sourceConnections.39 //@children.6/@sourceConnections.42 //@children.6/@sourceConnections.45" name="Token" location="82,607" size="198,259" id="org.soton.peleus.mot.parser/Token" runTimeClassModel="beginLine,toString(),kind,endLine,endColumn,image,next,newToken(I),beginColumn,specialToken">
+    <children xsi:type="editmodel:CompartmentEditModel" size="117,144">
+      <children xsi:type="editmodel:AttributeEditModel" name="beginColumn" id="org.soton.peleus.mot.parser/Token#beginColumn"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="beginLine" id="org.soton.peleus.mot.parser/Token#beginLine"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="endColumn" id="org.soton.peleus.mot.parser/Token#endColumn"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="endLine" id="org.soton.peleus.mot.parser/Token#endLine"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="image" id="org.soton.peleus.mot.parser/Token#image"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="kind" id="org.soton.peleus.mot.parser/Token#kind"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="next" id="org.soton.peleus.mot.parser/Token#next"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="specialToken" id="org.soton.peleus.mot.parser/Token#specialToken"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="175,36">
+      <children xsi:type="editmodel:MethodEditModel" name="newToken" id="org.soton.peleus.mot.parser/Token#newToken(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="toString" id="org.soton.peleus.mot.parser/Token#toString()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showAssociationMember="true" showMethods="true" showAttributes="true" showLiterals="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="MotivationParser" location="590,1060" size="335,1159" id="org.soton.peleus.mot.parser/MotivationParser" runTimeClassModel="rel_expr(),arithm_expr_trm(),jj_nt,jj_la1_0,string(),enable_tracing(),term(),ReInit(Ljava.io.InputStream;Ljava.lang.String;),getToken(I),jj_gen,jj_la1_1(),disable_tracing(),ReInit(Ljava.io.InputStream;),motivation(),identifier(),jj_expentry,toString(),MotivationParser(Ljava.io.InputStream;Ljava.lang.String;),token,classname(),log_expr_factor(),generateParseException(),log_expr(),ReInit(Ljava.io.Reader;),beliefToIntegerMapping(Ljava.util.Hashtable;),jj_consume_token(I),threshold(),arithm_expr_factor(),jj_la1_0(),arithm_expr(),jj_kind,jj_ntk(),MotivationParser(Ljava.io.InputStream;),jj_ntk,motivationFactory,beliefToTriggerMapping(Ljava.util.Hashtable;),list(),MotivationParser(Ljava.io.Reader;),mitigation(),MotivationParser(Lorg.soton.peleus.mot.parser.MotivationParserTokenManager;),token_source,trigger(),main([Ljava.lang.String;),log_expr_trm(),literal(),terms(),arithm_expr_simple(),jj_la1,jj_la1_1,atom(),goalGeneration(),var(),motivationBody(Ljava.lang.String;),ReInit(Lorg.soton.peleus.mot.parser.MotivationParserTokenManager;),motivations,parse(),jj_expentries,jj_input_stream,intensityUpdate(),getNextToken()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="242,252">
+      <children xsi:type="editmodel:AttributeEditModel" name="jj_expentries" id="org.soton.peleus.mot.parser/MotivationParser#jj_expentries"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jj_expentry" id="org.soton.peleus.mot.parser/MotivationParser#jj_expentry"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jj_gen" id="org.soton.peleus.mot.parser/MotivationParser#jj_gen"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jj_input_stream" id="org.soton.peleus.mot.parser/MotivationParser#jj_input_stream"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jj_kind" id="org.soton.peleus.mot.parser/MotivationParser#jj_kind"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jj_la1" id="org.soton.peleus.mot.parser/MotivationParser#jj_la1"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jj_la1_0" id="org.soton.peleus.mot.parser/MotivationParser#jj_la1_0"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jj_la1_1" id="org.soton.peleus.mot.parser/MotivationParser#jj_la1_1"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jj_nt" id="org.soton.peleus.mot.parser/MotivationParser#jj_nt"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="jj_ntk" id="org.soton.peleus.mot.parser/MotivationParser#jj_ntk"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="motivationFactory" id="org.soton.peleus.mot.parser/MotivationParser#motivationFactory"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="motivations" id="org.soton.peleus.mot/Motivation@motivations+org.soton.peleus.mot.parser/MotivationParser@|org.soton.peleus.mot/Motivation#motivations"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="token" id="org.soton.peleus.mot.parser/MotivationParser#token"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="token_source" id="org.soton.peleus.mot.parser/MotivationParser#token_source"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="312,828">
+      <children xsi:type="editmodel:MethodEditModel" name="MotivationParser" id="org.soton.peleus.mot.parser/MotivationParser#MotivationParser(Ljava.io.InputStream;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="MotivationParser" id="org.soton.peleus.mot.parser/MotivationParser#MotivationParser(Ljava.io.InputStream;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="MotivationParser" id="org.soton.peleus.mot.parser/MotivationParser#MotivationParser(Lorg.soton.peleus.mot.parser.MotivationParserTokenManager;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="MotivationParser" id="org.soton.peleus.mot.parser/MotivationParser#MotivationParser(Ljava.io.Reader;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ReInit" id="org.soton.peleus.mot.parser/MotivationParser#ReInit(Lorg.soton.peleus.mot.parser.MotivationParserTokenManager;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ReInit" id="org.soton.peleus.mot.parser/MotivationParser#ReInit(Ljava.io.Reader;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ReInit" id="org.soton.peleus.mot.parser/MotivationParser#ReInit(Ljava.io.InputStream;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ReInit" id="org.soton.peleus.mot.parser/MotivationParser#ReInit(Ljava.io.InputStream;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="arithm_expr" id="org.soton.peleus.mot.parser/MotivationParser#arithm_expr()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="arithm_expr_factor" id="org.soton.peleus.mot.parser/MotivationParser#arithm_expr_factor()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="arithm_expr_simple" id="org.soton.peleus.mot.parser/MotivationParser#arithm_expr_simple()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="arithm_expr_trm" id="org.soton.peleus.mot.parser/MotivationParser#arithm_expr_trm()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="atom" id="org.soton.peleus.mot.parser/MotivationParser#atom()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="beliefToTriggerMapping" id="org.soton.peleus.mot.parser/MotivationParser#beliefToTriggerMapping(Ljava.util.Hashtable;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="beliefToIntegerMapping" id="org.soton.peleus.mot.parser/MotivationParser#beliefToIntegerMapping(Ljava.util.Hashtable;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="classname" id="org.soton.peleus.mot.parser/MotivationParser#classname()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="disable_tracing" id="org.soton.peleus.mot.parser/MotivationParser#disable_tracing()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="enable_tracing" id="org.soton.peleus.mot.parser/MotivationParser#enable_tracing()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="generateParseException" id="org.soton.peleus.mot.parser/MotivationParser#generateParseException()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNextToken" id="org.soton.peleus.mot.parser/MotivationParser#getNextToken()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getToken" id="org.soton.peleus.mot.parser/MotivationParser#getToken(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="goalGeneration" id="org.soton.peleus.mot.parser/MotivationParser#goalGeneration()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="identifier" id="org.soton.peleus.mot.parser/MotivationParser#identifier()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="intensityUpdate" id="org.soton.peleus.mot.parser/MotivationParser#intensityUpdate()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jj_consume_token" id="org.soton.peleus.mot.parser/MotivationParser#jj_consume_token(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jj_la1_0" id="org.soton.peleus.mot.parser/MotivationParser#jj_la1_0()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jj_la1_1" id="org.soton.peleus.mot.parser/MotivationParser#jj_la1_1()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="jj_ntk" id="org.soton.peleus.mot.parser/MotivationParser#jj_ntk()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="list" id="org.soton.peleus.mot.parser/MotivationParser#list()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="literal" id="org.soton.peleus.mot.parser/MotivationParser#literal()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="log_expr" id="org.soton.peleus.mot.parser/MotivationParser#log_expr()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="log_expr_factor" id="org.soton.peleus.mot.parser/MotivationParser#log_expr_factor()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="log_expr_trm" id="org.soton.peleus.mot.parser/MotivationParser#log_expr_trm()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="main" id="org.soton.peleus.mot.parser/MotivationParser#main([Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mitigation" id="org.soton.peleus.mot.parser/MotivationParser#mitigation()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="motivation" id="org.soton.peleus.mot.parser/MotivationParser#motivation()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="motivationBody" id="org.soton.peleus.mot.parser/MotivationParser#motivationBody(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="parse" id="org.soton.peleus.mot.parser/MotivationParser#parse()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="rel_expr" id="org.soton.peleus.mot.parser/MotivationParser#rel_expr()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="string" id="org.soton.peleus.mot.parser/MotivationParser#string()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="term" id="org.soton.peleus.mot.parser/MotivationParser#term()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="terms" id="org.soton.peleus.mot.parser/MotivationParser#terms()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="threshold" id="org.soton.peleus.mot.parser/MotivationParser#threshold()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="toString" id="org.soton.peleus.mot.parser/MotivationParser#toString()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="trigger" id="org.soton.peleus.mot.parser/MotivationParser#trigger()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="var" id="org.soton.peleus.mot.parser/MotivationParser#var()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/Token" source="//@children.6" target="//@children.5" targetEnd="//@children.6/@sourceConnections.0/@children.2" label="//@children.6/@sourceConnections.0/@children.0" sourceEnd="//@children.6/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«access»" size="48,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="178,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/MotivationParserTokenManager" source="//@children.6" target="//@children.3" targetEnd="//@children.6/@sourceConnections.1/@children.2" label="//@children.6/@sourceConnections.1/@children.0" sourceEnd="//@children.6/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="41,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,548" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="415,498"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/SimpleCharStream" source="//@children.6" target="//@children.4" targetEnd="//@children.6/@sourceConnections.2/@children.2" label="//@children.6/@sourceConnections.2/@children.0" sourceEnd="//@children.6/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="41,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="167,1159" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="297,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.3/@children.2" label="//@children.6/@sourceConnections.3/@children.0" sourceEnd="//@children.6/@sourceConnections.3/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="205,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="108,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.4/@children.2" label="//@children.6/@sourceConnections.4/@children.0" sourceEnd="//@children.6/@sourceConnections.4/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="172,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="162,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.5/@children.2" label="//@children.6/@sourceConnections.5/@children.0" sourceEnd="//@children.6/@sourceConnections.5/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="225,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="128,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/Token" source="//@children.6" target="//@children.5" targetEnd="//@children.6/@sourceConnections.6/@children.2" label="//@children.6/@sourceConnections.6/@children.0" sourceEnd="//@children.6/@sourceConnections.6/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«access»" size="48,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="188,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/Token" source="//@children.6" target="//@children.5" targetEnd="//@children.6/@sourceConnections.7/@children.2" label="//@children.6/@sourceConnections.7/@children.0" sourceEnd="//@children.6/@sourceConnections.7/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«access»" size="48,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,20" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="188,249"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.8/@children.2" label="//@children.6/@sourceConnections.8/@children.0" sourceEnd="//@children.6/@sourceConnections.8/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,15" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="182,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.9/@children.2" label="//@children.6/@sourceConnections.9/@children.0" sourceEnd="//@children.6/@sourceConnections.9/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="102,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="92,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/Token" source="//@children.6" target="//@children.5" targetEnd="//@children.6/@sourceConnections.10/@children.2" label="//@children.6/@sourceConnections.10/@children.0" sourceEnd="//@children.6/@sourceConnections.10/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«access»" size="48,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,5" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="198,254"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/Token" source="//@children.6" target="//@children.5" targetEnd="//@children.6/@sourceConnections.11/@children.2" label="//@children.6/@sourceConnections.11/@children.0" sourceEnd="//@children.6/@sourceConnections.11/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«access»" size="48,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,15" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="198,244"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.12/@children.2" label="//@children.6/@sourceConnections.12/@children.0" sourceEnd="//@children.6/@sourceConnections.12/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,25" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="192,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.13/@children.2" label="//@children.6/@sourceConnections.13/@children.0" sourceEnd="//@children.6/@sourceConnections.13/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="122,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="112,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/Token" source="//@children.6" target="//@children.5" targetEnd="//@children.6/@sourceConnections.14/@children.2" label="//@children.6/@sourceConnections.14/@children.0" sourceEnd="//@children.6/@sourceConnections.14/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«access»" size="48,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,25" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="198,234"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.15/@children.2" label="//@children.6/@sourceConnections.15/@children.0" sourceEnd="//@children.6/@sourceConnections.15/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,35" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="202,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.16/@children.2" label="//@children.6/@sourceConnections.16/@children.0" sourceEnd="//@children.6/@sourceConnections.16/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="142,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="132,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/Token" source="//@children.6" target="//@children.5" targetEnd="//@children.6/@sourceConnections.17/@children.2" label="//@children.6/@sourceConnections.17/@children.0" sourceEnd="//@children.6/@sourceConnections.17/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«access»" size="48,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,35" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="198,224"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.18/@children.2" label="//@children.6/@sourceConnections.18/@children.0" sourceEnd="//@children.6/@sourceConnections.18/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,45" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="212,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.19/@children.2" label="//@children.6/@sourceConnections.19/@children.0" sourceEnd="//@children.6/@sourceConnections.19/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="152,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="142,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/Token" source="//@children.6" target="//@children.5" targetEnd="//@children.6/@sourceConnections.20/@children.2" label="//@children.6/@sourceConnections.20/@children.0" sourceEnd="//@children.6/@sourceConnections.20/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«access»" size="48,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,45" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="198,214"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.21/@children.2" label="//@children.6/@sourceConnections.21/@children.0" sourceEnd="//@children.6/@sourceConnections.21/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,55" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="222,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.22/@children.2" label="//@children.6/@sourceConnections.22/@children.0" sourceEnd="//@children.6/@sourceConnections.22/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="132,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="122,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/Token" source="//@children.6" target="//@children.5" targetEnd="//@children.6/@sourceConnections.23/@children.2" label="//@children.6/@sourceConnections.23/@children.0" sourceEnd="//@children.6/@sourceConnections.23/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«access»" size="48,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,55" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="198,204"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.24/@children.2" label="//@children.6/@sourceConnections.24/@children.0" sourceEnd="//@children.6/@sourceConnections.24/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,65" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="232,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.25/@children.2" label="//@children.6/@sourceConnections.25/@children.0" sourceEnd="//@children.6/@sourceConnections.25/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="112,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="102,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/Token" source="//@children.6" target="//@children.5" targetEnd="//@children.6/@sourceConnections.26/@children.2" label="//@children.6/@sourceConnections.26/@children.0" sourceEnd="//@children.6/@sourceConnections.26/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«access»" size="48,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,65" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="198,194"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.27/@children.2" label="//@children.6/@sourceConnections.27/@children.0" sourceEnd="//@children.6/@sourceConnections.27/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,75" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="242,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.28/@children.2" label="//@children.6/@sourceConnections.28/@children.0" sourceEnd="//@children.6/@sourceConnections.28/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="41,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,85" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="252,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/Token" source="//@children.6" target="//@children.5" targetEnd="//@children.6/@sourceConnections.29/@children.2" label="//@children.6/@sourceConnections.29/@children.0" sourceEnd="//@children.6/@sourceConnections.29/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,26" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="108,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/Token" source="//@children.6" target="//@children.5" targetEnd="//@children.6/@sourceConnections.30/@children.2" label="//@children.6/@sourceConnections.30/@children.0" sourceEnd="//@children.6/@sourceConnections.30/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="41,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,24" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="118,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.31/@children.2" label="//@children.6/@sourceConnections.31/@children.0" sourceEnd="//@children.6/@sourceConnections.31/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,95" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="262,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.32/@children.2" label="//@children.6/@sourceConnections.32/@children.0" sourceEnd="//@children.6/@sourceConnections.32/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,105" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="272,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/Token" source="//@children.6" target="//@children.5" targetEnd="//@children.6/@sourceConnections.33/@children.2" label="//@children.6/@sourceConnections.33/@children.0" sourceEnd="//@children.6/@sourceConnections.33/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,22" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="128,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.34/@children.2" label="//@children.6/@sourceConnections.34/@children.0" sourceEnd="//@children.6/@sourceConnections.34/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,115" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="282,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.35/@children.2" label="//@children.6/@sourceConnections.35/@children.0" sourceEnd="//@children.6/@sourceConnections.35/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="335,125" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="292,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/Token" source="//@children.6" target="//@children.5" targetEnd="//@children.6/@sourceConnections.36/@children.2" label="//@children.6/@sourceConnections.36/@children.0" sourceEnd="//@children.6/@sourceConnections.36/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,20" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="138,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.37/@children.2" label="//@children.6/@sourceConnections.37/@children.0" sourceEnd="//@children.6/@sourceConnections.37/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="52,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="42,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.38/@children.2" label="//@children.6/@sourceConnections.38/@children.0" sourceEnd="//@children.6/@sourceConnections.38/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="42,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="32,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/Token" source="//@children.6" target="//@children.5" targetEnd="//@children.6/@sourceConnections.39/@children.2" label="//@children.6/@sourceConnections.39/@children.0" sourceEnd="//@children.6/@sourceConnections.39/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,18" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="148,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.40/@children.2" label="//@children.6/@sourceConnections.40/@children.0" sourceEnd="//@children.6/@sourceConnections.40/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="62,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="52,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.41/@children.2" label="//@children.6/@sourceConnections.41/@children.0" sourceEnd="//@children.6/@sourceConnections.41/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="72,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="62,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/Token" source="//@children.6" target="//@children.5" targetEnd="//@children.6/@sourceConnections.42/@children.2" label="//@children.6/@sourceConnections.42/@children.0" sourceEnd="//@children.6/@sourceConnections.42/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,16" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="158,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.43/@children.2" label="//@children.6/@sourceConnections.43/@children.0" sourceEnd="//@children.6/@sourceConnections.43/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="82,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="72,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/ParseException" source="//@children.6" target="//@children.2" targetEnd="//@children.6/@sourceConnections.44/@children.2" label="//@children.6/@sourceConnections.44/@children.0" sourceEnd="//@children.6/@sourceConnections.44/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="92,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="82,259"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot.parser/MotivationParser->org.soton.peleus.mot.parser/Token" source="//@children.6" target="//@children.5" targetEnd="//@children.6/@sourceConnections.45/@children.2" label="//@children.6/@sourceConnections.45/@children.0" sourceEnd="//@children.6/@sourceConnections.45/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,14" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="168,259"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showAssociationMember="true" showMethods="true" showAttributes="true" showLiterals="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" interactive="false" level="-1" showScope="InPackage" properties="wireOptions=4"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="10,10" gridOrigin="0,0" rulerUnit="pixel">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showInterfaceStereotype="true" showAssociationMember="true" showMethods="true" showAttributes="true" showLiterlas="true"/>
+</editmodel:ClassDiagramEditModel>
