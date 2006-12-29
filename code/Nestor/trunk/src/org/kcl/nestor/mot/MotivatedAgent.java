@@ -16,10 +16,10 @@ import org.kcl.nestor.agent.ModularAgent;
 import org.kcl.nestor.agent.functions.defaults.DefaultActionSelectionFunction;
 import org.kcl.nestor.agent.functions.defaults.DefaultBeliefRevisionFunction;
 import org.kcl.nestor.agent.functions.defaults.DefaultMessageSelectionFunction;
-import org.kcl.nestor.agent.functions.impl.MotivatedBeliefUpdate;
-import org.kcl.nestor.agent.functions.impl.MotivatedEventSelection;
-import org.kcl.nestor.agent.functions.impl.MotivatedIntentionSelection;
-import org.kcl.nestor.agent.functions.impl.MotivatedOptionSelection;
+import org.kcl.nestor.mot.functions.MotivatedBeliefUpdate;
+import org.kcl.nestor.mot.functions.MotivatedEventSelection;
+import org.kcl.nestor.mot.functions.MotivatedIntentionSelection;
+import org.kcl.nestor.mot.functions.MotivatedOptionSelection;
 import org.kcl.nestor.mot.parser.MotivationParser;
 
 /** 

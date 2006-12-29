@@ -1,4 +1,4 @@
-package org.kcl.nestor.agent.functions.impl;
+package org.kcl.nestor.mot.functions;
 
 import jason.asSemantics.Agent;
 import jason.asSyntax.Literal;
