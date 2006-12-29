@@ -1,4 +1,4 @@
-package org.kcl.nestor.mot.functions.impl;
+package org.kcl.nestor.agent.functions.impl;
 
 import jason.asSemantics.Agent;
 import jason.asSyntax.Literal;
@@ -10,9 +10,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.kcl.nestor.agent.functions.defaults.DefaultBeliefUpdateFunction;
 import org.kcl.nestor.mot.MotivatedAgent;
 import org.kcl.nestor.mot.Motivation;
-import org.kcl.nestor.mot.functions.defaults.DefaultBeliefUpdateFunction;
 
 public class MotivatedBeliefUpdate extends DefaultBeliefUpdateFunction {
 	private Logger logger = Logger.getLogger(Agent.class.getName());

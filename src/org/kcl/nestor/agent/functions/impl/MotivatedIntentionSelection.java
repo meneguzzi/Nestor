@@ -1,4 +1,4 @@
-package org.kcl.nestor.mot.functions.impl;
+package org.kcl.nestor.agent.functions.impl;
 
 import jason.asSemantics.Agent;
 import jason.asSemantics.IntendedMeans;
@@ -10,9 +10,9 @@ import java.util.Iterator;
 import java.util.Queue;
 import java.util.logging.Logger;
 
+import org.kcl.nestor.agent.functions.IntentionSelectionFunction;
 import org.kcl.nestor.mot.MotivatedAgent;
 import org.kcl.nestor.mot.Motivation;
-import org.kcl.nestor.mot.functions.IntentionSelectionFunction;
 
 public class MotivatedIntentionSelection implements IntentionSelectionFunction {
 	protected static final Logger logger = Logger.getLogger(IntentionSelectionFunction.class.getName());

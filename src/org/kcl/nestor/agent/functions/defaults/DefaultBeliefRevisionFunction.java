@@ -1,4 +1,4 @@
-package org.kcl.nestor.mot.functions.defaults;
+package org.kcl.nestor.agent.functions.defaults;
 
 import jason.asSemantics.Agent;
 import jason.asSemantics.Intention;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.kcl.nestor.mot.functions.BeliefRevisionFunction;
+import org.kcl.nestor.agent.functions.BeliefRevisionFunction;
 
 public class DefaultBeliefRevisionFunction implements BeliefRevisionFunction {
 	private static final Logger logger = Logger.getLogger(Agent.class.getName());
