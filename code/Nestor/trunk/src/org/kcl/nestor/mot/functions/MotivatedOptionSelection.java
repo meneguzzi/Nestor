@@ -43,10 +43,11 @@ public class MotivatedOptionSelection implements OptionSelectionFunction<Motivat
 			//get motivations
 			//project each option into the belief base
 			if(options.remove(mostMotivated)) {
-				logger.info("Most motivated plan is "+mostMotivated);
+				logger.info("Most motivated option is "+mostMotivated);
 				return mostMotivated;
 			} else {
-				return null;
+				logger.info("No motivated option found, returning "+options.get(0));
+				return options.remove(0);
 			} 
         } /*else if(options.size() == 0) { //if we have only one option
         	logger.info("Only one option to carry out goal");

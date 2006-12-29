@@ -4,5 +4,7 @@ MAS dummy {
          org.kcl.nestor.env.scripted.ScriptedEnvironment("script.xml")
          
     agents: 
-         dummyAgent agentClass org.kcl.nestor.mot.gui.MotivatedAgentWrapper;
+         dummyAgent [motivations="motivations.mot"]
+         			agentClass org.kcl.nestor.mot.gui.MotivatedAgentWrapper
+         			agentArchClass org.kcl.nestor.mot.log.LoggingAgArch;
 }

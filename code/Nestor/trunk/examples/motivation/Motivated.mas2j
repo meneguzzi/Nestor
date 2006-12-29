@@ -6,4 +6,7 @@ MAS motivated {
     agents: 
          //battRobot agentClass org.soton.peleus.mot.MotivatedAgent;
          battRobot agentClass org.kcl.nestor.mot.gui.MotivatedAgentWrapper;
+         
+         //battRobot agentClass org.kcl.nestor.mot.gui.MotivatedAgentWrapper
+         //		   agentArchClass org.kcl.nestor.mot.log.LoggingAgArch;
 }

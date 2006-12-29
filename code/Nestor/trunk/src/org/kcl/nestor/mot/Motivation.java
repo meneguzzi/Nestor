@@ -10,11 +10,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.kcl.nestor.mot.log.MotivationLog;
+import org.kcl.nestor.mot.log.MotivationLogFactory;
+
 /**
  * @author  Felipe Rech Meneguzzi
  */
 public class Motivation {
 	protected static final Logger logger = Logger.getLogger(Motivation.class.getName());
+
+	/**
+	 * The class to log the evolution of an agent's motivation.
+	 * XXX Perhaps this is not the most appropriate way of logging stuff, we shall see
+	 */
+	protected MotivationLog motivationLog = null;
+	
 	/**
 	 * The identifier for this motivation.
 	 */
@@ -51,8 +61,9 @@ public class Motivation {
 	 * Creates a motivation with this name 
 	 * @param motivationName
 	 */
-	Motivation(String motivationName) {
+	public Motivation(String motivationName) {
 		this.motivationName = motivationName;
+		this.motivationLog = MotivationLogFactory.getInstance().newMotivationLog(this);
 	}
 	
 	/**
@@ -65,7 +76,7 @@ public class Motivation {
 	 * @param goalGenerationFunction
 	 * @param mitigationFunction
 	 */
-	Motivation(String motivationName, 
+	public Motivation(String motivationName, 
 			int threshold,
 			IntensityUpdateFunction intensityUpdateFunction,
 			GoalGenerationFunction goalGenerationFunction,
@@ -111,7 +122,16 @@ public class Motivation {
 	public boolean updateIntensity(BeliefBase beliefBase) {
 		this.motivationIntensity+=this.intensityUpdateFunction.updateIntensity(beliefBase);
 		motivationIntensity = (motivationIntensity > 0) ? motivationIntensity : 0;
+		
 		logger.fine("Motivation '"+motivationName+"' intensity is "+motivationIntensity);
+		
+		/*********************************************************/
+		motivationLog.addMotivationLevel(this.motivationIntensity);
+		if(motivationIntensity >= motivationThreshold) {
+			motivationLog.addThresholdExceededEvent();
+		}
+		/*********************************************************/
+		
 		return motivationIntensity >= motivationThreshold;
 	}
 	
@@ -125,7 +145,11 @@ public class Motivation {
 	public List<Trigger> generateGoals(BeliefBase beliefBase) {
 		if(this.motivationIntensity >= motivationThreshold) {
 			logger.info("Threshold exceeded, generating goals");
-			return this.goalGenerationFunction.generateGoals(beliefBase);
+			List<Trigger> generatedGoals = this.goalGenerationFunction.generateGoals(beliefBase);
+			/***************************************************/
+			motivationLog.addTriggeredGoals(generatedGoals);
+			/***************************************************/
+			return generatedGoals;
 		}
 		return emptyList;
 	}
@@ -146,6 +170,10 @@ public class Motivation {
 		this.motivationIntensity += mitigation;
 		motivationIntensity = (motivationIntensity > 0) ? motivationIntensity : 0;
 		
+		/***************************************************/
+		motivationLog.addMitigationPoint(mitigation);
+		/***************************************************/
+		
 		return true;
 	}
 	
@@ -159,6 +187,10 @@ public class Motivation {
 
 	public MitigationFunction getMitigationFunction() {
 		return mitigationFunction;
+	}
+	
+	public MotivationLog getMotivationLog() {
+		return this.motivationLog;
 	}
 
 	public String toString() {

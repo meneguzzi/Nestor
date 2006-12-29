@@ -3,9 +3,14 @@
  */
 package org.kcl.nestor.mot;
 
+import jason.JasonException;
+import jason.architecture.AgArch;
 import jason.asSemantics.Event;
 import jason.asSemantics.Intention;
+import jason.asSemantics.TransitionSystem;
 import jason.asSyntax.Trigger;
+import jason.bb.BeliefBase;
+import jason.runtime.Settings;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -70,13 +75,26 @@ public class MotivatedAgent extends ModularAgent {
 		this.beliefRevisionFunction = new DefaultBeliefRevisionFunction();
 		this.messageSelectionFunction = new DefaultMessageSelectionFunction();
 		
-		//XXX Review this
+//		this.optionSelectionFunction = new DefaultOptionSelectionFunction();
+//		this.intentionSelectionFunction = new DefaultIntentionSelectionFunction();
+	}
+	
+	@Override
+	public TransitionSystem initAg(AgArch arch, BeliefBase bb, String asSrc, Settings stts) throws JasonException {
+		TransitionSystem transitionSystem = super.initAg(arch, bb, asSrc, stts);
+		String motivationsFile = stts.getUserParameter("motivations");
+		motivationsFile = (motivationsFile != null ? motivationsFile : "motivations.mot");
+		
+//		XXX Review this
 		try {
-			readMotivations("motivations.mot");
+			logger.info("Reading "+motivationsFile);
+			readMotivations(motivationsFile);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		return transitionSystem;
 	}
 	
 	/**
@@ -163,6 +181,4 @@ public class MotivatedAgent extends ModularAgent {
 	public Motivation removePendingMotivatedGoal(Trigger trigger) {
 		return this.pendingMotivatedGoals.remove(trigger);
 	}
-	
-	
 }
