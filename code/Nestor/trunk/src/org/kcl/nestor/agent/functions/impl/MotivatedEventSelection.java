@@ -1,4 +1,4 @@
-package org.kcl.nestor.mot.functions.impl;
+package org.kcl.nestor.agent.functions.impl;
 
 import jason.asSemantics.Agent;
 import jason.asSemantics.Event;
@@ -7,9 +7,9 @@ import jason.asSyntax.Trigger;
 import java.util.Queue;
 import java.util.logging.Logger;
 
+import org.kcl.nestor.agent.functions.EventSelectionFunction;
 import org.kcl.nestor.mot.MotivatedAgent;
 import org.kcl.nestor.mot.Motivation;
-import org.kcl.nestor.mot.functions.EventSelectionFunction;
 
 public class MotivatedEventSelection implements EventSelectionFunction<MotivatedAgent> {
 	private Logger logger = Logger.getLogger(Agent.class.getName());

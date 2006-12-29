@@ -1,11 +1,11 @@
-package org.kcl.nestor.mot.functions.defaults;
+package org.kcl.nestor.agent.functions.defaults;
 
 import jason.asSemantics.Agent;
 import jason.asSemantics.Option;
 
 import java.util.List;
 
-import org.kcl.nestor.mot.functions.OptionSelectionFunction;
+import org.kcl.nestor.agent.functions.OptionSelectionFunction;
 
 public class DefaultOptionSelectionFunction implements OptionSelectionFunction<Agent> {
 	

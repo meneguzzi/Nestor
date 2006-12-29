@@ -1,4 +1,4 @@
-package org.kcl.nestor.mot.functions.impl;
+package org.kcl.nestor.agent.functions.impl;
 
 import jason.asSemantics.Agent;
 import jason.asSemantics.Option;
@@ -12,10 +12,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.kcl.nestor.agent.functions.OptionSelectionFunction;
 import org.kcl.nestor.mot.MotivatedAgent;
 import org.kcl.nestor.mot.Motivation;
 import org.kcl.nestor.mot.bb.PredictiveBeliefBase;
-import org.kcl.nestor.mot.functions.OptionSelectionFunction;
 
 public class MotivatedOptionSelection implements OptionSelectionFunction<MotivatedAgent> {
 	private static final Logger logger = Logger.getLogger(Agent.class.getName());

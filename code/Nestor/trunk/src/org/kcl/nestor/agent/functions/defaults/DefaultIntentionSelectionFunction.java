@@ -1,11 +1,11 @@
-package org.kcl.nestor.mot.functions.defaults;
+package org.kcl.nestor.agent.functions.defaults;
 
 import jason.asSemantics.Agent;
 import jason.asSemantics.Intention;
 
 import java.util.Queue;
 
-import org.kcl.nestor.mot.functions.IntentionSelectionFunction;
+import org.kcl.nestor.agent.functions.IntentionSelectionFunction;
 
 public class DefaultIntentionSelectionFunction implements
 		IntentionSelectionFunction {

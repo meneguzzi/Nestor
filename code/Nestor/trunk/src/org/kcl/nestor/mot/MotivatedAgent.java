@@ -3,36 +3,23 @@
  */
 package org.kcl.nestor.mot;
 
-import jason.asSemantics.ActionExec;
-import jason.asSemantics.Agent;
 import jason.asSemantics.Event;
 import jason.asSemantics.Intention;
-import jason.asSemantics.Message;
-import jason.asSemantics.Option;
-import jason.asSyntax.Literal;
 import jason.asSyntax.Trigger;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Queue;
-import java.util.logging.Logger;
 
-import org.kcl.nestor.mot.functions.ActionSelectionFunction;
-import org.kcl.nestor.mot.functions.BeliefRevisionFunction;
-import org.kcl.nestor.mot.functions.BeliefUpdateFunction;
-import org.kcl.nestor.mot.functions.EventSelectionFunction;
-import org.kcl.nestor.mot.functions.IntentionSelectionFunction;
-import org.kcl.nestor.mot.functions.MessageSelectionFunction;
-import org.kcl.nestor.mot.functions.OptionSelectionFunction;
-import org.kcl.nestor.mot.functions.defaults.DefaultActionSelectionFunction;
-import org.kcl.nestor.mot.functions.defaults.DefaultBeliefRevisionFunction;
-import org.kcl.nestor.mot.functions.defaults.DefaultMessageSelectionFunction;
-import org.kcl.nestor.mot.functions.impl.MotivatedBeliefUpdate;
-import org.kcl.nestor.mot.functions.impl.MotivatedEventSelection;
-import org.kcl.nestor.mot.functions.impl.MotivatedIntentionSelection;
-import org.kcl.nestor.mot.functions.impl.MotivatedOptionSelection;
+import org.kcl.nestor.agent.ModularAgent;
+import org.kcl.nestor.agent.functions.defaults.DefaultActionSelectionFunction;
+import org.kcl.nestor.agent.functions.defaults.DefaultBeliefRevisionFunction;
+import org.kcl.nestor.agent.functions.defaults.DefaultMessageSelectionFunction;
+import org.kcl.nestor.agent.functions.impl.MotivatedBeliefUpdate;
+import org.kcl.nestor.agent.functions.impl.MotivatedEventSelection;
+import org.kcl.nestor.agent.functions.impl.MotivatedIntentionSelection;
+import org.kcl.nestor.agent.functions.impl.MotivatedOptionSelection;
 import org.kcl.nestor.mot.parser.MotivationParser;
 
 /** 
@@ -41,17 +28,7 @@ import org.kcl.nestor.mot.parser.MotivationParser;
  * 
  * @author Felipe Rech Meneguzzi
  */
-public class MotivatedAgent extends Agent {
-	
-	protected static final Logger logger = Logger.getLogger(Agent.class.getName());
-	
-	protected ActionSelectionFunction actionSelectionFunction = null;
-	protected BeliefRevisionFunction beliefRevisionFunction = null;
-	protected BeliefUpdateFunction beliefUpdateFunction = null;
-	protected EventSelectionFunction<MotivatedAgent> eventSelectionFunction = null;
-	protected IntentionSelectionFunction intentionSelectionFunction = null;
-	protected MessageSelectionFunction messageSelectionFunction = null;
-	protected OptionSelectionFunction<MotivatedAgent> optionSelectionFunction = null;
+public class MotivatedAgent extends ModularAgent {
 	
 	/**
 	 * 
@@ -187,46 +164,5 @@ public class MotivatedAgent extends Agent {
 		return this.pendingMotivatedGoals.remove(trigger);
 	}
 	
-	//AgentSpeak functions, and the corresponding calls to delegate classes
-
-	@Override
-	public void buf(List<Literal> percepts) {
-		beliefUpdateFunction.updateBeliefs(this, percepts);
-	}
 	
-	@Override
-	public List<Literal>[] brf(Literal beliefToAdd, Literal beliefToDel, Intention i) {
-		return this.beliefRevisionFunction.reviseBeliefs(this, beliefToAdd, beliefToDel, i);
-	}
-	
-	@Override
-	public Intention selectIntention(Queue<Intention> intentions) {
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return this.intentionSelectionFunction.selectIntention(this, intentions);
-	}
-	
-	@Override
-	public Option selectOption(List<Option> options) {
-		return optionSelectionFunction.selectOption(this,options);
-	}
-	
-	@Override
-	public ActionExec selectAction(List<ActionExec> actList) {
-		return this.actionSelectionFunction.selectAction(this, actList);
-	}
-	
-	@Override
-	public Event selectEvent(Queue<Event> events) {
-		return this.eventSelectionFunction.selectEvent(this, events);
-	}
-	
-	@Override
-	public Message selectMessage(Queue<Message> msgList) {
-		return this.messageSelectionFunction.selectMessage(this, msgList);
-	}
 }
