@@ -87,6 +87,7 @@ public class MotivatedAgent extends ModularAgent {
 		
 //		XXX Review this
 		try {
+			motivationsFile = motivationsFile.replaceAll("\"", " ").trim();
 			logger.info("Reading "+motivationsFile);
 			readMotivations(motivationsFile);
 		} catch (Exception e) {

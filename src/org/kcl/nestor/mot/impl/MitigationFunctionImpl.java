@@ -39,7 +39,7 @@ public class MitigationFunctionImpl extends MotivationFunction implements Mitiga
 		for (LogicalFormula formula : mapping.keySet()) {
 			Iterator<Unifier> unifiers = logicalConsequence(formula, beliefBase);
 			if(unifiers.hasNext()) {
-				logger.info(formula+" is supported by the belief base");
+				logger.fine(formula+" is supported by the belief base");
 				NumberTerm value = (NumberTerm) mapping.get(formula).clone();
 				unifiers.next().apply(value);
 				mitigation += value.solve();

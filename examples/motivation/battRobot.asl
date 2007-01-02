@@ -10,13 +10,6 @@ batt(full) :- batt(10).*/
 +batt(critical) : true
 	<- !charge.
 
-/*+over(Packet,Bay) : true
-	<- !sort(Packet).*/
-/*+over(Packet,Bay) : not busy
-	<- !sort(Packet).*/
-/*+over(Packet,bay1) : true
-	<- +conjGoal(over(Packet,pigeonHoles)).*/
-
 //@pb1[atomic]
 +!sort(Packet) : packet(Packet) & over(Packet,Bay) & at(A) & not held(_)
 	<- !move(A,Bay);

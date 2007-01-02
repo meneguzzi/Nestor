@@ -79,7 +79,7 @@ public class MotivatedOptionSelection implements OptionSelectionFunction<Motivat
 				motivationalValue = 0;
 				break;
 			} else {
-				//otherwise, update our simulated beliefbase with the consequences of the
+				//otherwise, update our simulated belief base with the consequences of the
 				//plan steps
 				for (Iterator<Literal> iter = consequences.iterator(); iter.hasNext();) {
 					Literal l = iter.next();
@@ -120,6 +120,8 @@ public class MotivatedOptionSelection implements OptionSelectionFunction<Motivat
 			break;
 		case achieve:
 			//execute new plan
+			//Literal lit = bodyLiteral.getLiteralFormula();
+			logger.fine("Ignoring subgoal "+bodyLiteral);
 			break;
 		case achieveNF:
 			//TODO find out what achieve new focus means

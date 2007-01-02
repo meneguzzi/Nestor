@@ -3,8 +3,8 @@ MAS dummy {
     environment: 
          org.kcl.nestor.env.scripted.ScriptedEnvironment("script.xml")
          
-    agents: 
+    agents:
          dummyAgent [motivations="motivations.mot"]
-         			agentClass org.kcl.nestor.mot.gui.MotivatedAgentWrapper
-         			agentArchClass org.kcl.nestor.mot.log.LoggingAgArch;
+         			agentClass org.kcl.nestor.mot.gui.MotivatedAgentWrapper;
+         			//agentArchClass org.kcl.nestor.mot.log.LoggingAgArch;
 }
