@@ -13,3 +13,20 @@ Motivation testMotivation {
 		not eventA[_] -> -10;
 	}
 }
+
+Motivation testComplexPlanMotivation {
+	Threshold = 5;
+	
+	IntensityUpdate org.kcl.nestor.mot.impl.IntensityUpdateFunctionImpl {
+		eventB[_] -> 1;
+		not eventB[_] -> -1;
+	}
+	
+	GoalGeneration org.kcl.nestor.mot.impl.GoalGenerationFunctionImpl {
+		eventB[_] -> +!goalB;
+	}
+	
+	Mitigation org.kcl.nestor.mot.impl.MitigationFunctionImpl {
+		not eventB[_] -> -10;
+	}
+}
