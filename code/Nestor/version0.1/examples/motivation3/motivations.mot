@@ -1,0 +1,37 @@
+/*TODO This motivation description should be modified to work as soon as possible*/
+
+Motivation doWork {
+	Threshold = 10;
+	IntensityUpdate org.kcl.nestor.mot.impl.IntensityUpdateFunctionImpl {
+		over(Packet,bay1)[source(percept)] -> 3;
+		over(Packet,bay2)[source(percept)] -> 2;
+		over(Packet,bay3)[source(percept)] -> 1;
+	}
+	
+	GoalGeneration org.kcl.nestor.mot.impl.GoalGenerationFunctionImpl {
+		//~over(packet1, pigeonHoles)[_] -> +!sort(packet1);
+		over(Packet,bay1)[_] -> +!sort(Packet);
+		over(Packet,bay2)[_] -> +!sort(Packet);
+		over(Packet,bay3)[_] -> +!sort(Packet);
+	}
+	
+	Mitigation org.kcl.nestor.mot.impl.MitigationFunctionImpl {
+		over(Packet, pigeonHoles)[_] -> -20;
+	}
+}
+
+Motivation recharge {
+	Threshold = 10;
+	IntensityUpdate org.kcl.nestor.mot.impl.IntensityUpdateFunctionImpl {
+		batt(Condition) & (Condition) < 5 -> 1;
+		batt(Condition) & (Condition) < 2 -> 5;
+	}
+	
+	GoalGeneration org.kcl.nestor.mot.impl.GoalGenerationFunctionImpl {
+		batt(Condition) -> +!charge;
+	}
+	
+	Mitigation org.kcl.nestor.mot.impl.MitigationFunctionImpl {
+		batt(10) -> -10;
+	}
+}
