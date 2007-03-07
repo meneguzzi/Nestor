@@ -1,7 +1,7 @@
 MAS motivated {
 
     environment: 
-         org.kcl.nestor.env.scripted.ScriptedEnvironment("script.xml")
+         org.kcl.nestor.env.scripted.ScriptedEnvironment("script.xml","act")
 
     agents: 
          //battRobot agentClass org.soton.peleus.mot.MotivatedAgent;
