@@ -1,0 +1,44 @@
+Motivation processBay1 {
+	Threshold = 10;
+	IntensityUpdate org.kcl.nestor.mot.impl.IntensityUpdateFunctionImpl {
+		over(packet1,bay1)[source(percept)] -> 1;
+	}
+	
+	GoalGeneration org.kcl.nestor.mot.impl.GoalGenerationFunctionImpl {
+		~over(packet1, pigeonHoles)[_] -> +!sort(packet1);
+	}
+	
+	Mitigation org.kcl.nestor.mot.impl.MitigationFunctionImpl {
+		over(packet1, pigeonHoles)[_] -> -20;
+	}
+}
+
+Motivation processBay2 {
+	Threshold = 10;
+	IntensityUpdate org.kcl.nestor.mot.impl.IntensityUpdateFunctionImpl {
+		over(packet2,bay2)[source(percept)] -> 1;
+	}
+	
+	GoalGeneration org.kcl.nestor.mot.impl.GoalGenerationFunctionImpl {
+		over(packet2,bay2)[source(percept)] -> +!sort(packet2);
+	}
+	
+	Mitigation org.kcl.nestor.mot.impl.MitigationFunctionImpl {
+		over(packet2, pigeonHoles)[_] -> -20;
+	}
+}
+
+Motivation processBay3 {
+	Threshold = 10;
+	IntensityUpdate org.kcl.nestor.mot.impl.IntensityUpdateFunctionImpl {
+		over(packet3,bay3) -> 1;
+	}
+	
+	GoalGeneration org.kcl.nestor.mot.impl.GoalGenerationFunctionImpl {
+		over(packet3,bay3) -> +!sort(Packet);
+	}
+	
+	Mitigation org.kcl.nestor.mot.impl.MitigationFunctionImpl {
+		over(packet3, pigeonHoles) -> -10;
+	}
+}

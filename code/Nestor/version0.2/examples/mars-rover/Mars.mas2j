@@ -1,0 +1,10 @@
+MAS dummy {
+
+    environment: 
+         org.kcl.nestor.env.scripted.ScriptedEnvironment("script.xml")
+         
+    agents:
+         rover [motivations="rover.mot"];
+         			//agentClass org.kcl.nestor.mot.gui.MotivatedAgentWrapper;
+         			//agentArchClass org.kcl.nestor.mot.log.LoggingAgArch;
+}

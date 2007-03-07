@@ -1,0 +1,10 @@
+/* Jason Project */
+
+MAS motivator {
+
+	/*infrastructure: Centralised*/
+	environment: 
+         org.kcl.nestor.env.scripted.ScriptedEnvironment("script.xml")
+	agents: 
+	 motivated agentClass org.kcl.nestor.mot.MotivatedAgent;
+}
