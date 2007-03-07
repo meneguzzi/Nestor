@@ -94,6 +94,7 @@ public class ScriptedEnvironmentActions extends
 	private void addActions(String pckgname) {
 		try {
 			this.addExternalAction("rover.act.move");
+			this.addExternalAction("rover.act.charge");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
