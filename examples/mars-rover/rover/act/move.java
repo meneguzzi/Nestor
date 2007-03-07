@@ -18,13 +18,19 @@ public class move implements ExternalAction<ScriptedEnvironment> {
 		ArrayList<Literal> consequences = new ArrayList<Literal>(4);
 		List<Literal> percepts = env.getPercepts("");
 		
-		logger.info("Moving to "+terms[0]+","+terms[1]);
+		//logger.info("Moving to "+terms[0]+","+terms[1]);
 		Literal precond = env.findLiteralByFunctor("at", percepts);
 		precond.setNegated(false);
 		Literal effect0 = Literal.parseLiteral("at("+terms[0]+","+terms[1]+")");
 		
 		Literal batt = env.findLiteralByFunctor("battery", percepts);
-		Literal resBatt = updateBattery(batt);
+		Literal resBatt;
+		try {
+			resBatt = updateBattery(batt);
+		} catch (Exception e) {
+			logger.warning("Tried to move more than 1 unit of distance.");
+			resBatt = batt;
+		}
 		batt = new Literal(false, batt);
 		
 		consequences.add(precond);
@@ -35,10 +41,12 @@ public class move implements ExternalAction<ScriptedEnvironment> {
 		return consequences;
 	}
 	
-	protected Literal updateBattery(Literal batt) {
+	protected Literal updateBattery(Literal batt) throws Exception {
 		Term charge = batt.getTerm(0);
 		if(charge.isNumeric()) {
 			NumberTerm term = (NumberTerm) charge;
+			if(term.solve() <= 0) {
+				throw new Exception("Rover battery is empty");			}
 			charge = new NumberTermImpl(term.solve() - 1);
 		}
 		return Literal.parseLiteral("battery("+charge+")");
@@ -52,7 +60,7 @@ public class move implements ExternalAction<ScriptedEnvironment> {
 			return false;
 		}
 		
-		logger.info("Moving to "+terms[0]+","+terms[1]);
+		//logger.info("Moving to "+terms[0]+","+terms[1]);
 		Literal precond = env.findLiteralByFunctor("at", percepts);
 		if(terms[0].isNumeric() && terms[1].isNumeric()) {
 			NumberTerm term0 = (NumberTerm) terms[0];
@@ -72,7 +80,13 @@ public class move implements ExternalAction<ScriptedEnvironment> {
 		//And update the percepts
 		Literal effect0 = Literal.parseLiteral("at("+terms[0]+","+terms[1]+")");
 		Literal batt = env.findLiteralByFunctor("battery", percepts);
-		Literal resBatt = updateBattery(batt);
+		Literal resBatt;
+		try {
+			resBatt = updateBattery(batt);
+		} catch (Exception e) {
+			logger.warning("Rover battery is empty");
+			return false;
+		}
 		
 		boolean ret = true;
 		
