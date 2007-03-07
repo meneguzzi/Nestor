@@ -1,6 +1,6 @@
 package org.kcl.nestor.env;
 
-import jason.asSyntax.Term;
+import jason.asSyntax.Structure;
 import jason.environment.Environment;
 
 import java.util.HashMap;
@@ -11,7 +11,7 @@ public class ModularEnvironment<E extends Environment> implements EnvironmentAct
 	protected HashMap<String, ExternalAction<E>> actions;
 	protected E env;
 	
-	public ModularEnvironment(E env) {
+	protected ModularEnvironment(E env) {
 		actions = new HashMap<String, ExternalAction<E>>();
 		this.env = env;
 	}
@@ -23,10 +23,14 @@ public class ModularEnvironment<E extends Environment> implements EnvironmentAct
 		this.actions.put(action.getFunctor(), action);
 	}
 	
+	public void addExternalAction(Class c) throws Exception {
+		ExternalAction<E> action;
+		action = instantiateAction(ExternalAction.class, c);
+		this.actions.put(action.getFunctor(), action);
+	}
+	
 	@SuppressWarnings("unchecked")
-	protected <K> K instantiateAction(Class<K> classType, String classname) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		Class<?> c = Class.forName(classname);
-		
+	protected <K> K instantiateAction(Class<K> classType, Class c) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		K newObject = null;
 		
 		if(classType.isAssignableFrom(c)) {
@@ -37,8 +41,14 @@ public class ModularEnvironment<E extends Environment> implements EnvironmentAct
 		return newObject;
 	}
 	
+	protected <K> K instantiateAction(Class<K> classType, String classname) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		Class<?> c = Class.forName(classname);
+		
+		return instantiateAction(classType, c);
+	}
+	
 	@SuppressWarnings("unchecked")
-	public boolean executeAction(String agName, Term act) {
+	public boolean executeAction(String agName, Structure act) {
 		if(!actions.containsKey(act.getFunctor())) {
 			return false;
 		} else {

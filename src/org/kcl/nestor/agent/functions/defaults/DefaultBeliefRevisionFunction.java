@@ -50,8 +50,9 @@ public class DefaultBeliefRevisionFunction implements BeliefRevisionFunction {
                 logger.fine("doing brf for " + beliefToDel + " in BB="
                         + agent.believes(beliefToDel, u));
             }
-            Literal inBB = agent.believes(beliefToDel, u);
-            if (inBB != null) {
+            
+            if (agent.believes(beliefToDel, u)) {
+            	Literal inBB = agent.findBel(beliefToDel, u);
                 // lInBB is l unified in BB
                 // we can not use l for delBel in case l is g(_,_)
                 if (beliefToDel.hasAnnot()) {
