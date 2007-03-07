@@ -283,9 +283,9 @@ Literal literal() :  { Pred F; Token k; boolean type = Literal.LPos; }
 }
 
 /* Annotated Atomic Formulae */
-Pred atom() :       { Token K; Pred p = new Pred(); Term t; List l; ListTerm lt;}
+Pred atom() :       { Token K; Pred p; Term t; List l; ListTerm lt;}
 {
-  K=<ATOM>          { p.setFunctor(K.image); } 
+  K=<ATOM>          { p = new Pred(K.image); } 
   [
       "(" l = terms() 
       ")"           { p.addTerms(l); }

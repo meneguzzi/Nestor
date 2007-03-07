@@ -1,8 +1,8 @@
 package org.kcl.nestor.mot.functions;
 
 import jason.asSemantics.Agent;
+import jason.asSyntax.DefaultTerm;
 import jason.asSyntax.Literal;
-import jason.asSyntax.TermImpl;
 import jason.asSyntax.Trigger;
 
 import java.util.ArrayList;
@@ -58,7 +58,7 @@ public class MotivatedBeliefUpdate extends DefaultBeliefUpdateFunction {
 			for (Trigger trigger : goals) {
 				//An annotation is added to the trigger denoting the originating motivation
 				//This information is used later on by the intention selection algorithm
-				trigger.getLiteral().addAnnot(TermImpl.parse(motivation.getMotivationName()));
+				trigger.getLiteral().addAnnot(DefaultTerm.parse(motivation.getMotivationName()));
 
 				logger.info("Adding goal "+trigger.toString());
 				motivatedAgent.addMotivatedGoal(trigger, motivation);

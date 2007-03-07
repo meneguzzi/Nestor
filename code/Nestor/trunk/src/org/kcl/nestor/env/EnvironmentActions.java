@@ -1,8 +1,8 @@
 package org.kcl.nestor.env;
 
-import jason.asSyntax.Term;
+import jason.asSyntax.Structure;
 
 public interface EnvironmentActions {
 	
-	public boolean executeAction(String agName, Term act);
+	public boolean executeAction(String agName, Structure act);
 }

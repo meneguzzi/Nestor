@@ -1,11 +1,11 @@
 package org.kcl.nestor.env.scripted;
 
+import jason.asSyntax.Literal;
+import jason.asSyntax.Structure;
+
 import java.util.Iterator;
 import java.util.List;
 
-import jason.asSyntax.Literal;
-import jason.asSyntax.Term;
-import jason.asSyntax.TermImpl;
 import junit.framework.TestCase;
 
 public class ScriptedEnvironmentActionsTest extends TestCase {
@@ -18,7 +18,7 @@ public class ScriptedEnvironmentActionsTest extends TestCase {
 	protected void setUp() throws Exception {
 		//super.setUp();
 		environment = new ScriptedEnvironment();
-		actions = new ScriptedEnvironmentActions(environment);
+		actions = new ScriptedEnvironmentActions(environment,"act");
 	}
 
 	protected void tearDown() throws Exception {
@@ -28,7 +28,7 @@ public class ScriptedEnvironmentActionsTest extends TestCase {
 	public void testExecuteAction() {
 		environment.addPercept(Literal.parseLiteral("at(a)"));
 		environment.addPercept(Literal.parseLiteral("batt(10)"));
-		Term moveAction = TermImpl.parse("move(a,b)");
+		Structure moveAction = Structure.parse("move(a,b)");
 		boolean success = actions.executeAction(AGENT_NAME, moveAction);
 		if(!success) {
 			fail("Failed to execute action: "+moveAction);

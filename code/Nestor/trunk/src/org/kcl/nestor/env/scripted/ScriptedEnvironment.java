@@ -5,7 +5,7 @@ package org.kcl.nestor.env.scripted;
 
 import jason.asSemantics.Unifier;
 import jason.asSyntax.Literal;
-import jason.asSyntax.Term;
+import jason.asSyntax.Structure;
 import jason.environment.Environment;
 
 import java.io.File;
@@ -22,6 +22,7 @@ import org.kcl.nestor.env.EnvironmentActions;
 import org.kcl.nestor.script.JasonScript;
 import org.kcl.nestor.script.JasonScriptContentHandler;
 import org.xml.sax.SAXException;
+
 
 /**
  * @author Felipe Rech Meneguzzi
@@ -47,7 +48,7 @@ public class ScriptedEnvironment extends Environment implements Runnable {
 		this.environmentThread = new Thread(this, "MotivationTestEnvironment");
 		this.cycleSize = 1000;
 		this.currentCycle = 0;
-		this.actions = new ScriptedEnvironmentActions(this);
+		//this.actions = new ScriptedEnvironmentActions(this);
 	}
 	@Override
 	public void init(String[] args) {
@@ -56,6 +57,7 @@ public class ScriptedEnvironment extends Environment implements Runnable {
 		try {
 			SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
 			JasonScriptContentHandler contentHandler = new JasonScriptContentHandler();
+			//First parse the script file
 			if(args.length > 0) {
 				File scriptFile = new File(args[0]);
 				if(scriptFile.exists()) {
@@ -65,7 +67,13 @@ public class ScriptedEnvironment extends Environment implements Runnable {
 					this.running = true;
 					environmentThread.start();
 				}
-			} 
+				//Then instantiate the proper external actions
+				if(args.length > 1) {
+					this.actions = new ScriptedEnvironmentActions(this, args[1]);
+				} else {
+					this.actions = new ScriptedEnvironmentActions(this, ScriptedEnvironment.class.getPackage().getName());
+				}
+			}
 			
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
@@ -92,12 +100,12 @@ public class ScriptedEnvironment extends Environment implements Runnable {
 	}
 	
 	@Override
-	public boolean executeAction(String agName, Term act) {
+	public boolean executeAction(String agName, Structure act) {
 		//return super.executeAction(agName, act);
 		return this.actions.executeAction(agName, act);
 	}
 	
-	protected Literal findMatchingLiteral(Literal prototype, List<Literal> literals) {
+	public Literal findMatchingLiteral(Literal prototype, List<Literal> literals) {
 		if(literals == null) {
 			return null;
 		}
@@ -110,7 +118,7 @@ public class ScriptedEnvironment extends Environment implements Runnable {
 		return null;
 	}
 	
-	protected Literal findLiteralByFunctor(String key, List<Literal> literals) {
+	public Literal findLiteralByFunctor(String key, List<Literal> literals) {
 		if(literals == null)
 			return null;
 		for (Literal literal : literals) {
@@ -121,7 +129,7 @@ public class ScriptedEnvironment extends Environment implements Runnable {
 		return null;
 	}
 	
-	protected List<Literal> findLiteralsByFunctor(String key, List<Literal> literals) {
+	public List<Literal> findLiteralsByFunctor(String key, List<Literal> literals) {
 		List <Literal> ret = new ArrayList<Literal>();
 		for (Literal literal : literals) {
 			if(literal.getFunctor().equals(key)) {
