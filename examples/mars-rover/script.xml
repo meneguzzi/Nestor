@@ -9,9 +9,11 @@
 		battery(10).
 	</step>
 	<step time="1">
+		<!--  at(0,0). -->
+		battery(10).
 		waypoint(2,3).
-		waypoint(5,3).
-		waypoint(10,3).
+	<!--waypoint(5,3).
+		waypoint(10,3).-->
 	</step>
 	<step time="10">
 		eventA.
