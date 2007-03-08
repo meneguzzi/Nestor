@@ -11,6 +11,8 @@ import org.kcl.nestor.env.scripted.ScriptedEnvironment;
 
 public class charge implements ExternalAction<ScriptedEnvironment> {
 	public static final String FUNCTOR = "charge";
+	
+	public static final int chargeAmount = 40;
 
 	public List<Literal> consequences(ScriptedEnvironment env, String agName, Term... terms) {
 		ArrayList<Literal> consequences = new ArrayList<Literal>(4);
@@ -31,7 +33,7 @@ public class charge implements ExternalAction<ScriptedEnvironment> {
 		
 		logger.info("Charging");
 		Literal precond = env.findLiteralByFunctor("battery", percepts);
-		Literal effect = Literal.parseLiteral("battery(20)");
+		Literal effect = Literal.parseLiteral("battery("+chargeAmount+")");
 		
 		env.removePercept(precond);
 		env.addPercept(effect);

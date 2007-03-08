@@ -1,7 +1,7 @@
 MAS dummy {
 
     environment: 
-         org.kcl.nestor.env.scripted.ScriptedEnvironment("script.xml", "rover.act")
+         org.kcl.nestor.env.scripted.ScriptedEnvironment("generatedScript.xml", "rover.act")
          
     agents:
          rover [motivations="rover.mot"];

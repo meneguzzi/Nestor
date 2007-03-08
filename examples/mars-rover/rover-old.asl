@@ -3,19 +3,15 @@
 
 //at(0,0).
 //battery(10).
-chargeStation(15,15).
-visitedWaypoints([]).
-distance(0).
+chargeStation(5,5).
 
 //**************************************************************
 // Hack plans to get things working
 //Wait till the first perception of position to get things going
-@pat[atomic]
 +at(X,Y) [source(percept)] : not at(Z,W) [source(self)]
  <- .print("Now that I know where I am, I can start working");
  	+at(X,Y).
 
-@pbattery[atomic]
 +battery(X) [source(percept)] : not battery(B) [source(self)]
  <- .print("Now that I know my battery, I can start moving");
  	+battery(X).
@@ -27,7 +23,6 @@ distance(0).
 	(Dist < Batt).
 
 //Convert percepts for battery into beliefs
-@pbattery1[atomic]
 +battery(X)[source(percept)] : battery(B) [source(self)]
  <- //.print("Battery is now ", X);
     //.print("Battery is believed ", B);
@@ -36,7 +31,7 @@ distance(0).
 //*****************************************************
 // Plans to deal with battery
 //And check if we are in a danger zone
-@pbattery2[atomic] // To ensure battery is handled without interruption
+@pbattery[atomic] // To ensure battery is handled without interruption
 +battery(Batt) [source(self)] : at(X,Y) 
 						   	  & chargeStation(Xcharge,Ycharge)
 						      & not charging
@@ -54,9 +49,8 @@ distance(0).
 
 @pcheckcharge2[atomic]
 +!checkCharge(Dist, Batt) : Dist < Batt
- <- true.//.print("Battery is OK, charging station is ",Dist," units away, battery is ", Batt).
+ <- .print("Battery is OK, charging station is ",Dist," units away, battery is ", Batt).
 
-@precharge[atomic]
 //To avoid adopting the recharge plan multiple times
 +!recharge(Xcharge,Ycharge) : not charging
  <- .print("Moving to charge station");
@@ -65,78 +59,69 @@ distance(0).
  	!move(Xcharge, Ycharge);
 	charge;
 	-charging;
-	.print("Just finished charging, checking for pending waypoints.");
- 	!queryWaypoints.
+	!resumeGoals.
 
 //To avoid adopting the recharge plan multiple times
 +!recharge(Xcharge,Ycharge) : charging
  <- .print("Already going to charge station.").
 
-//I assume that we already have waypoints if the agent was moving
-@psuspendGoals[atomic]
-+!suspendGoals : moving
- <- .print("Dropping intention to ",goToWaypoint(X,Y));
- 	.drop_intention(goToWaypoint(_,_));
-	.drop_desire(goToWaypoint(_,_));
-	.drop_intention(move(_,_));
-	.drop_desire(move(_,_));
-	.drop_intention(doMove(_,_));
-	.drop_desire(doMove(_,_));
++!suspendGoals : true
+ <- //.desire(waypoint(X,Y));
+ 	.print("Dropping intention to ",goToWaypoint(X,Y));
+ 	.drop_intention(goToWaypoint(X,Y));
 	.print("Intention to ",goToWaypoint(X,Y)," dropped, releasing locks");
 	.print("Locks released");
-	-moving.
+	-moving;
+	!storeGoal(X,Y).
 
-+!suspendGoals : not moving
- <- .print("No intentions to be suspended.").
++!storeGoal(X,Y) : .ground(waypoint(X,Y))
+ <- .print("Storing ", waypoint(X,Y));
+ 	+pendingWaypoint(X,Y).
+
++!storeGoal(X,Y) : true
+ <- .print("No need to store a waypoint").
+
++!resumeGoals : pendingWaypoint(X,Y)
+ <-	.print("Resuming intention to ", goToWaypoint(X,Y));
+ 	-pendingWaypoint(X,Y).
+
++!resumeGoals : true
+ <- .print("No intentions to resume").
+
+-pendingWaypoint(X,Y) : true
+ <- .print("Reposting intention to ", goToWaypoint(X,Y));
+ 	//.at("now +0 s","+waypoint(X,Y)").
+	.send(rover,achieve,goToWaypoint(X,Y)).
 	
 //*****************************************************
 //*****************************************************
 // These are the main goals of this agent, to reach
 // waypoints
-//When a waypoint is received, store it and go for it
-@pwaypoint1[atomic]
-+waypoint(X,Y) [source(percept)] : not moving & not charging
++waypoint(X,Y) : true
  <- .print("New waypoint ", waypoint(X,Y));
- 	+waypoint(X,Y);
- 	!goToWaypoint(waypoint(X,Y)).
+ 	!goToWaypoint(X,Y).
 
-@pwaypoint2[atomic]
-+waypoint(X,Y) [source(percept)] : moving | charging
- <- .print("New waypoint ", waypoint(X,Y), " but I'm busy, storing it.");
- 	+waypoint(X,Y).
++!goToWaypoint(X,Y) : at(X,Y)
+ <- .print("I'm already at the waypoint").
 
-+!queryWaypoints : waypoint(X,Y) [source(self)] & not moving
- <- .print("Found a pending waypoint, ", waypoint(X,Y), " trying to deal with it.");
- 	!!goToWaypoint(waypoint(X,Y));
-	.print("Done querying waypoints").
-
-+!queryWaypoints : not waypoint(X,Y) [source(self)]
- <- .print("No pending waypoints.").
- 
-+!queryWaypoints : moving
- <- .print("I'm already moving, it's pointless to query for more waypoints.").
-
-+!goToWaypoint(W) : charging | moving
- <- .print("Tried to go to ",W," but I'm busy, something is wrong here").
-
-//@pgoToWaypoint[atomic]
-+!goToWaypoint(waypoint(X,Y)) : not charging & not moving
++!goToWaypoint(X,Y) : not at(X,Y) & at(Xat,Yat) & not charging & not moving
  <- +moving;
  	.print("Going to waypoint ",waypoint(X,Y));
  	!move(X,Y);
-	.print("Finished move to waypoint ",waypoint(X,Y), " releasing locks");
-	-waypoint(X,Y);
-	-moving;
-	!queryWaypoints.
+	-moving.
 
-//@pnotWaypoint[atomic]
--waypoint(X,Y) : true
- <- .print("Removing ",waypoint(X,Y)," from pending waypoints");
- 	?visitedWaypoints(W);
-	-+visitedWaypoints([waypoint(X,Y) | W]);
-	?visitedWaypoints(Nw);
-	?distance(D);
-	.print("Waypoints visited so far, ",Nw,", distance covered so far, ",D).
++!goToWaypoint(X,Y) : not at(X,Y) & at(Xat,Yat) & moving
+ <- .print("Waiting to reach previous waypoint.");
+	.wait("-moving",2000);
+	.print("Done, will try to move to next waypoint");
+ 	!goToWaypoint(X,Y).
+	
++!goToWaypoint(X,Y) : not at(X,Y) & at(Xat,Yat) & charging
+ <- .print("Waiting to charge.");
+	.wait("+battery(20)");
+	.print("Done charging, resuming, ", goToWaypoint(X,Y));
+ 	!goToWaypoint(X,Y).
+	
 //*****************************************************
 
 //*****************************************************
@@ -146,33 +131,36 @@ distance(0).
     true.
 
 +!move(X,Y) : at(Xat,Yat) & Xat > X
- <- 
- 	!doMove(Xat - 1,Yat);
+ <- .print("Moving from ",at(Xat,Yat)," to ",at(X,Y));
+    -at(Xat,Yat);
+ 	+at(Xat - 1,Yat);
+ 	move(Xat - 1,Yat);
+	.wait(500);
  	!move(X,Y).
 
 +!move(X,Y) : at(Xat,Yat) & Xat < X
- <- 
- 	!doMove(Xat + 1,Yat);
+ <- .print("Moving from ",at(Xat,Yat)," to ",at(X,Y));
+    -at(Xat,Yat);
+ 	+at(Xat + 1,Yat);
+ 	move(Xat + 1,Yat);
+	.wait(500);
  	!move(X,Y).
 
 +!move(X,Y) : at(Xat,Yat) & Yat > Y
- <- 
- 	!doMove(Xat,Yat - 1);
+ <- .print("Moving from ",at(Xat,Yat)," to ",at(X,Y));
+    -at(Xat,Yat);
+ 	+at(Xat,Yat - 1);
+ 	move(Xat,Yat - 1);
+	.wait(500);
  	!move(X,Y).
 
 +!move(X,Y) : at(Xat,Yat) & Yat < Y
- <- 
- 	!doMove(Xat,Yat + 1);
+ <- .print("Moving from ",at(Xat,Yat)," to ",at(X,Y));
+    -at(Xat,Yat);
+ 	+at(Xat,Yat + 1);
+ 	move(Xat,Yat + 1);
+	.wait(500);
  	!move(X,Y).
-
-@pDoMove[atomic]
-+!doMove(X,Y) : true
- <- //?at(A,B); .print("Moving from ",at(A,B)," to ",at(X,Y)); 
- 	.wait(50);
-	-+at(X,Y);
- 	move(X,Y);
-	?distance(D);
-	-+distance(D+1).
 //*****************************************************
 
 /*
