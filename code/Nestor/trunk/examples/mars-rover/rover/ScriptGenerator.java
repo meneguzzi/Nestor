@@ -31,6 +31,8 @@ public class ScriptGenerator {
 	protected int timeBetweenSteps;
 	protected OutputStream outputStream;
 	protected int firstStep;
+	protected List<Literal> initialBeliefs;
+	protected List<Literal> finalEvents;
 
 	/**
 	 * @param args
@@ -113,6 +115,30 @@ public class ScriptGenerator {
 				} else {
 					System.err.println("-stepsize parameter requires an integer");
 				}
+			} else if (args[i].equals("-initbeliefs")) {
+				if(++i < args.length) {
+					this.initialBeliefs = new ArrayList<Literal>();
+					while(i < args.length && !args[i].startsWith("-")) {
+						Literal l = Literal.parseLiteral(args[i]);
+						this.initialBeliefs.add(l);
+						i++;
+					}
+					i--;
+				} else {
+					System.err.println("-initbeliefs parameter requires a list of beliefs");
+				}
+			} else if (args[i].equals("-finalevents")) {
+				if(++i < args.length) {
+					this.finalEvents = new ArrayList<Literal>();
+					while(i < args.length && !args[i].startsWith("-")) {
+						Literal l = Literal.parseLiteral(args[i]);
+						this.finalEvents.add(l);
+						i++;
+					}
+					i--;
+				} else {
+					System.err.println("-finalevents parameter requires a list of beliefs");
+				}
 			} else {
 				System.err.println("Unrecognized parameter: "+args[i]);
 			}
@@ -140,7 +166,18 @@ public class ScriptGenerator {
 		Element scriptElement = document.createElement("script");
 		document.appendChild(scriptElement);
 		
+		if(this.initialBeliefs != null) {
+			Element step = createScriptStep(document, 0, this.initialBeliefs);
+			step.setAttribute("time", "0");
+			scriptElement.appendChild(step);
+		}
+		
 		this.addSteps(document, scriptElement, steps);
+		
+		if(this.finalEvents != null) {
+			Element finalStep = createScriptStep(document, steps, this.finalEvents);
+			scriptElement.appendChild(finalStep);
+		}
 		
 		return document;
 	}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+<step time="0">at(0,0).
+battery(30).
+</step>
+<step time="1">waypoint(11,13).
+</step>
+<step time="6">waypoint(1,19).
+</step>
+<step time="11">waypoint(14,12).
+</step>
+<step time="16">waypoint(19,9).
+</step>
+<step time="21">waypoint(0,5).
+</step>
+<step time="26">waypoint(10,6).
+</step>
+<step time="31">waypoint(4,0).
+</step>
+<step time="36">waypoint(6,18).
+</step>
+<step time="41">waypoint(9,7).
+</step>
+<step time="46">waypoint(10,11).
+</step>
+<step time="51">endSimulation.
+</step>
+</script>
