@@ -2,7 +2,6 @@ package rover.act;
 
 import jason.asSyntax.Literal;
 import jason.asSyntax.NumberTerm;
-import jason.asSyntax.NumberTermImpl;
 import jason.asSyntax.Term;
 
 import java.util.ArrayList;
@@ -11,8 +10,8 @@ import java.util.List;
 import org.kcl.nestor.env.action.ExternalAction;
 import org.kcl.nestor.env.scripted.ScriptedEnvironment;
 
-public class move implements ExternalAction<ScriptedEnvironment> {
-	public static final String FUNCTOR="move";
+public class perfectMove implements ExternalAction<ScriptedEnvironment> {
+	public static final String FUNCTOR="perfectMove";
 
 	public List<Literal> consequences(ScriptedEnvironment env, String agName, Term... terms) {
 		ArrayList<Literal> consequences = new ArrayList<Literal>(4);
@@ -23,35 +22,12 @@ public class move implements ExternalAction<ScriptedEnvironment> {
 		precond.setNegated(false);
 		Literal effect0 = Literal.parseLiteral("at("+terms[0]+","+terms[1]+")");
 		
-		Literal batt = env.findLiteralByFunctor("battery", percepts);
-		Literal resBatt;
-		try {
-			resBatt = updateBattery(batt);
-		} catch (Exception e) {
-			logger.warning("No recent battery percept.");
-			resBatt = batt;
-		}
-		batt = new Literal(false, batt);
-		
 		consequences.add(precond);
 		consequences.add(effect0);
-		consequences.add(batt);
-		consequences.add(resBatt);
 		
 		return consequences;
 	}
 	
-	protected Literal updateBattery(Literal batt) throws Exception {
-		Term charge = batt.getTerm(0);
-		if(charge.isNumeric()) {
-			NumberTerm term = (NumberTerm) charge;
-			if(term.solve() <= 0) {
-				throw new Exception("Rover battery is empty");			}
-			charge = new NumberTermImpl(term.solve() - 1);
-		}
-		return Literal.parseLiteral("battery("+charge+")");
-	}
-
 	public boolean execute(ScriptedEnvironment env, String agName, Term... terms) {
 		List<Literal> percepts = env.getPercepts("");
 		
@@ -79,21 +55,11 @@ public class move implements ExternalAction<ScriptedEnvironment> {
 		//If otherwise things went smooth, generate the resulting literals
 		//And update the percepts
 		Literal effect0 = Literal.parseLiteral("at("+terms[0]+","+terms[1]+")");
-		Literal batt = env.findLiteralByFunctor("battery", percepts);
-		Literal resBatt;
-		try {
-			resBatt = updateBattery(batt);
-		} catch (Exception e) {
-			logger.warning("Rover battery is empty");
-			return false;
-		}
 		
 		boolean ret = true;
 		
 		ret &= env.removePercept(precond);
 		env.addPercept(effect0);
-		ret &= env.removePercept(batt);
-		env.addPercept(resBatt);
 		
 		return ret;
 	}

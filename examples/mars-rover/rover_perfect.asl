@@ -70,12 +70,14 @@ numberOfCharges(0).
 //*****************************************************
 // Plans to deal with battery
 //And check if we are in a danger zone
+/*
 @pbattery2[atomic] // To ensure battery is handled without interruption
 +battery(Batt) [source(self)] : at(X,Y) 
 						   	  & chargeStation(Xcharge,Ycharge)
 						      & not charging
  <- rover.act.distance(X,Y,Xcharge,Ycharge,Dist);
  	!checkCharge(Dist, Batt).
+*/
  	
 //If we risk not reaching the charging station
 @pcheckcharge1[atomic]
@@ -222,9 +224,10 @@ numberOfCharges(0).
 @pDoMove[atomic]
 +!doMove(X,Y) : true
  <- //?at(A,B); .print("Moving from ",at(A,B)," to ",at(X,Y)); 
- 	.wait(50);
-	-+at(X,Y);
- 	move(X,Y);
+ 	.wait(10);
+	-at(A,B);
+	+at(X,Y);
+ 	perfectMove(X,Y);
 	?distance(D);
 	-+distance(D+1).
 //*****************************************************
