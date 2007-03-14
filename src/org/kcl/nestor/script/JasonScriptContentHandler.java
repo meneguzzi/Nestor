@@ -8,6 +8,7 @@ import jason.asSyntax.parser.ParseException;
 import jason.asSyntax.parser.as2j;
 
 import java.io.CharArrayReader;
+import java.io.CharArrayWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class JasonScriptContentHandler extends DefaultHandler {
 	protected int currentTime;
 	protected as2j jasonParser;
 	protected CharArrayReader charArrayReader;
+	protected CharArrayWriter charArrayWriter;
 
 	public JasonScriptContentHandler() {
 		this.jasonScript = null;
@@ -38,6 +40,7 @@ public class JasonScriptContentHandler extends DefaultHandler {
 		currentTime = 0;
 		charArrayReader = null;
 		jasonParser = new as2j(charArrayReader);
+		charArrayWriter = new CharArrayWriter();
 	}
 
 	public JasonScript getJasonScript() {
@@ -68,15 +71,8 @@ public class JasonScriptContentHandler extends DefaultHandler {
 	@Override
 	public void characters(char[] ch, int start, int length)
 			throws SAXException {
-		if(currentEventList != null) {
-			//System.out.println("Processing events at time "+currentTime);
-			charArrayReader = new CharArrayReader(ch, start, length);
-			jasonParser.ReInit(charArrayReader);
-			try {
-				jasonParser.belief_base(currentEventList);
-			} catch (ParseException e) {
-				throw new SAXException("Invalid events at time "+currentTime, e);
-			}
+		if(currentEventList != null && charArrayWriter != null) {
+			charArrayWriter.write(ch, start, length);
 		}
 	}
 
@@ -84,8 +80,17 @@ public class JasonScriptContentHandler extends DefaultHandler {
 	public void endElement(String uri, String localName, String qName)
 			throws SAXException {
 		if (qName.equals(STEP)) {
-			if(currentEventList != null) {
+			if(charArrayWriter != null && charArrayWriter.size() > 0) {
+//				System.out.println("Processing events at time "+currentTime);
+				charArrayReader = new CharArrayReader(charArrayWriter.toCharArray());
+				jasonParser.ReInit(charArrayReader);
+				try {
+					jasonParser.belief_base(currentEventList);
+				} catch (ParseException e) {
+					throw new SAXException("Invalid events at time "+currentTime, e);
+				}
 				this.jasonScript.addEvents(currentTime, currentEventList);
+				charArrayWriter.reset();
 				currentEventList = null;
 			} else {
 				throw new SAXException("Problems processing events");
