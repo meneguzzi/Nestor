@@ -7,7 +7,6 @@ import jason.asSyntax.Literal;
 import jason.asSyntax.Trigger;
 import jason.bb.BeliefBase;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
@@ -23,9 +22,6 @@ public class DefaultBeliefUpdateFunction implements BeliefUpdateFunction {
             return;
         }
 
-        // List<Literal> added = new ArrayList<Literal>();
-        List<Literal> removed = new ArrayList<Literal>();
-
         // deleting percepts in the BB that is not perceived anymore
         Iterator<Literal> perceptsInBB = agent.getBB().getPercepts();
         while (perceptsInBB.hasNext()) { // for (int i = 0; i <
@@ -35,22 +31,24 @@ public class DefaultBeliefUpdateFunction implements BeliefUpdateFunction {
             // could not use percepts.contains(l), since equalsAsTerm must be
             // used (to ignore annotations)
             boolean wasPerceived = false;
-            for (Literal t : percepts) {
+            Iterator<Literal> ip = percepts.iterator();
+            while (ip.hasNext()) {
+            	Literal t = ip.next();
                 // if percept t is already in BB
                 if (l.equalsAsTerm(t) && l.negated() == t.negated()) {
                     wasPerceived = true;
+                    ip.remove();
                     break;
                 }
             }
             if (!wasPerceived) {
-                removed.add(l); // do not remove using the iterator here,
-                                // concurrent modification!
-            }
-        }
-
-        for (Literal lr : removed) {
-            if (agent.getBB().remove(lr)) {
-                agent.getTS().updateEvents(new Event(new Trigger(Trigger.TEDel,Trigger.TEBel, lr), Intention.EmptyInt));
+            	//can not delete l, but l[source(percept)]
+            	l = (Literal) l.clone();
+            	l.clearAnnots();
+            	l.addAnnot(BeliefBase.TPercept);
+            	if(agent.getBB().remove(l)) {
+            		agent.getTS().updateEvents(new Event(new Trigger(Trigger.TEDel,Trigger.TEBel, l), Intention.EmptyInt));
+            	}
             }
         }
 
