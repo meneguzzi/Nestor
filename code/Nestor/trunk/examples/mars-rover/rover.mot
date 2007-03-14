@@ -1,18 +1,38 @@
 Motivation navigate {
 	Threshold = 10;
 	IntensityUpdate org.kcl.nestor.mot.impl.IntensityUpdateFunctionImpl {
-		eventA[_] -> 1;
-		not eventA[_] -> -1;
+		battery(Batt)
+		& at(X,Y)
+		& waypoint(Wx,Wy) 
+		& rover.act.distance(X,Y,Wx,Wy,Dist)
+		& Dist < Batt -> Dist;
 	}
 	
 	GoalGeneration org.kcl.nestor.mot.impl.GoalGenerationFunctionImpl {
-		eventA[_] -> +!goalA;
+		waypoint(X,Y) -> +!goToWaypoint(waypoint(X,Y));
 	}
 	
 	Mitigation org.kcl.nestor.mot.impl.MitigationFunctionImpl {
-		not eventA[_] -> -10;
+		not waypoint(X,Y) -> -10;
 	}
 }
 
-/*Motivation keepBattery {
-}*/
+Motivation keepBattery {
+	Threshold = 10;
+	
+	IntensityUpdate org.kcl.nestor.mot.impl.IntensityUpdateFunctionImpl {
+		//Will need something like
+		at(X,Y) & chargeStation(Cx,Cy) 
+		& rover.act.distance(X,Y,Cx,Cy,Dist) 
+		& battery(Batt)
+		& (Dist >= Batt) -> 1;
+	}
+	
+	GoalGeneration org.kcl.nestor.mot.impl.GoalGenerationFunctionImpl {
+		true -> +!recharge;
+	}
+	
+	Mitigation org.kcl.nestor.mot.impl.MitigationFunctionImpl {
+		battery(40) -> -10;
+	}
+}

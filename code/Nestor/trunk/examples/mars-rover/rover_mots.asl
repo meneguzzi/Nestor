@@ -13,13 +13,6 @@ numberOfCharges(0).
 
 //**************************************************************
 // Hack plans to get things working
-
-//This plan has got to be before the battery check to avoid the agent
-//missing a waypoint
-+!move(X,Y) : at(X, Y)
- <- .print("Arrived ", at(X,Y));
-    true.
-
 //Wait till the first perception of position to get things going
 @pat[atomic]
 +at(X,Y) [source(percept)] : not at(Z,W) [source(self)]
@@ -30,6 +23,12 @@ numberOfCharges(0).
 +battery(X) [source(percept)] : not battery(B) [source(self)]
  <- .print("Now that I know my battery, I can start moving");
  	+battery(X).
+
+//This plan has got to be before the battery check to avoid the agent
+//missing a waypoint
++!move(X,Y) : at(X, Y)
+ <- .print("Arrived ", at(X,Y));
+    true.
 //**************************************************************
  
 //**************************************************************
@@ -50,8 +49,7 @@ numberOfCharges(0).
 	.print("Moved ",ChargeDistance," to recharge");
 	rover.act.recordStats(L, Distance, Wasted, ChargeDistance, "stats");
 	.print("**********************************");
-	//true.
-	.stopMAS.
+	.stopMAS. 
 
 +!endSimulation : true
  <- ?waypoint(X,Y);
@@ -78,13 +76,15 @@ numberOfCharges(0).
 //*****************************************************
 // Plans to deal with battery
 //And check if we are in a danger zone
+/*
 @pbattery2[atomic] // To ensure battery is handled without interruption
 +battery(Batt) [source(self)] : at(X,Y) 
 						   	  & chargeStation(Xcharge,Ycharge)
 						      & not charging
  <- rover.act.distance(X,Y,Xcharge,Ycharge,Dist);
  	!checkCharge(Dist, Batt).
- 	
+*/
+	
 //If we risk not reaching the charging station
 @pcheckcharge1[atomic]
 +!checkCharge(Dist, Batt) : Dist >= Batt
@@ -198,8 +198,7 @@ numberOfCharges(0).
 	-+visitedWaypoints([waypoint(X,Y) | W]);
 	?visitedWaypoints(Nw);
 	?distance(D);
-	.length(Nw,Nvw);
-	.print(Nvw, " waypoints visited so far, ",Nw,", distance covered so far, ",D).
+	.print("Waypoints visited so far, ",Nw,", distance covered so far, ",D).
 //*****************************************************
 
 //*****************************************************
@@ -233,7 +232,7 @@ numberOfCharges(0).
 @pDoMove[atomic]
 +!doMove(X,Y) : true
  <- //?at(A,B); .print("Moving from ",at(A,B)," to ",at(X,Y)); 
- 	.wait(20);
+ 	.wait(50);
 	-+at(X,Y);
  	move(X,Y);
 	?distance(D);

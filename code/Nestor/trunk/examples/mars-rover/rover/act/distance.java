@@ -23,6 +23,10 @@ public class distance extends DefaultInternalAction {
 		NumberTerm y1t = (NumberTerm) args[1];
 		NumberTerm x2t = (NumberTerm) args[2];
 		NumberTerm y2t = (NumberTerm) args[3];
+		x1t.apply(un);
+		y1t.apply(un);
+		x2t.apply(un);
+		y2t.apply(un);
 		
 		int x1 = (int) x1t.solve();
 		int y1 = (int) y1t.solve();

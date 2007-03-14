@@ -16,7 +16,7 @@
     <property name="jasonJar" value="C:\Documents and Settings\menegufe\My Documents\workspace\JasonSVN\bin\"/>
 
     <path id="project.classpath">
-        <pathelement location="."/>
+        <!-- pathelement location="."/> -->
         <pathelement location="${jasonJar}"/>
     	<pathelement location="C:\Documents and Settings\menegufe\My Documents\workspace\Nestor\bin"/>
     </path>
@@ -24,55 +24,57 @@
 	<target name="generate-scripts">
 		<property name="initial-beliefs" value="at(0,0). battery(30)."/>
 		<property name="final-events" value="endSimulation."/>
+		<property name="params" value="-gridsize 20 -stepsize 5 -firststep 1"/>
+
 		<java classname="rover.ScriptGenerator"
 			failonerror="true" fork="yes" dir="${basedir}/scripts">
 			<classpath refid="project.classpath"/>
-			<arg line="-o generatedScript1.xml -steps 10 -gridsize 20 -stepsize 5 -firststep 1 -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
+			<arg line="-o generatedScript1.xml -steps 10 ${params} -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
 		</java>
 		<java classname="rover.ScriptGenerator"
 			failonerror="true" fork="yes" dir="${basedir}/scripts">
 			<classpath refid="project.classpath"/>
-			<arg line="-o generatedScript2.xml -steps 20 -gridsize 20 -stepsize 5 -firststep 1 -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
+			<arg line="-o generatedScript2.xml -steps 20 ${params} -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
 		</java>
 		<java classname="rover.ScriptGenerator"
 			failonerror="true" fork="yes" dir="${basedir}/scripts">
 			<classpath refid="project.classpath"/>
-			<arg line="-o generatedScript3.xml -steps 30 -gridsize 20 -stepsize 5 -firststep 1 -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
+			<arg line="-o generatedScript3.xml -steps 30 ${params} -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
 		</java>
 		<java classname="rover.ScriptGenerator"
 			failonerror="true" fork="yes" dir="${basedir}/scripts">
 			<classpath refid="project.classpath"/>
-			<arg line="-o generatedScript4.xml -steps 40 -gridsize 20 -stepsize 5 -firststep 1 -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
+			<arg line="-o generatedScript4.xml -steps 40 ${params} -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
 		</java>
 		<java classname="rover.ScriptGenerator"
 			failonerror="true" fork="yes" dir="${basedir}/scripts">
 			<classpath refid="project.classpath"/>
-			<arg line="-o generatedScript5.xml -steps 50 -gridsize 20 -stepsize 5 -firststep 1 -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
+			<arg line="-o generatedScript5.xml -steps 50 ${params} -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
 		</java>
 		<java classname="rover.ScriptGenerator"
 			failonerror="true" fork="yes" dir="${basedir}/scripts">
 			<classpath refid="project.classpath"/>
-			<arg line="-o generatedScript6.xml -steps 60 -gridsize 20 -stepsize 5 -firststep 1 -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
+			<arg line="-o generatedScript6.xml -steps 60 ${params} -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
 		</java>
 		<java classname="rover.ScriptGenerator"
 			failonerror="true" fork="yes" dir="${basedir}/scripts">
 			<classpath refid="project.classpath"/>
-			<arg line="-o generatedScript7.xml -steps 70 -gridsize 20 -stepsize 5 -firststep 1 -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
+			<arg line="-o generatedScript7.xml -steps 70 ${params} -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
 		</java>
 		<java classname="rover.ScriptGenerator"
 			failonerror="true" fork="yes" dir="${basedir}/scripts">
 			<classpath refid="project.classpath"/>
-			<arg line="-o generatedScript8.xml -steps 80 -gridsize 20 -stepsize 5 -firststep 1 -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
+			<arg line="-o generatedScript8.xml -steps 80 ${params} -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
 		</java>
 		<java classname="rover.ScriptGenerator"
 			failonerror="true" fork="yes" dir="${basedir}/scripts">
 			<classpath refid="project.classpath"/>
-			<arg line="-o generatedScript9.xml -steps 90 -gridsize 20 -stepsize 5 -firststep 1 -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
+			<arg line="-o generatedScript9.xml -steps 90 ${params} -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
 		</java>
 		<java classname="rover.ScriptGenerator"
 			failonerror="true" fork="yes" dir="${basedir}/scripts">
 			<classpath refid="project.classpath"/>
-			<arg line="-o generatedScript10.xml -steps 100 -gridsize 20 -stepsize 5 -firststep 1 -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
+			<arg line="-o generatedScript10.xml -steps 100 ${params} -initbeliefs ${initial-beliefs} -finalevents ${final-events}"/>
 		</java>
 	</target>
 	
@@ -80,7 +82,7 @@
 		<java classname="jason.infra.centralised.RunCentralisedMAS"
             failonerror="true" fork="yes" dir="${basedir}">
 			<classpath refid="project.classpath"/>
-			<arg line="Mars.mas2j ${debug}"/>
+			<arg line="Mars1.mas2j ${debug}"/>
 		</java>
 		<java classname="jason.infra.centralised.RunCentralisedMAS"
 		     failonerror="true" fork="yes" dir="${basedir}">

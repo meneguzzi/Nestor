@@ -3,45 +3,45 @@
 <step time="0">at(0,0).
 battery(30).
 </step>
-<step time="1">waypoint(8,3).
+<step time="1">waypoint(5,13).
 </step>
-<step time="6">waypoint(4,16).
+<step time="6">waypoint(15,0).
 </step>
-<step time="11">waypoint(2,18).
+<step time="11">waypoint(8,8).
 </step>
-<step time="16">waypoint(15,16).
+<step time="16">waypoint(12,7).
 </step>
-<step time="21">waypoint(12,6).
+<step time="21">waypoint(5,5).
 </step>
-<step time="26">waypoint(8,16).
+<step time="26">waypoint(19,1).
 </step>
-<step time="31">waypoint(2,4).
+<step time="31">waypoint(2,13).
 </step>
-<step time="36">waypoint(17,11).
+<step time="36">waypoint(3,7).
 </step>
-<step time="41">waypoint(6,17).
+<step time="41">waypoint(10,10).
 </step>
-<step time="46">waypoint(17,0).
+<step time="46">waypoint(6,2).
 </step>
-<step time="51">waypoint(7,14).
+<step time="51">waypoint(19,18).
 </step>
-<step time="56">waypoint(17,2).
+<step time="56">waypoint(0,12).
 </step>
-<step time="61">waypoint(3,9).
+<step time="61">waypoint(17,0).
 </step>
-<step time="66">waypoint(18,12).
+<step time="66">waypoint(0,13).
 </step>
-<step time="71">waypoint(11,12).
+<step time="71">waypoint(16,7).
 </step>
-<step time="76">waypoint(6,18).
+<step time="76">waypoint(2,1).
 </step>
-<step time="81">waypoint(1,17).
+<step time="81">waypoint(15,15).
 </step>
-<step time="86">waypoint(4,14).
+<step time="86">waypoint(11,4).
 </step>
-<step time="91">waypoint(1,15).
+<step time="91">waypoint(18,9).
 </step>
-<step time="96">waypoint(9,12).
+<step time="96">waypoint(2,7).
 </step>
 <step time="101">endSimulation.
 </step>
