@@ -4,8 +4,8 @@ MAS dummy {
          org.kcl.nestor.env.scripted.ScriptedEnvironment("scripts/generatedScript5.xml", "rover.act")
          
     agents:
-         //rover [motivations="rover.mot"];
-		 rover_perfect [motivations="rover.mot"];
+         rover [motivations="rover.mot"];
+		 //rover_perfect [motivations="rover.mot"];
          			//agentClass org.kcl.nestor.mot.gui.MotivatedAgentWrapper;
          			//agentArchClass org.kcl.nestor.mot.log.LoggingAgArch;
 }

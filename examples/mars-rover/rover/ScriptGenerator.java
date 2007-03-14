@@ -33,7 +33,9 @@ public class ScriptGenerator {
 	protected int firstStep;
 	protected List<Literal> initialBeliefs;
 	protected List<Literal> finalEvents;
-
+	
+	protected List<Waypoint> waypoints;
+	
 	/**
 	 * @param args
 	 */
@@ -54,6 +56,7 @@ public class ScriptGenerator {
 		this.outputStream = System.out;
 		this.steps = 10;
 		this.timeBetweenSteps = 1;
+		this.waypoints = new ArrayList<Waypoint>();
 		parseArgs(args);
 	}
 	
@@ -154,6 +157,9 @@ public class ScriptGenerator {
 	}
 	
 	public Document createScript() {
+		if(this.gridSize*this.gridSize < this.steps) {
+			return null;
+		}
 		DocumentBuilder builder;
 		try {
 			builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -193,10 +199,15 @@ public class ScriptGenerator {
 	protected List<Literal> createPercepts(int time) {
 		List<Literal> percepts = new ArrayList<Literal>();
 		
-		int x = random.nextInt(gridSize);
-		int y = random.nextInt(gridSize);
+		Waypoint waypoint = new Waypoint(0,0);
+				
+		do {
+			waypoint.x = random.nextInt(gridSize);
+			waypoint.y = random.nextInt(gridSize);
+		} while (waypoints.contains(waypoint));
 		
-		percepts.add(Literal.parseLiteral("waypoint("+x+","+y+")"));
+		waypoints.add(waypoint);
+		percepts.add(Literal.parseLiteral("waypoint("+waypoint.x+","+waypoint.y+")"));
 		
 		return percepts;
 	}
@@ -218,4 +229,24 @@ public class ScriptGenerator {
 		return step;
 	}
 
+	class Waypoint {
+		public int x,y;
+		
+		public Waypoint(int x, int y) {
+			this.x = x;
+			this.y = y;
+		}
+		
+		@Override
+		public boolean equals(Object obj) {
+			if(obj == this) {
+				return true;
+			} else if (obj.getClass() == Waypoint.class) {
+				Waypoint temp = (Waypoint) obj;
+				return ((temp.x == this.x) && (temp.y == this.y));
+			} else {
+				return false;
+			}
+		}
+	}
 }

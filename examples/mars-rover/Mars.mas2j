@@ -5,7 +5,9 @@ MAS dummy {
          
     agents:
          //rover [motivations="rover.mot"];
-		 rover_perfect [motivations="rover.mot"];
-         			//agentClass org.kcl.nestor.mot.gui.MotivatedAgentWrapper;
+		 //rover_perfect [motivations="rover.mot"];
+		 rover_mots [motivations="rover.mot"]
+         			agentClass org.kcl.nestor.mot.gui.MotivatedAgentWrapper;
+         			//agentClass org.kcl.nestor.agent.ModularAgent;
          			//agentArchClass org.kcl.nestor.mot.log.LoggingAgArch;
 }
