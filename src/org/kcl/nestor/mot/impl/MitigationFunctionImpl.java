@@ -3,10 +3,10 @@
  */
 package org.kcl.nestor.mot.impl;
 
+import jason.asSemantics.Agent;
 import jason.asSemantics.Unifier;
 import jason.asSyntax.LogicalFormula;
 import jason.asSyntax.NumberTerm;
-import jason.bb.BeliefBase;
 
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -31,13 +31,13 @@ public class MitigationFunctionImpl extends MotivationFunction implements Mitiga
 	/* (non-Javadoc)
 	 * @see org.soton.peleus.mot.MitigationFunction#mitigate(jason.bb.BeliefBase)
 	 */
-	public int mitigate(BeliefBase beliefBase) {
+	public int mitigate(Agent agent) {
 		int mitigation = 0;
 		
 		//logger.info("Belief Base at time of mitigation "+beliefBase);
 		
 		for (LogicalFormula formula : mapping.keySet()) {
-			Iterator<Unifier> unifiers = logicalConsequence(formula, beliefBase);
+			Iterator<Unifier> unifiers = logicalConsequence(formula, agent);
 			if(unifiers.hasNext()) {
 				logger.fine(formula+" is supported by the belief base");
 				NumberTerm value = (NumberTerm) mapping.get(formula).clone();

@@ -3,9 +3,9 @@
  */
 package org.kcl.nestor.mot;
 
+import jason.asSemantics.Agent;
 import jason.asSyntax.LogicalFormula;
 import jason.asSyntax.NumberTerm;
-import jason.bb.BeliefBase;
 
 /** 
  * A strategy pattern defining the interface for the 
@@ -35,7 +35,7 @@ public interface MitigationFunction {
 	/**
 	 * The function invoked when the goals associated with this motivation are 
 	 * achieved.
-	 * @param beliefBase A reference to the agent's <code>BeliefBase</code>
+	 * @param agent A reference to an agent
 	 */
-	public int mitigate(BeliefBase beliefBase);
+	public int mitigate(Agent agent);
 }

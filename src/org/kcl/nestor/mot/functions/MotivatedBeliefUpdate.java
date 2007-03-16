@@ -42,7 +42,7 @@ public class MotivatedBeliefUpdate extends DefaultBeliefUpdateFunction {
 		for (Motivation	motivation : motivatedAgent.getMotivations()) {
 			logger.fine("Updating Motivation: '"+motivation.getMotivationName()+"'");
 			
-			boolean thresholdReached = motivation.updateIntensity(agent.getBB());
+			boolean thresholdReached = motivation.updateIntensity(agent);
 			
 			if(thresholdReached && !motivatedAgent.getPendingMotivations().contains(motivation)) {
 				logger.info(motivation.getMotivationName()+" threshold reached.");
@@ -52,7 +52,7 @@ public class MotivatedBeliefUpdate extends DefaultBeliefUpdateFunction {
 		}
 		//Then for each triggered motivation, generate goals
 		for (Motivation motivation : newTriggeredMotivations) {
-			List<Trigger> goals = motivation.generateGoals(agent.getBB());
+			List<Trigger> goals = motivation.generateGoals(agent);
 			motivatedAgent.getPendingMotivations().add(motivation);
 			//For each generated "goal", post a new event for the agent
 			for (Trigger trigger : goals) {
@@ -68,7 +68,7 @@ public class MotivatedBeliefUpdate extends DefaultBeliefUpdateFunction {
 		for (Iterator<Motivation> iter = motivatedAgent.getPendingMotivations().iterator(); iter.hasNext();) {
 			Motivation motivation = iter.next();
 			
-			if(motivation.mitigate(agent.getBB())) {
+			if(motivation.mitigate(agent)) {
 				logger.info("Motivation "+motivation.getMotivationName()+" mitigated");
 				iter.remove();
 				motivatedAgent.removePendingMotivation(motivation);

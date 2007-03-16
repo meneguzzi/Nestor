@@ -1,8 +1,8 @@
 package org.kcl.nestor.mot;
 
+import jason.asSemantics.Agent;
 import jason.asSyntax.LogicalFormula;
 import jason.asSyntax.Trigger;
-import jason.bb.BeliefBase;
 
 import java.util.List;
 
@@ -39,9 +39,9 @@ public interface GoalGenerationFunction {
 	/**
 	 * Generates the goals associated with this motivation.
 	 * 
-	 * @param beliefBase A reference to the agent's <code>BeliefBase</code>
+	 * @param agent A reference to the motivated agent
 	 * @return A list of new goals for the agent to accomplish 
 	 * (Actually <code>Triggers</code>)
 	 */
-	public List<Trigger> generateGoals(BeliefBase beliefBase);
+	public List<Trigger> generateGoals(Agent agent);
 }
