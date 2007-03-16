@@ -153,6 +153,13 @@ public class MotivatedAgent extends ModularAgent {
 		//removes a pending motivation, as well as the list of goals associated
 		//to this motivation
 		this.pendingMotivations.remove(motivation);
+		for(Iterator<Trigger> i = pendingMotivatedGoals.keySet().iterator() ; i.hasNext(); ){
+			Trigger pendTrigger = i.next();
+			if(pendingMotivatedGoals.get(pendTrigger) == motivation) {
+				i.remove();
+			}
+		}
+		/*
 		for (Trigger pendTrigger : pendingMotivatedGoals.keySet()) {
 			if(pendingMotivatedGoals.get(pendTrigger) == motivation) {
 				//pendingMotivatedGoals.remove(pendTrigger);
@@ -160,6 +167,7 @@ public class MotivatedAgent extends ModularAgent {
 				this.removePendingMotivatedGoal(pendTrigger);
 			}
 		}
+		*/
 	}
 	
 	/**

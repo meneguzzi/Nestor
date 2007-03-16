@@ -3,10 +3,10 @@
  */
 package org.kcl.nestor.mot.impl;
 
+import jason.asSemantics.Agent;
 import jason.asSemantics.Unifier;
 import jason.asSyntax.LogicalFormula;
 import jason.asSyntax.NumberTerm;
-import jason.bb.BeliefBase;
 
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -49,17 +49,18 @@ public class IntensityUpdateFunctionImpl extends MotivationFunction implements I
 	/* (non-Javadoc)
 	 * @see org.soton.peleus.mot.IntensityUpdateFunction#updateIntensity(jason.bb.BeliefBase)
 	 */
-	public int updateIntensity(BeliefBase beliefBase) {
+	public int updateIntensity(Agent agent) {
 		int motivationDelta = 0;
 		for (LogicalFormula cue : beliefCues.keySet()) {
 			//logger.info("Updating intensity regarding "+positiveLiteral);
 			LogicalFormula formula = (LogicalFormula) cue.clone();
-			Iterator<Unifier> unifiers = logicalConsequence(formula, beliefBase);
+			Iterator<Unifier> unifiers = logicalConsequence(formula, agent);
 			//TODO consider the actual strategy to calculate motivations if more than one
 			//TODO unification is possible for a given formula
 			if(unifiers.hasNext()) {
 				NumberTerm value = (NumberTerm)beliefCues.get(formula).clone();
-				unifiers.next().apply(value);
+				value.apply(unifiers.next());
+				//unifiers.next().apply(value);
 				motivationDelta += value.solve();
 			}
 			/*if(supportedByBeliefBase(literal, beliefBase)) {

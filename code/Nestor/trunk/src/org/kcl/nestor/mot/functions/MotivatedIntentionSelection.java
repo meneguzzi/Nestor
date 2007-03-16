@@ -35,7 +35,7 @@ public class MotivatedIntentionSelection implements IntentionSelectionFunction {
 		for (Iterator iter = intentions.iterator(); iter.hasNext();) {
 			Intention intention = (Intention) iter.next();
 			if(intention.isFinished()) {
-				logger.info("Returning finished intention.");
+				//logger.info("Returning finished intention.");
 				return intention;
 			}
 			IntendedMeans intendedMeans = intention.get(0);
@@ -44,7 +44,7 @@ public class MotivatedIntentionSelection implements IntentionSelectionFunction {
 				Term term = (Term) iterator.next();
 				Motivation motivation = motivatedAgent.getMotivation(term.toString());
 				if(motivation != null && motivation.getMotivationIntensity() > higherIntensity) {
-					logger.info("Most motivated intention is "+motivation.getMotivationName());
+					//logger.info("Most motivated intention is "+motivation.getMotivationName());
 					mostMotivatedIntention = intention;
 					higherIntensity = motivation.getMotivationIntensity();
 				}

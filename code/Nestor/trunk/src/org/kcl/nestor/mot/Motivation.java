@@ -3,8 +3,8 @@
  */
 package org.kcl.nestor.mot;
 
+import jason.asSemantics.Agent;
 import jason.asSyntax.Trigger;
-import jason.bb.BeliefBase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -116,11 +116,11 @@ public class Motivation {
 	 * Updates this motivation's intensity based on the current agent beliefs,
 	 * and returns whether or not this motivations's threshold has been reached.
 	 * 
-	 * @param beliefBase A reference to the agent's <code>BeliefBase</code>
+	 * @param agent A reference to the agent's <code>BeliefBase</code>
 	 * @return Whether or not this motivation's threshold has been reached.
 	 */
-	public boolean updateIntensity(BeliefBase beliefBase) {
-		this.motivationIntensity+=this.intensityUpdateFunction.updateIntensity(beliefBase);
+	public boolean updateIntensity(Agent agent) {
+		this.motivationIntensity+=this.intensityUpdateFunction.updateIntensity(agent);
 		motivationIntensity = (motivationIntensity > 0) ? motivationIntensity : 0;
 		
 		logger.fine("Motivation '"+motivationName+"' intensity is "+motivationIntensity);
@@ -138,14 +138,14 @@ public class Motivation {
 	/**
 	 * Generates the goals associated with this motivation.
 	 * 
-	 * @param beliefBase A reference to the agent's <code>BeliefBase</code>
+	 * @param agent A reference to the agent's <code>BeliefBase</code>
 	 * @return A list of new goals for the agent to accomplish 
 	 * (Actually <code>Triggers</code>)
 	 */
-	public List<Trigger> generateGoals(BeliefBase beliefBase) {
+	public List<Trigger> generateGoals(Agent agent) {
 		if(this.motivationIntensity >= motivationThreshold) {
 			logger.info("Threshold exceeded, generating goals");
-			List<Trigger> generatedGoals = this.goalGenerationFunction.generateGoals(beliefBase);
+			List<Trigger> generatedGoals = this.goalGenerationFunction.generateGoals(agent);
 			/***************************************************/
 			motivationLog.addTriggeredGoals(generatedGoals);
 			/***************************************************/
@@ -157,11 +157,11 @@ public class Motivation {
 	/**
 	 * The function invoked when the goals associated with this motivation are 
 	 * achieved.
-	 * @param beliefBase A reference to the agent's <code>BeliefBase</code>
+	 * @param agent A reference to the agent's <code>BeliefBase</code>
 	 * @return Whether or not this motivation has been mitigated
 	 */
-	public boolean mitigate(BeliefBase beliefBase) {
-		int mitigation = this.mitigationFunction.mitigate(beliefBase);
+	public boolean mitigate(Agent agent) {
+		int mitigation = this.mitigationFunction.mitigate(agent);
 		//if the mitigation value is 0, the agent has not mitigated it.
 		if(mitigation == 0) {
 			return false;

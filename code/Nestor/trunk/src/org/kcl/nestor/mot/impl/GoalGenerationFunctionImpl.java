@@ -3,6 +3,7 @@
  */
 package org.kcl.nestor.mot.impl;
 
+import jason.asSemantics.Agent;
 import jason.asSemantics.Unifier;
 import jason.asSyntax.Literal;
 import jason.asSyntax.LogicalFormula;
@@ -40,16 +41,17 @@ public class GoalGenerationFunctionImpl extends MotivationFunction implements Go
 	/* (non-Javadoc)
 	 * @see org.soton.peleus.mot.GoalGenerationFunction#generateGoals(jason.bb.BeliefBase)
 	 */
-	public List<Trigger> generateGoals(BeliefBase beliefBase) {
+	public List<Trigger> generateGoals(Agent agent) {
 		logger.fine("Generating goals");
 		List<Trigger> list = new ArrayList<Trigger>();
 		Unifier unifier = null;
 		for (LogicalFormula formula : goals.keySet()) {
-			Iterator<Unifier> unifiers = logicalConsequence(formula, beliefBase);
+			Iterator<Unifier> unifiers = logicalConsequence(formula, agent);
 			if(unifiers.hasNext()) {
 				unifier = unifiers.next();
 				Trigger trigger = (Trigger) goals.get(formula).clone();
-				unifier.apply(trigger.getLiteral());
+				//unifier.apply(trigger.getLiteral());
+				trigger.getLiteral().apply(unifier);
 				list.add(trigger);
 			}
 			/*if(formula.equals(Literal.LTrue) || 

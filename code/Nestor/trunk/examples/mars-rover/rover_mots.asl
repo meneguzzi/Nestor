@@ -95,7 +95,8 @@ numberOfCharges(0).
 -charging : battery(NewBatt) [source(percept)]
  <- .print("Recharged, battery is now ",NewBatt);
  	?numberOfCharges(Charges);
-	-+numberOfCharges(Charges + 1).
+ 	-numberOfCharges(Charges);
+ 	+numberOfCharges(Charges + 1).
  
 @pcheckcharge2[atomic]
 +!checkCharge(Dist, Batt) : Dist < Batt
@@ -113,7 +114,8 @@ numberOfCharges(0).
 	?distance(Distance2);
 	//.print("Charge distance: ",Distance2 - Distance);
 	?chargeDistance(ChargeDistance);
-	-+chargeDistance(ChargeDistance + (Distance2 - Distance));
+	-chargeDistance(ChargeDistance);
+	+chargeDistance(ChargeDistance + (Distance2 - Distance));
 	-charging;
 	.print("Just finished charging, checking for pending waypoints.");
  	!queryWaypoints.
@@ -139,7 +141,8 @@ numberOfCharges(0).
 	WastedDistance = (Distance - PreviousDistance);
 	.print("Wasted: ",WastedDistance);
 	?wastedDistance(Wasted);
-	-+wastedDistance(Wasted + (Distance - PreviousDistance));
+	-wastedDistance(Wasted);
+	+wastedDistance(Wasted + (Distance - PreviousDistance));
 	-moving.
 
 +!suspendGoals : not moving
@@ -184,7 +187,8 @@ numberOfCharges(0).
  <- +moving;
  	.print("Going to waypoint ",waypoint(X,Y));
 	?distance(D);
-	-+previousDistance(D);
+	-previousDistance(Do);
+	+previousDistance(D);
  	!move(X,Y);
 	.print("Finished move to waypoint ",waypoint(X,Y), " releasing locks");
 	-waypoint(X,Y);
@@ -195,7 +199,8 @@ numberOfCharges(0).
 -waypoint(X,Y) : true
  <- .print("Removing ",waypoint(X,Y)," from pending waypoints");
  	?visitedWaypoints(W);
-	-+visitedWaypoints([waypoint(X,Y) | W]);
+ 	-visitedWaypoints(W);
+	+visitedWaypoints([waypoint(X,Y) | W]);
 	?visitedWaypoints(Nw);
 	?distance(D);
 	.print("Waypoints visited so far, ",Nw,", distance covered so far, ",D).
@@ -230,13 +235,15 @@ numberOfCharges(0).
  	!move(X,Y).
 
 @pDoMove[atomic]
-+!doMove(X,Y) : true
++!doMove(X,Y) : at(A,B)
  <- //?at(A,B); .print("Moving from ",at(A,B)," to ",at(X,Y)); 
  	.wait(50);
-	-+at(X,Y);
+	-at(A,B);
+	+at(X,Y);
  	move(X,Y);
 	?distance(D);
-	-+distance(D+1).
+	-distance(D);
+	+distance(D+1).
 //*****************************************************
 
 /*
