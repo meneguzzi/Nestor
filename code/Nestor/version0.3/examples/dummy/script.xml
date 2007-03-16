@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- A script containing perception events to be posted at each "tick" from
+	the environment in the MotivationTestEnvironment class.
+	Time is assumed to start at 0, which is the moment the environment class
+	is instantiated. -->
+<script>
+	<step time="0">
+		eventA.
+		eventB.
+		eventC.
+	</step>
+	<step time="10">
+		eventA.
+	</step>
+</script>

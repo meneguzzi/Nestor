@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+<step time="0">at(0,0).
+battery(30).
+</step>
+<step time="1">waypoint(15,14).
+</step>
+<step time="6">waypoint(4,14).
+</step>
+<step time="11">waypoint(7,7).
+</step>
+<step time="16">waypoint(5,10).
+</step>
+<step time="21">waypoint(1,0).
+</step>
+<step time="26">waypoint(3,4).
+</step>
+<step time="31">waypoint(5,19).
+</step>
+<step time="36">waypoint(6,0).
+</step>
+<step time="41">waypoint(2,1).
+</step>
+<step time="46">waypoint(1,10).
+</step>
+<step time="51">waypoint(13,5).
+</step>
+<step time="56">waypoint(14,2).
+</step>
+<step time="61">waypoint(9,2).
+</step>
+<step time="66">waypoint(5,2).
+</step>
+<step time="71">waypoint(15,11).
+</step>
+<step time="76">waypoint(16,11).
+</step>
+<step time="81">waypoint(18,14).
+</step>
+<step time="86">waypoint(2,4).
+</step>
+<step time="91">waypoint(4,8).
+</step>
+<step time="96">waypoint(6,3).
+</step>
+<step time="101">waypoint(3,13).
+</step>
+<step time="106">waypoint(1,16).
+</step>
+<step time="111">waypoint(10,15).
+</step>
+<step time="116">waypoint(1,15).
+</step>
+<step time="121">waypoint(8,6).
+</step>
+<step time="126">waypoint(0,18).
+</step>
+<step time="131">waypoint(7,15).
+</step>
+<step time="136">waypoint(8,9).
+</step>
+<step time="141">waypoint(2,14).
+</step>
+<step time="146">waypoint(16,7).
+</step>
+<step time="151">waypoint(2,10).
+</step>
+<step time="156">waypoint(13,18).
+</step>
+<step time="161">waypoint(7,11).
+</step>
+<step time="166">waypoint(0,15).
+</step>
+<step time="171">waypoint(7,0).
+</step>
+<step time="176">waypoint(19,11).
+</step>
+<step time="181">waypoint(8,11).
+</step>
+<step time="186">waypoint(3,10).
+</step>
+<step time="191">waypoint(15,19).
+</step>
+<step time="196">waypoint(16,3).
+</step>
+<step time="201">waypoint(6,17).
+</step>
+<step time="206">waypoint(13,0).
+</step>
+<step time="211">waypoint(13,19).
+</step>
+<step time="216">waypoint(0,1).
+</step>
+<step time="221">waypoint(5,16).
+</step>
+<step time="226">waypoint(11,11).
+</step>
+<step time="231">waypoint(2,12).
+</step>
+<step time="236">waypoint(0,7).
+</step>
+<step time="241">waypoint(19,1).
+</step>
+<step time="246">waypoint(13,10).
+</step>
+<step time="251">waypoint(18,8).
+</step>
+<step time="256">waypoint(8,19).
+</step>
+<step time="261">waypoint(17,3).
+</step>
+<step time="266">waypoint(6,10).
+</step>
+<step time="271">waypoint(7,4).
+</step>
+<step time="276">waypoint(8,2).
+</step>
+<step time="281">waypoint(0,6).
+</step>
+<step time="286">waypoint(15,10).
+</step>
+<step time="291">waypoint(1,7).
+</step>
+<step time="296">waypoint(11,16).
+</step>
+<step time="301">waypoint(12,12).
+</step>
+<step time="306">waypoint(17,11).
+</step>
+<step time="311">waypoint(14,14).
+</step>
+<step time="316">waypoint(3,11).
+</step>
+<step time="321">waypoint(17,15).
+</step>
+<step time="326">waypoint(17,1).
+</step>
+<step time="331">waypoint(18,3).
+</step>
+<step time="336">waypoint(12,8).
+</step>
+<step time="341">waypoint(14,11).
+</step>
+<step time="346">waypoint(11,19).
+</step>
+<step time="351">waypoint(16,2).
+</step>
+<step time="356">waypoint(12,13).
+</step>
+<step time="361">waypoint(11,13).
+</step>
+<step time="366">waypoint(10,9).
+</step>
+<step time="371">waypoint(6,8).
+</step>
+<step time="376">waypoint(4,10).
+</step>
+<step time="381">waypoint(4,13).
+</step>
+<step time="386">waypoint(17,14).
+</step>
+<step time="391">waypoint(2,8).
+</step>
+<step time="396">waypoint(10,10).
+</step>
+<step time="401">waypoint(17,4).
+</step>
+<step time="406">waypoint(18,15).
+</step>
+<step time="411">waypoint(0,13).
+</step>
+<step time="416">waypoint(17,16).
+</step>
+<step time="421">waypoint(5,1).
+</step>
+<step time="426">waypoint(6,1).
+</step>
+<step time="431">waypoint(5,17).
+</step>
+<step time="436">waypoint(5,14).
+</step>
+<step time="441">waypoint(8,0).
+</step>
+<step time="446">waypoint(13,2).
+</step>
+<step time="451">endSimulation.
+</step>
+</script>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="mot-i" id="org.soton.peleus.mot" metadata="uml2-1.0" initialized="true" scrolledX="165" scrolledY="120" tag="5" key="32303036313030322050656C6575732D54657374">
+  <children xsi:type="editmodel:ClassEditModel" name="Motivation" location="40,370" size="278,349" id="org.soton.peleus.mot/Motivation" runTimeClassModel="toString(),generateGoals(Ljason.bb.BeliefBase;),Motivation(Ljava.lang.String;ILorg.soton.peleus.mot.IntensityUpdateFunction;Lorg.soton.peleus.mot.GoalGenerationFunction;Lorg.soton.peleus.mot.MitigationFunction;),updateIntensity(Ljason.bb.BeliefBase;),getMotivationIntensity(),mitigate(Ljason.bb.BeliefBase;),goalGenerationFunction,mitigationFunction,intensityUpdateFunction,emptyList,getMotivationName(),getMotivationThreshold(),motivationIntensity,logger,motivationName,motivationThreshold,Motivation(Ljava.lang.String;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="255,144">
+      <children xsi:type="editmodel:AttributeEditModel" name="logger" id="org.soton.peleus.mot/Motivation#logger"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="motivationName" id="org.soton.peleus.mot/Motivation#motivationName"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="motivationIntensity" id="org.soton.peleus.mot/Motivation#motivationIntensity"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="motivationThreshold" id="org.soton.peleus.mot/Motivation#motivationThreshold"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="intensityUpdateFunction" id="org.soton.peleus.mot/Motivation#intensityUpdateFunction"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="goalGenerationFunction" id="org.soton.peleus.mot/Motivation#goalGenerationFunction"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="mitigationFunction" id="org.soton.peleus.mot/Motivation#mitigationFunction"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="emptyList" id="jason.asSyntax/Trigger@emptyList+org.soton.peleus.mot/Motivation@|jason.asSyntax/Trigger#emptyList"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="976,162">
+      <children xsi:type="editmodel:MethodEditModel" name="getMotivationIntensity" id="org.soton.peleus.mot/Motivation#getMotivationIntensity()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMotivationThreshold" id="org.soton.peleus.mot/Motivation#getMotivationThreshold()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMotivationName" id="org.soton.peleus.mot/Motivation#getMotivationName()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="updateIntensity" id="org.soton.peleus.mot/Motivation#updateIntensity(Ljason.bb.BeliefBase;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="generateGoals" id="org.soton.peleus.mot/Motivation#generateGoals(Ljason.bb.BeliefBase;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mitigate" id="org.soton.peleus.mot/Motivation#mitigate(Ljason.bb.BeliefBase;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="toString" id="org.soton.peleus.mot/Motivation#toString()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="org.soton.peleus.mot/Motivation@motivations+org.soton.peleus.mot/MotivatedAgent@" source="//@children.0" target="//@children.1" targetEnd="//@children.0/@sourceConnections.0/@children.2" label="//@children.0/@sourceConnections.0/@children.0" sourceEnd="//@children.0/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="motivations" location="123,0" id="org.soton.peleus.mot/Motivation@motivations+org.soton.peleus.mot/MotivatedAgent@|org.soton.peleus.mot/Motivation#motivations" attachSource="true" multiplicityLabel="//@children.0/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.0/@sourceConnections.0/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" # motivations" location="170,349" size="66,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="*" location="152,349" size="4,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="103,295" id="org.soton.peleus.mot/Motivation@motivations+org.soton.peleus.mot/MotivatedAgent@|org.soton.peleus.mot/MotivatedAgent#"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot/Motivation->org.soton.peleus.mot/MitigationFunction" source="//@children.0" target="//@children.4" targetEnd="//@children.0/@sourceConnections.1/@children.2" label="//@children.0/@sourceConnections.1/@children.0" sourceEnd="//@children.0/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="41,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="278,286" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,63"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot/Motivation->org.soton.peleus.mot/IntensityUpdateFunction" source="//@children.0" target="//@children.3" targetEnd="//@children.0/@sourceConnections.2/@children.2" label="//@children.0/@sourceConnections.2/@children.0" sourceEnd="//@children.0/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="41,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="278,30" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,115"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot/Motivation->org.soton.peleus.mot/GoalGenerationFunction" source="//@children.0" target="//@children.2" targetEnd="//@children.0/@sourceConnections.3/@children.2" label="//@children.0/@sourceConnections.3/@children.0" sourceEnd="//@children.0/@sourceConnections.3/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="41,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="278,137" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,82"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsReturnType="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showAssociationMember="true" showMethods="true" showAttributes="true" showLiterals="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.0" name="MotivatedAgent" location="60,50" size="208,295" id="org.soton.peleus.mot/MotivatedAgent" runTimeClassModel="readMotivations(Ljava.lang.String;),triggeredMotivations,getMotivations(),getMotivation(Ljava.lang.String;),selectIntention(Ljava.util.Queue;),buf(Ljava.util.List;),addMotivatedGoal(Ljason.asSyntax.Trigger;),logger,motivations,motivatedIntention,motivatedPendingGoals,MotivatedAgent()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="185,90">
+      <children xsi:type="editmodel:AttributeEditModel" name="logger" id="org.soton.peleus.mot/MotivatedAgent#logger"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="motivations" id="org.soton.peleus.mot/Motivation@motivations+org.soton.peleus.mot/MotivatedAgent@|org.soton.peleus.mot/Motivation#motivations"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="motivatedPendingGoals" id="java.util/Hashtable@motivatedPendingGoals+org.soton.peleus.mot/MotivatedAgent@|java.util/Hashtable#motivatedPendingGoals"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="triggeredMotivations" id="org.soton.peleus.mot/Motivation@triggeredMotivations+org.soton.peleus.mot/MotivatedAgent@|org.soton.peleus.mot/Motivation#triggeredMotivations"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="motivatedIntention" id="org.soton.peleus.mot/MotivatedAgent#motivatedIntention"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="165,126">
+      <children xsi:type="editmodel:MethodEditModel" name="buf" id="org.soton.peleus.mot/MotivatedAgent#buf(Ljava.util.List;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="MotivatedAgent" id="org.soton.peleus.mot/MotivatedAgent#MotivatedAgent()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="readMotivations" id="org.soton.peleus.mot/MotivatedAgent#readMotivations(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addMotivatedGoal" id="org.soton.peleus.mot/MotivatedAgent#addMotivatedGoal(Ljason.asSyntax.Trigger;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="selectIntention" id="org.soton.peleus.mot/MotivatedAgent#selectIntention(Ljava.util.Queue;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMotivation" id="org.soton.peleus.mot/MotivatedAgent#getMotivation(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMotivations" id="org.soton.peleus.mot/MotivatedAgent#getMotivations()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsReturnType="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showAssociationMember="true" showMethods="true" showAttributes="true" showLiterals="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.0/@sourceConnections.3" name="GoalGenerationFunction" location="449,425" size="211,165" id="org.soton.peleus.mot/GoalGenerationFunction" runTimeClassModel="addBeliefToGoalMapping(Ljason.asSyntax.Literal;Ljason.asSyntax.Trigger;),generateGoals(Ljason.bb.BeliefBase;),removeBeliefToGoalMapping(Ljason.asSyntax.Literal;),removeGoal(Ljason.asSyntax.Trigger;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="308,72">
+      <children xsi:type="editmodel:MethodEditModel" name="addBeliefToGoalMapping" id="org.soton.peleus.mot/GoalGenerationFunction#addBeliefToGoalMapping(Ljason.asSyntax.Literal;Ljason.asSyntax.Trigger;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeBeliefToGoalMapping" id="org.soton.peleus.mot/GoalGenerationFunction#removeBeliefToGoalMapping(Ljason.asSyntax.Literal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeGoal" id="org.soton.peleus.mot/GoalGenerationFunction#removeGoal(Ljason.asSyntax.Trigger;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="generateGoals" id="org.soton.peleus.mot/GoalGenerationFunction#generateGoals(Ljason.bb.BeliefBase;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot/GoalGenerationFunction->jason.asSyntax/Literal" source="//@children.2" target="//@children.5" targetEnd="//@children.2/@sourceConnections.0/@children.2" label="//@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="41,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="211,10" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="10,166"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsReturnType="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showAssociationMember="true" showMethods="true" showAttributes="true" showLiterals="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.0/@sourceConnections.2" name="IntensityUpdateFunction" location="447,285" size="216,147" id="org.soton.peleus.mot/IntensityUpdateFunction" runTimeClassModel="addBeliefToIntegerMapping(Ljason.asSyntax.Literal;Ljason.asSyntax.NumberTerm;),updateIntensity(Ljason.bb.BeliefBase;),removeBeliefToIntegerMapping(Ljason.asSyntax.Literal;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="291,54">
+      <children xsi:type="editmodel:MethodEditModel" name="addBeliefToIntegerMapping" id="org.soton.peleus.mot/IntensityUpdateFunction#addBeliefToIntegerMapping(Ljason.asSyntax.Literal;Ljason.asSyntax.NumberTerm;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeBeliefToIntegerMapping" id="org.soton.peleus.mot/IntensityUpdateFunction#removeBeliefToIntegerMapping(Ljason.asSyntax.Literal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="updateIntensity" id="org.soton.peleus.mot/IntensityUpdateFunction#updateIntensity(Ljason.bb.BeliefBase;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot/IntensityUpdateFunction->jason.asSyntax/Literal" source="//@children.3" target="//@children.5" targetEnd="//@children.3/@sourceConnections.0/@children.2" label="//@children.3/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="41,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="206,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,156"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot/IntensityUpdateFunction->jason.bb/BeliefBase" source="//@children.3" target="//@children.6" targetEnd="//@children.3/@sourceConnections.1/@children.2" label="//@children.3/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="41,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="216,73" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,128"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsReturnType="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showAssociationMember="true" showMethods="true" showAttributes="true" showLiterals="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.0/@sourceConnections.1" name="MitigationFunction" location="449,593" size="212,147" id="org.soton.peleus.mot/MitigationFunction" runTimeClassModel="mitigate(Ljason.bb.BeliefBase;),addBeliefToIntegerMapping(Ljason.asSyntax.Literal;Ljason.asSyntax.NumberTerm;),removeBeliefToIntegerMapping(Ljason.asSyntax.Literal;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="291,54">
+      <children xsi:type="editmodel:MethodEditModel" name="addBeliefToIntegerMapping" id="org.soton.peleus.mot/MitigationFunction#addBeliefToIntegerMapping(Ljason.asSyntax.Literal;Ljason.asSyntax.NumberTerm;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="removeBeliefToIntegerMapping" id="org.soton.peleus.mot/MitigationFunction#removeBeliefToIntegerMapping(Ljason.asSyntax.Literal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mitigate" id="org.soton.peleus.mot/MitigationFunction#mitigate(Ljason.bb.BeliefBase;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="org.soton.peleus.mot/MitigationFunction->jason.asSyntax/Literal" source="//@children.4" target="//@children.5" targetEnd="//@children.4/@sourceConnections.0/@children.2" label="//@children.4/@sourceConnections.0/@children.0" sourceEnd="//@children.4/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«import»" size="41,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="212,10" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="10,166"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsReturnType="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showAssociationMember="true" showMethods="true" showAttributes="true" showLiterals="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.0 //@children.2/@sourceConnections.0 //@children.4/@sourceConnections.0" name="Literal" location="700,50" size="246,166" id="jason.asSyntax/Literal" runTimeClassModel="clone(),Literal(),equals(Ljava.lang.Object;),lTrue,newFromListOfTerms(Ljason.asSyntax.ListTerm;),lPos,isInternalAction(),setNegated(Z),serialVersionUID,logicalConsequence(Ljason.asSemantics.Agent;Ljason.asSemantics.Unifier;),toString(),getAsDOM(Lorg.w3c.dom.Document;),type,calcHashCode(),Literal(ZLjava.lang.String;),lNeg,negated(),Literal(Ljason.asSyntax.Literal;),getPredicateIndicator(),isLiteral(),parseLiteral(Ljava.lang.String;),getAsListOfTerms(),lFalse,logger,Literal(ZLjason.asSyntax.Pred;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="125,126">
+      <children xsi:type="editmodel:AttributeEditModel" name="lFalse" id="jason.asSyntax/Literal#lFalse"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lNeg" id="jason.asSyntax/Literal#lNeg"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lPos" id="jason.asSyntax/Literal#lPos"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lTrue" id="jason.asSyntax/Literal#lTrue"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="logger" id="jason.asSyntax/Literal#logger"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="serialVersionUID" id="jason.asSyntax/Literal#serialVersionUID"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="type" id="jason.asSyntax/Literal#type"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="223,324"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showAssociationMember="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.3/@sourceConnections.1" name="BeliefBase" location="780,230" size="176,327" id="jason.bb/BeliefBase" runTimeClassModel="abolish(Ljason.asSyntax.PredicateIndicator;),stop(),contains(Ljason.asSyntax.Literal;),size(),getAsDOM(Lorg.w3c.dom.Document;),getRelevant(Ljason.asSyntax.Literal;),tSelf,add(Ljason.asSyntax.Literal;),tPercept,init(Ljason.asSemantics.Agent;[Ljava.lang.String;),remove(Ljason.asSyntax.Literal;),getPercepts(),getAll()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="92,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="tPercept" id="jason.bb/BeliefBase#tPercept"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tSelf" id="jason.bb/BeliefBase#tSelf"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="128,198">
+      <children xsi:type="editmodel:MethodEditModel" name="abolish" id="jason.bb/BeliefBase#abolish(Ljason.asSyntax.PredicateIndicator;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="add" id="jason.bb/BeliefBase#add(Ljason.asSyntax.Literal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="contains" id="jason.bb/BeliefBase#contains(Ljason.asSyntax.Literal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAll" id="jason.bb/BeliefBase#getAll()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAsDOM" id="jason.bb/BeliefBase#getAsDOM(Lorg.w3c.dom.Document;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPercepts" id="jason.bb/BeliefBase#getPercepts()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getRelevant" id="jason.bb/BeliefBase#getRelevant(Ljason.asSyntax.Literal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="init" id="jason.bb/BeliefBase#init(Ljason.asSemantics.Agent;[Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="remove" id="jason.bb/BeliefBase#remove(Ljason.asSyntax.Literal;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="size" id="jason.bb/BeliefBase#size()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="stop" id="jason.bb/BeliefBase#stop()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showAssociationMember="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" level="-1" showScope="InPackage" properties="wireOptions=1"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="10,10" gridOrigin="0,0" rulerUnit="pixel">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showMethodsReturnType="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showInterfaceStereotype="true" showAssociationMember="true" showMethods="true" showAttributes="true" showLiterlas="true"/>
+</editmodel:ClassDiagramEditModel>
