@@ -13,7 +13,7 @@ Motivation navigate {
 	}
 	
 	Mitigation org.kcl.nestor.mot.impl.MitigationFunctionImpl {
-		not waypoint(X,Y) -> -10;
+		at(X,Y) & waypoint(X,Y) -> -1000;
 	}
 }
 

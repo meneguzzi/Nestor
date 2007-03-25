@@ -52,7 +52,7 @@ public class PredictiveBeliefBase extends DefaultBeliefBase {
 		for(Iterator<Literal> i = originalBeliefBase.iterator(); i.hasNext(); ) {
 			Literal literal = i.next();
 			Literal original = this.contains(literal);
-			if(!original.equals(literal)) {
+			if(original == null || !original.equals(literal)) {
 				literal = (Literal) literal.clone();
 				literal.setNegated(literal.negated());
 				delta.add(literal);

@@ -19,7 +19,7 @@ public interface JasonScript {
 	 * @param time The point in time for which the events are to be returned.
 	 * @return A list of <code>jason.asSyntax.Rule</code>.
 	 */
-	public List<Rule> getEvents(int time);
+	public List<Literal> getEvents(int time);
 	
 	/**
 	 * Conveniency method to allow the list of events to be expressed as literals
@@ -33,7 +33,7 @@ public interface JasonScript {
 	 * @param time The point in time for which the events are to be added.
 	 * @param events A list of <code>jason.asSyntax.Rule</code>.
 	 */
-	public void addEvents(int time, List<Rule> events);
+	public void addEvents(int time, List<Literal> events);
 	
 	/**
 	 * Adds a single event to the specified point in time.

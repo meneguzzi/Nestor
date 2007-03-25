@@ -9,6 +9,35 @@ import jason.asSyntax.NumberTerm;
 import jason.asSyntax.NumberTermImpl;
 import jason.asSyntax.Term;
 
+/**
+ * 
+  <p>Internal action: <b><code>.distance</code></b>.
+  
+  <p>Description: an internal action that calculates the distance between two coordinates in a
+  grid considering only vertical and horizontal movement.
+  
+  <p>Parameters:<ul>
+  
+  <li>+ x1 (number): the beginning x coordinate.<br/>
+  
+  <li>+ y1 (number): the beginning y coordinate.<br/>
+  
+  <li>+ x2 (number): the final x coordinate.<br/>
+  
+  <li>+ y2 (number): the final y coordinate.<br/>
+
+  <li>- distance (number): the distance between the two coordinates.<br/>
+
+  </ul>
+  
+  <p>Examples:<ul> 
+
+  <li> <code>.distance(1,1,2,2,D)</code>: unifies D with the number 2, which is the distance (1,1) and (2,2).</li>
+
+  </ul>
+ * @author meneguzz
+ *
+ */
 public class distance extends DefaultInternalAction {
 	private static final Logger logger = Logger.getLogger(DefaultInternalAction.class.getName());
 	@Override

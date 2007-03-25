@@ -1,0 +1,9 @@
+MAS simple {
+
+    environment: 
+         org.kcl.nestor.env.scripted.ScriptedEnvironment("scripts/generatedScript.xml", "rover.act")
+         
+    agents:
+		 simple_rover [motivations="rover.mot"]
+         			agentClass org.kcl.nestor.mot.gui.MotivatedAgentWrapper;
+}

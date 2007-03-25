@@ -3,6 +3,7 @@
  */
 package org.kcl.nestor.script;
 
+import jason.asSyntax.Literal;
 import jason.asSyntax.Rule;
 import jason.asSyntax.parser.ParseException;
 import jason.asSyntax.parser.as2j;
@@ -28,7 +29,7 @@ public class JasonScriptContentHandler extends DefaultHandler {
 	public static final String ATTR_TIME="time";
 	
 	protected JasonScript jasonScript;
-	protected List<Rule> currentEventList;
+	protected List<Literal> currentEventList;
 	protected int currentTime;
 	protected as2j jasonParser;
 	protected CharArrayReader charArrayReader;
@@ -64,7 +65,7 @@ public class JasonScriptContentHandler extends DefaultHandler {
 			} catch (Exception e) {
 				throw new SAXException("Invalid "+ATTR_TIME+" attribute", e);
 			}
-			currentEventList = new ArrayList<Rule>();
+			currentEventList = new ArrayList<Literal>();
 		}
 	}
 

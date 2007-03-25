@@ -1,0 +1,4015 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agent>
+	<beliefs>
+		<literal>
+			<structure functor="wastedDistance">
+				<arguments>
+					<number-term>0</number-term>
+				</arguments>
+				<annotations>
+					<list-term>
+						<literal sep="">
+							<structure functor="source">
+								<arguments>
+									<literal>
+										<structure functor="self" />
+									</literal>
+								</arguments>
+							</structure>
+						</literal>
+					</list-term>
+				</annotations>
+			</structure>
+		</literal>
+		<literal>
+			<structure functor="battery">
+				<arguments>
+					<number-term>30</number-term>
+				</arguments>
+				<annotations>
+					<list-term>
+						<literal sep="">
+							<structure functor="source">
+								<arguments>
+									<literal>
+										<structure functor="percept" />
+									</literal>
+								</arguments>
+							</structure>
+						</literal>
+					</list-term>
+				</annotations>
+			</structure>
+		</literal>
+		<literal>
+			<structure functor="distance">
+				<arguments>
+					<number-term>0</number-term>
+				</arguments>
+				<annotations>
+					<list-term>
+						<literal sep="">
+							<structure functor="source">
+								<arguments>
+									<literal>
+										<structure functor="self" />
+									</literal>
+								</arguments>
+							</structure>
+						</literal>
+					</list-term>
+				</annotations>
+			</structure>
+		</literal>
+		<literal>
+			<structure functor="numberOfCharges">
+				<arguments>
+					<number-term>0</number-term>
+				</arguments>
+				<annotations>
+					<list-term>
+						<literal sep="">
+							<structure functor="source">
+								<arguments>
+									<literal>
+										<structure functor="self" />
+									</literal>
+								</arguments>
+							</structure>
+						</literal>
+					</list-term>
+				</annotations>
+			</structure>
+		</literal>
+		<literal>
+			<structure functor="chargeStation">
+				<arguments>
+					<number-term>10</number-term>
+					<number-term>10</number-term>
+				</arguments>
+				<annotations>
+					<list-term>
+						<literal sep="">
+							<structure functor="source">
+								<arguments>
+									<literal>
+										<structure functor="self" />
+									</literal>
+								</arguments>
+							</structure>
+						</literal>
+					</list-term>
+				</annotations>
+			</structure>
+		</literal>
+		<literal>
+			<structure functor="at">
+				<arguments>
+					<number-term>0</number-term>
+					<number-term>0</number-term>
+				</arguments>
+				<annotations>
+					<list-term>
+						<literal sep="">
+							<structure functor="source">
+								<arguments>
+									<literal>
+										<structure functor="percept" />
+									</literal>
+								</arguments>
+							</structure>
+						</literal>
+					</list-term>
+				</annotations>
+			</structure>
+		</literal>
+		<literal>
+			<structure functor="chargeDistance">
+				<arguments>
+					<number-term>0</number-term>
+				</arguments>
+				<annotations>
+					<list-term>
+						<literal sep="">
+							<structure functor="source">
+								<arguments>
+									<literal>
+										<structure functor="self" />
+									</literal>
+								</arguments>
+							</structure>
+						</literal>
+					</list-term>
+				</annotations>
+			</structure>
+		</literal>
+		<literal>
+			<structure functor="previousDistance">
+				<arguments>
+					<number-term>0</number-term>
+				</arguments>
+				<annotations>
+					<list-term>
+						<literal sep="">
+							<structure functor="source">
+								<arguments>
+									<literal>
+										<structure functor="self" />
+									</literal>
+								</arguments>
+							</structure>
+						</literal>
+					</list-term>
+				</annotations>
+			</structure>
+		</literal>
+		<literal>
+			<structure functor="visitedWaypoints">
+				<arguments>
+					<list-term />
+				</arguments>
+				<annotations>
+					<list-term>
+						<literal sep="">
+							<structure functor="source">
+								<arguments>
+									<literal>
+										<structure functor="self" />
+									</literal>
+								</arguments>
+							</structure>
+						</literal>
+					</list-term>
+				</annotations>
+			</structure>
+		</literal>
+	</beliefs>
+	<plans>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="pat">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="atomic" />
+								</literal>
+								<literal sep=",">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+">
+				<literal>
+					<structure functor="at">
+						<arguments>
+							<var-term functor="X" />
+							<var-term functor="Y" />
+						</arguments>
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="percept" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<expression operator="not " type="logical">
+					<right>
+						<literal>
+							<structure functor="at">
+								<arguments>
+									<var-term functor="Z" />
+									<var-term functor="W" />
+								</arguments>
+								<annotations>
+									<list-term>
+										<literal sep="">
+											<structure
+												functor="source">
+												<arguments>
+													<literal>
+														<structure
+															functor="self" />
+													</literal>
+												</arguments>
+											</structure>
+										</literal>
+									</list-term>
+								</annotations>
+							</structure>
+						</literal>
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Now that I know where I am, I can
+									start working"
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure
+							functor="org.kcl.nestor.agent.action.export_agent_program">
+							<arguments>
+								<string-term>"agent.xml"</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="+">
+					<literal>
+						<structure functor="at">
+							<arguments>
+								<var-term functor="X" />
+								<var-term functor="Y" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="pbattery">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="atomic" />
+								</literal>
+								<literal sep=",">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+">
+				<literal>
+					<structure functor="battery">
+						<arguments>
+							<var-term functor="X" />
+						</arguments>
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="percept" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<expression operator="not " type="logical">
+					<right>
+						<literal>
+							<structure functor="battery">
+								<arguments>
+									<var-term functor="B" />
+								</arguments>
+								<annotations>
+									<list-term>
+										<literal sep="">
+											<structure
+												functor="source">
+												<arguments>
+													<literal>
+														<structure
+															functor="self" />
+													</literal>
+												</arguments>
+											</structure>
+										</literal>
+									</list-term>
+								</annotations>
+							</structure>
+						</literal>
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Now that I know my battery, I can
+									start moving"
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="+">
+					<literal>
+						<structure functor="battery">
+							<arguments>
+								<var-term functor="X" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__0">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="move">
+						<arguments>
+							<var-term functor="X" />
+							<var-term functor="Y" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<literal>
+					<structure functor="at">
+						<arguments>
+							<var-term functor="X" />
+							<var-term functor="Y" />
+						</arguments>
+					</structure>
+				</literal>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>"Arrived "</string-term>
+								<literal>
+									<structure functor="at">
+										<arguments>
+											<var-term functor="X" />
+											<var-term functor="Y" />
+										</arguments>
+									</structure>
+								</literal>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__1">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="endSimulation" />
+				</literal>
+			</trigger>
+			<context>
+				<expression operator="not " type="logical">
+					<right>
+						<literal>
+							<structure functor="waypoint">
+								<arguments>
+									<var-term functor="_" />
+									<var-term functor="_" />
+								</arguments>
+								<annotations>
+									<list-term>
+										<literal sep="">
+											<structure
+												functor="source">
+												<arguments>
+													<literal>
+														<structure
+															functor="self" />
+													</literal>
+												</arguments>
+											</structure>
+										</literal>
+									</list-term>
+								</annotations>
+							</structure>
+						</literal>
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Finished going through waypoints"
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="?">
+					<literal>
+						<structure functor="visitedWaypoints">
+							<arguments>
+								<var-term functor="Waypoints" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".length">
+							<arguments>
+								<var-term functor="Waypoints" />
+								<var-term functor="L" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>"Visited "</string-term>
+								<var-term functor="L" />
+								<string-term>" waypoints"</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="?">
+					<literal>
+						<structure functor="distance">
+							<arguments>
+								<var-term functor="Distance" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Total distance: "
+								</string-term>
+								<var-term functor="Distance" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="?">
+					<literal>
+						<structure functor="wastedDistance">
+							<arguments>
+								<var-term functor="Wasted" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Wasted Distance: "
+								</string-term>
+								<var-term functor="Wasted" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="?">
+					<literal>
+						<structure functor="numberOfCharges">
+							<arguments>
+								<var-term functor="Charges" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>"Recharged "</string-term>
+								<var-term functor="Charges" />
+								<string-term>" times"</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="?">
+					<literal>
+						<structure functor="chargeDistance">
+							<arguments>
+								<var-term functor="ChargeDistance" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>"Moved "</string-term>
+								<var-term functor="ChargeDistance" />
+								<string-term>
+									" to recharge"
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor="rover.act.recordStats">
+							<arguments>
+								<var-term functor="L" />
+								<var-term functor="Distance" />
+								<var-term functor="Wasted" />
+								<var-term functor="ChargeDistance" />
+								<string-term>"stats"</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"**********************************"
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".stopMAS" />
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__2">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="endSimulation" />
+				</literal>
+			</trigger>
+			<body>
+				<body-literal type="?">
+					<literal>
+						<structure functor="waypoint">
+							<arguments>
+								<var-term functor="X" />
+								<var-term functor="Y" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Still have pending waypoints,
+									failing."
+								</string-term>
+								<literal>
+									<structure functor="waypoint">
+										<arguments>
+											<var-term functor="X" />
+											<var-term functor="Y" />
+										</arguments>
+									</structure>
+								</literal>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="+">
+					<literal>
+						<structure functor="endSimulation" />
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__3">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+">
+				<literal>
+					<structure functor="endSimulation">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="percept" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</trigger>
+			<body>
+				<body-literal type="!">
+					<literal>
+						<structure functor="endSimulation" />
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__4">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="?">
+				<literal>
+					<structure functor="canGo">
+						<arguments>
+							<var-term functor="X" />
+							<var-term functor="Y" />
+							<var-term functor="Xat" />
+							<var-term functor="Yat" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<literal>
+					<structure functor="battery">
+						<arguments>
+							<var-term functor="Batt" />
+						</arguments>
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor="rover.act.distance">
+							<arguments>
+								<var-term functor="X" />
+								<var-term functor="Y" />
+								<var-term functor="Xat" />
+								<var-term functor="Yat" />
+								<var-term functor="Dist" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<expression operator=" &lt; " type="relational">
+						<left>
+							<var-term functor="Dist" />
+						</left>
+						<right>
+							<var-term functor="Batt" />
+						</right>
+					</expression>
+				</body-literal>
+			</body>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="pbattery1">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="atomic" />
+								</literal>
+								<literal sep=",">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+">
+				<literal>
+					<structure functor="battery">
+						<arguments>
+							<var-term functor="X" />
+						</arguments>
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="percept" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<literal>
+					<structure functor="battery">
+						<arguments>
+							<var-term functor="B" />
+						</arguments>
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</context>
+			<body>
+				<body-literal type="-">
+					<literal>
+						<structure functor="battery">
+							<arguments>
+								<var-term functor="B" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="+">
+					<literal>
+						<structure functor="battery">
+							<arguments>
+								<var-term functor="X" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="pcheckcharge1">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="atomic" />
+								</literal>
+								<literal sep=",">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="checkCharge">
+						<arguments>
+							<var-term functor="Dist" />
+							<var-term functor="Batt" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<expression operator=" &gt;= " type="relational">
+					<left>
+						<var-term functor="Dist" />
+					</left>
+					<right>
+						<var-term functor="Batt" />
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal type="?">
+					<literal>
+						<structure functor="chargeStation">
+							<arguments>
+								<var-term functor="Xcharge" />
+								<var-term functor="Ycharge" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Battery critical, charging station
+									is "
+								</string-term>
+								<var-term functor="Dist" />
+								<string-term>
+									" units away, battery is "
+								</string-term>
+								<var-term functor="Batt" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="!">
+					<literal>
+						<structure functor="recharge">
+							<arguments>
+								<var-term functor="Xcharge" />
+								<var-term functor="Ycharge" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__5">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="-">
+				<literal>
+					<structure functor="charging" />
+				</literal>
+			</trigger>
+			<context>
+				<literal>
+					<structure functor="battery">
+						<arguments>
+							<var-term functor="NewBatt" />
+						</arguments>
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="percept" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Recharged, battery is now "
+								</string-term>
+								<var-term functor="NewBatt" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="?">
+					<literal>
+						<structure functor="numberOfCharges">
+							<arguments>
+								<var-term functor="Charges" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="-">
+					<literal>
+						<structure functor="numberOfCharges">
+							<arguments>
+								<var-term functor="Charges" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="+">
+					<literal>
+						<structure functor="numberOfCharges">
+							<arguments>
+								<expression operator="+"
+									type="arithmetic">
+									<left>
+										<var-term functor="Charges" />
+									</left>
+									<right>
+										<number-term>1</number-term>
+									</right>
+								</expression>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="pcheckcharge2">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="atomic" />
+								</literal>
+								<literal sep=",">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="checkCharge">
+						<arguments>
+							<var-term functor="Dist" />
+							<var-term functor="Batt" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<expression operator=" &lt; " type="relational">
+					<left>
+						<var-term functor="Dist" />
+					</left>
+					<right>
+						<var-term functor="Batt" />
+					</right>
+				</expression>
+			</context>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="precharge">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="atomic" />
+								</literal>
+								<literal sep=",">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="recharge">
+						<arguments>
+							<var-term functor="Xcharge" />
+							<var-term functor="Ycharge" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<expression operator="not " type="logical">
+					<right>
+						<literal>
+							<structure functor="charging" />
+						</literal>
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Moving to charge station"
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="+">
+					<literal>
+						<structure functor="charging" />
+					</literal>
+				</body-literal>
+				<body-literal type="!">
+					<literal>
+						<structure functor="suspendGoals" />
+					</literal>
+				</body-literal>
+				<body-literal type="?">
+					<literal>
+						<structure functor="distance">
+							<arguments>
+								<var-term functor="Distance" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="!">
+					<literal>
+						<structure functor="move">
+							<arguments>
+								<var-term functor="Xcharge" />
+								<var-term functor="Ycharge" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal>
+						<structure functor="charge" />
+					</literal>
+				</body-literal>
+				<body-literal type="?">
+					<literal>
+						<structure functor="distance">
+							<arguments>
+								<var-term functor="Distance2" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="?">
+					<literal>
+						<structure functor="chargeDistance">
+							<arguments>
+								<var-term functor="ChargeDistance" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="-">
+					<literal>
+						<structure functor="chargeDistance">
+							<arguments>
+								<var-term functor="ChargeDistance" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="+">
+					<literal>
+						<structure functor="chargeDistance">
+							<arguments>
+								<expression operator="+"
+									type="arithmetic">
+									<left>
+										<var-term
+											functor="ChargeDistance" />
+									</left>
+									<right>
+										<expression operator="-"
+											type="arithmetic">
+											<left>
+												<var-term
+													functor="Distance2" />
+											</left>
+											<right>
+												<var-term
+													functor="Distance" />
+											</right>
+										</expression>
+									</right>
+								</expression>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="-">
+					<literal>
+						<structure functor="charging" />
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Just finished charging, checking
+									for pending waypoints."
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="!">
+					<literal>
+						<structure functor="queryWaypoints" />
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__6">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="recharge">
+						<arguments>
+							<var-term functor="Xcharge" />
+							<var-term functor="Ycharge" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<literal>
+					<structure functor="charging" />
+				</literal>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Already going to charge station."
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="psuspendGoals">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="atomic" />
+								</literal>
+								<literal sep=",">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="suspendGoals" />
+				</literal>
+			</trigger>
+			<context>
+				<literal>
+					<structure functor="moving" />
+				</literal>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Dropping intention to "
+								</string-term>
+								<literal>
+									<structure functor="goToWaypoint">
+										<arguments>
+											<var-term functor="X" />
+											<var-term functor="Y" />
+										</arguments>
+									</structure>
+								</literal>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".drop_intention">
+							<arguments>
+								<literal>
+									<structure functor="goToWaypoint">
+										<arguments>
+											<var-term functor="_" />
+											<var-term functor="_" />
+										</arguments>
+									</structure>
+								</literal>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".drop_desire">
+							<arguments>
+								<literal>
+									<structure functor="goToWaypoint">
+										<arguments>
+											<var-term functor="_" />
+											<var-term functor="_" />
+										</arguments>
+									</structure>
+								</literal>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".drop_intention">
+							<arguments>
+								<literal>
+									<structure functor="move">
+										<arguments>
+											<var-term functor="_" />
+											<var-term functor="_" />
+										</arguments>
+									</structure>
+								</literal>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".drop_desire">
+							<arguments>
+								<literal>
+									<structure functor="move">
+										<arguments>
+											<var-term functor="_" />
+											<var-term functor="_" />
+										</arguments>
+									</structure>
+								</literal>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".drop_intention">
+							<arguments>
+								<literal>
+									<structure functor="doMove">
+										<arguments>
+											<var-term functor="_" />
+											<var-term functor="_" />
+										</arguments>
+									</structure>
+								</literal>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".drop_desire">
+							<arguments>
+								<literal>
+									<structure functor="doMove">
+										<arguments>
+											<var-term functor="_" />
+											<var-term functor="_" />
+										</arguments>
+									</structure>
+								</literal>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Intention to "
+								</string-term>
+								<literal>
+									<structure functor="goToWaypoint">
+										<arguments>
+											<var-term functor="X" />
+											<var-term functor="Y" />
+										</arguments>
+									</structure>
+								</literal>
+								<string-term>
+									" dropped, releasing locks"
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Locks released"
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="?">
+					<literal>
+						<structure functor="distance">
+							<arguments>
+								<var-term functor="Distance" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="?">
+					<literal>
+						<structure functor="previousDistance">
+							<arguments>
+								<var-term functor="PreviousDistance" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<expression operator=" = " type="relational">
+						<left>
+							<var-term functor="WastedDistance" />
+						</left>
+						<right>
+							<expression operator="-"
+								type="arithmetic">
+								<left>
+									<var-term functor="Distance" />
+								</left>
+								<right>
+									<var-term
+										functor="PreviousDistance" />
+								</right>
+							</expression>
+						</right>
+					</expression>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>"Wasted: "</string-term>
+								<var-term functor="WastedDistance" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="?">
+					<literal>
+						<structure functor="wastedDistance">
+							<arguments>
+								<var-term functor="Wasted" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="-">
+					<literal>
+						<structure functor="wastedDistance">
+							<arguments>
+								<var-term functor="Wasted" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="+">
+					<literal>
+						<structure functor="wastedDistance">
+							<arguments>
+								<expression operator="+"
+									type="arithmetic">
+									<left>
+										<var-term functor="Wasted" />
+									</left>
+									<right>
+										<expression operator="-"
+											type="arithmetic">
+											<left>
+												<var-term
+													functor="Distance" />
+											</left>
+											<right>
+												<var-term
+													functor="PreviousDistance" />
+											</right>
+										</expression>
+									</right>
+								</expression>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="-">
+					<literal>
+						<structure functor="moving" />
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__7">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="suspendGoals" />
+				</literal>
+			</trigger>
+			<context>
+				<expression operator="not " type="logical">
+					<right>
+						<literal>
+							<structure functor="moving" />
+						</literal>
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"No intentions to be suspended."
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="pwaypoint1">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="atomic" />
+								</literal>
+								<literal sep=",">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+">
+				<literal>
+					<structure functor="waypoint">
+						<arguments>
+							<var-term functor="X" />
+							<var-term functor="Y" />
+						</arguments>
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="percept" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<expression operator=" &amp; " type="logical">
+					<left>
+						<expression operator="not " type="logical">
+							<right>
+								<literal>
+									<structure functor="moving" />
+								</literal>
+							</right>
+						</expression>
+					</left>
+					<right>
+						<expression operator="not " type="logical">
+							<right>
+								<literal>
+									<structure functor="charging" />
+								</literal>
+							</right>
+						</expression>
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"New waypoint "
+								</string-term>
+								<literal>
+									<structure functor="waypoint">
+										<arguments>
+											<var-term functor="X" />
+											<var-term functor="Y" />
+										</arguments>
+									</structure>
+								</literal>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="+">
+					<literal>
+						<structure functor="waypoint">
+							<arguments>
+								<var-term functor="X" />
+								<var-term functor="Y" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="!">
+					<literal>
+						<structure functor="goToWaypoint">
+							<arguments>
+								<literal>
+									<structure functor="waypoint">
+										<arguments>
+											<var-term functor="X" />
+											<var-term functor="Y" />
+										</arguments>
+									</structure>
+								</literal>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="pwaypoint2">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="atomic" />
+								</literal>
+								<literal sep=",">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+">
+				<literal>
+					<structure functor="waypoint">
+						<arguments>
+							<var-term functor="X" />
+							<var-term functor="Y" />
+						</arguments>
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="percept" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<expression operator=" | " type="logical">
+					<left>
+						<literal>
+							<structure functor="moving" />
+						</literal>
+					</left>
+					<right>
+						<literal>
+							<structure functor="charging" />
+						</literal>
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"New waypoint "
+								</string-term>
+								<literal>
+									<structure functor="waypoint">
+										<arguments>
+											<var-term functor="X" />
+											<var-term functor="Y" />
+										</arguments>
+									</structure>
+								</literal>
+								<string-term>
+									" but I'm busy, storing it."
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="+">
+					<literal>
+						<structure functor="waypoint">
+							<arguments>
+								<var-term functor="X" />
+								<var-term functor="Y" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__8">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="queryWaypoints" />
+				</literal>
+			</trigger>
+			<context>
+				<expression operator=" &amp; " type="logical">
+					<left>
+						<literal>
+							<structure functor="waypoint">
+								<arguments>
+									<var-term functor="X" />
+									<var-term functor="Y" />
+								</arguments>
+								<annotations>
+									<list-term>
+										<literal sep="">
+											<structure
+												functor="source">
+												<arguments>
+													<literal>
+														<structure
+															functor="self" />
+													</literal>
+												</arguments>
+											</structure>
+										</literal>
+									</list-term>
+								</annotations>
+							</structure>
+						</literal>
+					</left>
+					<right>
+						<expression operator="not " type="logical">
+							<right>
+								<literal>
+									<structure functor="moving" />
+								</literal>
+							</right>
+						</expression>
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Found a pending waypoint, "
+								</string-term>
+								<literal>
+									<structure functor="waypoint">
+										<arguments>
+											<var-term functor="X" />
+											<var-term functor="Y" />
+										</arguments>
+									</structure>
+								</literal>
+								<string-term>
+									" trying to deal with it."
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="!!">
+					<literal>
+						<structure functor="goToWaypoint">
+							<arguments>
+								<literal>
+									<structure functor="waypoint">
+										<arguments>
+											<var-term functor="X" />
+											<var-term functor="Y" />
+										</arguments>
+									</structure>
+								</literal>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Done querying waypoints"
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__9">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="queryWaypoints" />
+				</literal>
+			</trigger>
+			<context>
+				<literal>
+					<structure functor="moving" />
+				</literal>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"I'm already moving, it's pointless
+									to query for more waypoints."
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__10">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="queryWaypoints" />
+				</literal>
+			</trigger>
+			<context>
+				<expression operator=" &amp; " type="logical">
+					<left>
+						<expression operator="not " type="logical">
+							<right>
+								<literal>
+									<structure functor="waypoint">
+										<arguments>
+											<var-term functor="X" />
+											<var-term functor="Y" />
+										</arguments>
+										<annotations>
+											<list-term>
+												<literal sep="">
+													<structure
+														functor="source">
+														<arguments>
+															<literal>
+																<structure
+																	functor="self" />
+															</literal>
+														</arguments>
+													</structure>
+												</literal>
+											</list-term>
+										</annotations>
+									</structure>
+								</literal>
+							</right>
+						</expression>
+					</left>
+					<right>
+						<literal>
+							<structure functor="endSimulation">
+								<annotations>
+									<list-term>
+										<literal sep="">
+											<structure
+												functor="source">
+												<arguments>
+													<literal>
+														<structure
+															functor="self" />
+													</literal>
+												</arguments>
+											</structure>
+										</literal>
+									</list-term>
+								</annotations>
+							</structure>
+						</literal>
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"It seems I've visited the last
+									waypoint, ending simulation."
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="!">
+					<literal>
+						<structure functor="endSimulation" />
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__11">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="queryWaypoints" />
+				</literal>
+			</trigger>
+			<context>
+				<expression operator="not " type="logical">
+					<right>
+						<literal>
+							<structure functor="waypoint">
+								<arguments>
+									<var-term functor="X" />
+									<var-term functor="Y" />
+								</arguments>
+								<annotations>
+									<list-term>
+										<literal sep="">
+											<structure
+												functor="source">
+												<arguments>
+													<literal>
+														<structure
+															functor="self" />
+													</literal>
+												</arguments>
+											</structure>
+										</literal>
+									</list-term>
+								</annotations>
+							</structure>
+						</literal>
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"No pending waypoints."
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__12">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="goToWaypoint">
+						<arguments>
+							<var-term functor="W" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<expression operator=" | " type="logical">
+					<left>
+						<literal>
+							<structure functor="charging" />
+						</literal>
+					</left>
+					<right>
+						<literal>
+							<structure functor="moving" />
+						</literal>
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Tried to go to "
+								</string-term>
+								<var-term functor="W" />
+								<string-term>
+									" but I'm busy, something is wrong
+									here"
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__13">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="goToWaypoint">
+						<arguments>
+							<literal>
+								<structure functor="waypoint">
+									<arguments>
+										<var-term functor="X" />
+										<var-term functor="Y" />
+									</arguments>
+								</structure>
+							</literal>
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<expression operator=" &amp; " type="logical">
+					<left>
+						<expression operator="not " type="logical">
+							<right>
+								<literal>
+									<structure functor="charging" />
+								</literal>
+							</right>
+						</expression>
+					</left>
+					<right>
+						<expression operator="not " type="logical">
+							<right>
+								<literal>
+									<structure functor="moving" />
+								</literal>
+							</right>
+						</expression>
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal type="+">
+					<literal>
+						<structure functor="moving" />
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Going to waypoint "
+								</string-term>
+								<literal>
+									<structure functor="waypoint">
+										<arguments>
+											<var-term functor="X" />
+											<var-term functor="Y" />
+										</arguments>
+									</structure>
+								</literal>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="?">
+					<literal>
+						<structure functor="distance">
+							<arguments>
+								<var-term functor="D" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="-">
+					<literal>
+						<structure functor="previousDistance">
+							<arguments>
+								<var-term functor="Do" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="+">
+					<literal>
+						<structure functor="previousDistance">
+							<arguments>
+								<var-term functor="D" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="!">
+					<literal>
+						<structure functor="move">
+							<arguments>
+								<var-term functor="X" />
+								<var-term functor="Y" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Finished move to waypoint "
+								</string-term>
+								<literal>
+									<structure functor="waypoint">
+										<arguments>
+											<var-term functor="X" />
+											<var-term functor="Y" />
+										</arguments>
+									</structure>
+								</literal>
+								<string-term>
+									" releasing locks"
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="-">
+					<literal>
+						<structure functor="waypoint">
+							<arguments>
+								<var-term functor="X" />
+								<var-term functor="Y" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="-">
+					<literal>
+						<structure functor="moving" />
+					</literal>
+				</body-literal>
+				<body-literal type="!!">
+					<literal>
+						<structure functor="queryWaypoints" />
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__14">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="-">
+				<literal>
+					<structure functor="waypoint">
+						<arguments>
+							<var-term functor="X" />
+							<var-term functor="Y" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>"Removing "</string-term>
+								<literal>
+									<structure functor="waypoint">
+										<arguments>
+											<var-term functor="X" />
+											<var-term functor="Y" />
+										</arguments>
+									</structure>
+								</literal>
+								<string-term>
+									" from pending waypoints"
+								</string-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="?">
+					<literal>
+						<structure functor="visitedWaypoints">
+							<arguments>
+								<var-term functor="W" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="-">
+					<literal>
+						<structure functor="visitedWaypoints">
+							<arguments>
+								<var-term functor="W" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="+">
+					<literal>
+						<structure functor="visitedWaypoints">
+							<arguments>
+								<list-term>
+									<literal sep="">
+										<structure functor="waypoint">
+											<arguments>
+												<var-term functor="X" />
+												<var-term functor="Y" />
+											</arguments>
+										</structure>
+									</literal>
+									<var-term functor="W" sep="|" />
+								</list-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="?">
+					<literal>
+						<structure functor="visitedWaypoints">
+							<arguments>
+								<var-term functor="Nw" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="?">
+					<literal>
+						<structure functor="distance">
+							<arguments>
+								<var-term functor="D" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".print">
+							<arguments>
+								<string-term>
+									"Waypoints visited so far, "
+								</string-term>
+								<var-term functor="Nw" />
+								<string-term>
+									", distance covered so far, "
+								</string-term>
+								<var-term functor="D" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__15">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="move">
+						<arguments>
+							<var-term functor="X" />
+							<var-term functor="Y" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<expression operator=" &amp; " type="logical">
+					<left>
+						<literal>
+							<structure functor="at">
+								<arguments>
+									<var-term functor="Xat" />
+									<var-term functor="Yat" />
+								</arguments>
+							</structure>
+						</literal>
+					</left>
+					<right>
+						<expression operator=" &gt; "
+							type="relational">
+							<left>
+								<var-term functor="Xat" />
+							</left>
+							<right>
+								<var-term functor="X" />
+							</right>
+						</expression>
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal type="!">
+					<literal>
+						<structure functor="doMove">
+							<arguments>
+								<expression operator="-"
+									type="arithmetic">
+									<left>
+										<var-term functor="Xat" />
+									</left>
+									<right>
+										<number-term>1</number-term>
+									</right>
+								</expression>
+								<var-term functor="Yat" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="!">
+					<literal>
+						<structure functor="move">
+							<arguments>
+								<var-term functor="X" />
+								<var-term functor="Y" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__16">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="move">
+						<arguments>
+							<var-term functor="X" />
+							<var-term functor="Y" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<expression operator=" &amp; " type="logical">
+					<left>
+						<literal>
+							<structure functor="at">
+								<arguments>
+									<var-term functor="Xat" />
+									<var-term functor="Yat" />
+								</arguments>
+							</structure>
+						</literal>
+					</left>
+					<right>
+						<expression operator=" &lt; "
+							type="relational">
+							<left>
+								<var-term functor="Xat" />
+							</left>
+							<right>
+								<var-term functor="X" />
+							</right>
+						</expression>
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal type="!">
+					<literal>
+						<structure functor="doMove">
+							<arguments>
+								<expression operator="+"
+									type="arithmetic">
+									<left>
+										<var-term functor="Xat" />
+									</left>
+									<right>
+										<number-term>1</number-term>
+									</right>
+								</expression>
+								<var-term functor="Yat" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="!">
+					<literal>
+						<structure functor="move">
+							<arguments>
+								<var-term functor="X" />
+								<var-term functor="Y" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__17">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="move">
+						<arguments>
+							<var-term functor="X" />
+							<var-term functor="Y" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<expression operator=" &amp; " type="logical">
+					<left>
+						<literal>
+							<structure functor="at">
+								<arguments>
+									<var-term functor="Xat" />
+									<var-term functor="Yat" />
+								</arguments>
+							</structure>
+						</literal>
+					</left>
+					<right>
+						<expression operator=" &gt; "
+							type="relational">
+							<left>
+								<var-term functor="Yat" />
+							</left>
+							<right>
+								<var-term functor="Y" />
+							</right>
+						</expression>
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal type="!">
+					<literal>
+						<structure functor="doMove">
+							<arguments>
+								<var-term functor="Xat" />
+								<expression operator="-"
+									type="arithmetic">
+									<left>
+										<var-term functor="Yat" />
+									</left>
+									<right>
+										<number-term>1</number-term>
+									</right>
+								</expression>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="!">
+					<literal>
+						<structure functor="move">
+							<arguments>
+								<var-term functor="X" />
+								<var-term functor="Y" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="l__18">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="move">
+						<arguments>
+							<var-term functor="X" />
+							<var-term functor="Y" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<expression operator=" &amp; " type="logical">
+					<left>
+						<literal>
+							<structure functor="at">
+								<arguments>
+									<var-term functor="Xat" />
+									<var-term functor="Yat" />
+								</arguments>
+							</structure>
+						</literal>
+					</left>
+					<right>
+						<expression operator=" &lt; "
+							type="relational">
+							<left>
+								<var-term functor="Yat" />
+							</left>
+							<right>
+								<var-term functor="Y" />
+							</right>
+						</expression>
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal type="!">
+					<literal>
+						<structure functor="doMove">
+							<arguments>
+								<var-term functor="Xat" />
+								<expression operator="+"
+									type="arithmetic">
+									<left>
+										<var-term functor="Yat" />
+									</left>
+									<right>
+										<number-term>1</number-term>
+									</right>
+								</expression>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="!">
+					<literal>
+						<structure functor="move">
+							<arguments>
+								<var-term functor="X" />
+								<var-term functor="Y" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="pDoMove">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="atomic" />
+								</literal>
+								<literal sep=",">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="doMove">
+						<arguments>
+							<var-term functor="X" />
+							<var-term functor="Y" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<literal>
+					<structure functor="at">
+						<arguments>
+							<var-term functor="A" />
+							<var-term functor="B" />
+						</arguments>
+					</structure>
+				</literal>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".wait">
+							<arguments>
+								<number-term>50</number-term>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="-">
+					<literal>
+						<structure functor="at">
+							<arguments>
+								<var-term functor="A" />
+								<var-term functor="B" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="+">
+					<literal>
+						<structure functor="at">
+							<arguments>
+								<var-term functor="X" />
+								<var-term functor="Y" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal>
+						<structure functor="move">
+							<arguments>
+								<var-term functor="X" />
+								<var-term functor="Y" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="?">
+					<literal>
+						<structure functor="distance">
+							<arguments>
+								<var-term functor="D" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="-">
+					<literal>
+						<structure functor="distance">
+							<arguments>
+								<var-term functor="D" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="+">
+					<literal>
+						<structure functor="distance">
+							<arguments>
+								<expression operator="+"
+									type="arithmetic">
+									<left>
+										<var-term functor="D" />
+									</left>
+									<right>
+										<number-term>1</number-term>
+									</right>
+								</expression>
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="kqmlReceivedTellStructure">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="kqml_received">
+						<arguments>
+							<var-term functor="KQML_Sender_Var" />
+							<literal>
+								<structure functor="tell" />
+							</literal>
+							<var-term functor="KQML_Content_Var" />
+							<var-term functor="KQML_Msg_Id_Var" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<expression operator=" &amp; " type="logical">
+					<left>
+						<literal ia="true">
+							<structure functor=".structure">
+								<arguments>
+									<var-term
+										functor="KQML_Content_Var" />
+								</arguments>
+							</structure>
+						</literal>
+					</left>
+					<right>
+						<expression operator=" &amp; " type="logical">
+							<left>
+								<literal ia="true">
+									<structure functor=".ground">
+										<arguments>
+											<var-term
+												functor="KQML_Content_Var" />
+										</arguments>
+									</structure>
+								</literal>
+							</left>
+							<right>
+								<expression operator="not "
+									type="logical">
+									<right>
+										<literal ia="true">
+											<structure
+												functor=".list">
+												<arguments>
+													<var-term
+														functor="KQML_Content_Var" />
+												</arguments>
+											</structure>
+										</literal>
+									</right>
+								</expression>
+							</right>
+						</expression>
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".add_annot">
+							<arguments>
+								<var-term functor="KQML_Content_Var" />
+								<literal>
+									<structure functor="source">
+										<arguments>
+											<var-term
+												functor="KQML_Sender_Var" />
+										</arguments>
+									</structure>
+								</literal>
+								<var-term functor="CA" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="+">
+					<var-term functor="CA" />
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="kqmlReceivedTellList">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="kqml_received">
+						<arguments>
+							<var-term functor="KQML_Sender_Var" />
+							<literal>
+								<structure functor="tell" />
+							</literal>
+							<var-term functor="KQML_Content_Var" />
+							<var-term functor="KQML_Msg_Id_Var" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<literal ia="true">
+					<structure functor=".list">
+						<arguments>
+							<var-term functor="KQML_Content_Var" />
+						</arguments>
+					</structure>
+				</literal>
+			</context>
+			<body>
+				<body-literal type="!">
+					<literal>
+						<structure functor="add_all_kqml_received">
+							<arguments>
+								<var-term functor="KQML_Sender_Var" />
+								<var-term functor="KQML_Content_Var" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="kqmlReceivedTellList1">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="add_all_kqml_received">
+						<arguments>
+							<var-term functor="_" />
+							<list-term />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="kqmlReceivedTellList2">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="add_all_kqml_received">
+						<arguments>
+							<var-term functor="S" />
+							<list-term>
+								<var-term functor="H" sep="" />
+								<var-term functor="T" sep="|" />
+							</list-term>
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<expression operator=" &amp; " type="logical">
+					<left>
+						<literal ia="true">
+							<structure functor=".structure">
+								<arguments>
+									<var-term functor="H" />
+								</arguments>
+							</structure>
+						</literal>
+					</left>
+					<right>
+						<literal ia="true">
+							<structure functor=".ground">
+								<arguments>
+									<var-term functor="H" />
+								</arguments>
+							</structure>
+						</literal>
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".add_annot">
+							<arguments>
+								<var-term functor="H" />
+								<literal>
+									<structure functor="source">
+										<arguments>
+											<var-term functor="S" />
+										</arguments>
+									</structure>
+								</literal>
+								<var-term functor="CA" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="+">
+					<var-term functor="CA" />
+				</body-literal>
+				<body-literal type="!">
+					<literal>
+						<structure functor="add_all_kqml_received">
+							<arguments>
+								<var-term functor="S" />
+								<var-term functor="T" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="kqmlReceivedTellList3">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="add_all_kqml_received">
+						<arguments>
+							<var-term functor="S" />
+							<list-term>
+								<var-term functor="_" sep="" />
+								<var-term functor="T" sep="|" />
+							</list-term>
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<body>
+				<body-literal type="!">
+					<literal>
+						<structure functor="add_all_kqml_received">
+							<arguments>
+								<var-term functor="S" />
+								<var-term functor="T" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<new-set-of-plans />
+		<plan>
+			<label>
+				<literal>
+					<structure functor="kqmlReceivedUnTell">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="kqml_received">
+						<arguments>
+							<var-term functor="KQML_Sender_Var" />
+							<literal>
+								<structure functor="untell" />
+							</literal>
+							<var-term functor="KQML_Content_Var" />
+							<var-term functor="KQML_Msg_Id_Var" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".add_annot">
+							<arguments>
+								<var-term functor="KQML_Content_Var" />
+								<literal>
+									<structure functor="source">
+										<arguments>
+											<var-term
+												functor="KQML_Sender_Var" />
+										</arguments>
+									</structure>
+								</literal>
+								<var-term functor="CA" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="-">
+					<var-term functor="CA" />
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="kqmlReceivedAchieve">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="kqml_received">
+						<arguments>
+							<var-term functor="KQML_Sender_Var" />
+							<literal>
+								<structure functor="achieve" />
+							</literal>
+							<var-term functor="KQML_Content_Var" />
+							<var-term functor="KQML_Msg_Id_Var" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".add_annot">
+							<arguments>
+								<var-term functor="KQML_Content_Var" />
+								<literal>
+									<structure functor="source">
+										<arguments>
+											<var-term
+												functor="KQML_Sender_Var" />
+										</arguments>
+									</structure>
+								</literal>
+								<var-term functor="CA" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal type="!">
+					<var-term functor="CA" />
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="kqmlReceivedUnAchieve">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="atomic" />
+								</literal>
+								<literal sep=",">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="kqml_received">
+						<arguments>
+							<var-term functor="KQML_Sender_Var" />
+							<literal>
+								<structure functor="unachieve" />
+							</literal>
+							<var-term functor="KQML_Content_Var" />
+							<var-term functor="KQML_Msg_Id_Var" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".drop_desire">
+							<arguments>
+								<var-term functor="KQML_Content_Var" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".drop_intention">
+							<arguments>
+								<var-term functor="KQML_Content_Var" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="kqmlReceivedAskOne1">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="kqml_received">
+						<arguments>
+							<var-term functor="KQML_Sender_Var" />
+							<literal>
+								<structure functor="askOne" />
+							</literal>
+							<var-term functor="KQML_Content_Var" />
+							<var-term functor="KQML_Msg_Id_Var" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<body>
+				<body-literal type="?">
+					<var-term functor="KQML_Content_Var" />
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".send">
+							<arguments>
+								<var-term functor="KQML_Sender_Var" />
+								<literal>
+									<structure functor="tell" />
+								</literal>
+								<var-term functor="KQML_Content_Var" />
+								<var-term functor="KQML_Msg_Id_Var" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="kqmlReceivedAskOne2">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="-" type="!">
+				<literal>
+					<structure functor="kqml_received">
+						<arguments>
+							<var-term functor="KQML_Sender_Var" />
+							<literal>
+								<structure functor="askOne" />
+							</literal>
+							<var-term functor="KQML_Content_Var" />
+							<var-term functor="KQML_Msg_Id_Var" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".send">
+							<arguments>
+								<var-term functor="KQML_Sender_Var" />
+								<literal>
+									<structure functor="untell" />
+								</literal>
+								<var-term functor="KQML_Content_Var" />
+								<var-term functor="KQML_Msg_Id_Var" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="kqmlReceivedAskAll1">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="kqml_received">
+						<arguments>
+							<var-term functor="KQML_Sender_Var" />
+							<literal>
+								<structure functor="askAll" />
+							</literal>
+							<var-term functor="KQML_Content_Var" />
+							<var-term functor="KQML_Msg_Id_Var" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<context>
+				<expression operator="not " type="logical">
+					<right>
+						<var-term functor="KQML_Content_Var" />
+					</right>
+				</expression>
+			</context>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".send">
+							<arguments>
+								<var-term functor="KQML_Sender_Var" />
+								<literal>
+									<structure functor="untell" />
+								</literal>
+								<var-term functor="KQML_Content_Var" />
+								<var-term functor="KQML_Msg_Id_Var" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="kqmlReceivedAskAll2">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="kqml_received">
+						<arguments>
+							<var-term functor="KQML_Sender_Var" />
+							<literal>
+								<structure functor="askAll" />
+							</literal>
+							<var-term functor="KQML_Content_Var" />
+							<var-term functor="KQML_Msg_Id_Var" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".findall">
+							<arguments>
+								<var-term functor="KQML_Content_Var" />
+								<var-term functor="KQML_Content_Var" />
+								<var-term functor="List" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".send">
+							<arguments>
+								<var-term functor="KQML_Sender_Var" />
+								<literal>
+									<structure functor="tell" />
+								</literal>
+								<var-term functor="List" />
+								<var-term functor="KQML_Msg_Id_Var" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="kqmlReceivedTellHow">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="kqml_received">
+						<arguments>
+							<var-term functor="KQML_Sender_Var" />
+							<literal>
+								<structure functor="tellHow" />
+							</literal>
+							<var-term functor="KQML_Content_Var" />
+							<var-term functor="KQML_Msg_Id_Var" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".add_plan">
+							<arguments>
+								<var-term functor="KQML_Content_Var" />
+								<var-term functor="KQML_Sender_Var" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="kqmlReceivedUnTellHow">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="kqml_received">
+						<arguments>
+							<var-term functor="KQML_Sender_Var" />
+							<literal>
+								<structure functor="untellHow" />
+							</literal>
+							<var-term functor="KQML_Content_Var" />
+							<var-term functor="KQML_Msg_Id_Var" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".remove_plan">
+							<arguments>
+								<var-term functor="KQML_Content_Var" />
+								<var-term functor="KQML_Sender_Var" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+		<plan>
+			<label>
+				<literal>
+					<structure functor="kqmlReceivedAskHow">
+						<annotations>
+							<list-term>
+								<literal sep="">
+									<structure functor="source">
+										<arguments>
+											<literal>
+												<structure
+													functor="self" />
+											</literal>
+										</arguments>
+									</structure>
+								</literal>
+							</list-term>
+						</annotations>
+					</structure>
+				</literal>
+			</label>
+			<trigger add="+" type="!">
+				<literal>
+					<structure functor="kqml_received">
+						<arguments>
+							<var-term functor="KQML_Sender_Var" />
+							<literal>
+								<structure functor="askHow" />
+							</literal>
+							<var-term functor="KQML_Content_Var" />
+							<var-term functor="KQML_Msg_Id_Var" />
+						</arguments>
+					</structure>
+				</literal>
+			</trigger>
+			<body>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".relevant_plans">
+							<arguments>
+								<var-term functor="KQML_Content_Var" />
+								<var-term functor="ListAsString" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+				<body-literal>
+					<literal ia="true">
+						<structure functor=".send">
+							<arguments>
+								<var-term functor="KQML_Sender_Var" />
+								<literal>
+									<structure functor="tellHow" />
+								</literal>
+								<var-term functor="ListAsString" />
+								<var-term functor="KQML_Msg_Id_Var" />
+							</arguments>
+						</structure>
+					</literal>
+				</body-literal>
+			</body>
+		</plan>
+	</plans>
+</agent>

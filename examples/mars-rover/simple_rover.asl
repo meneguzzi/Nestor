@@ -4,12 +4,6 @@
 //at(0,0).
 //battery(10).
 chargeStation(10,10).
-visitedWaypoints([]).
-distance(0).
-previousDistance(0).
-wastedDistance(0).
-chargeDistance(0).
-numberOfCharges(0).
 
 //**************************************************************
 // Hack plans to get things working
@@ -29,37 +23,6 @@ numberOfCharges(0).
 +!move(X,Y) : at(X, Y)
  <- .print("Arrived ", at(X,Y));
     true.
-//**************************************************************
- 
-//**************************************************************
-//Goals to check gathered information
-
-+!endSimulation : not waypoint(_,_) [source(self)]
- <- .print("Finished going through waypoints");
- 	?visitedWaypoints(Waypoints);
- 	.length(Waypoints, L);
-	.print("Visited ",L," waypoints");
-	?distance(Distance);
-	.print("Total distance: ", Distance);
-	?wastedDistance(Wasted);
-	.print("Wasted Distance: ", Wasted);
-	?numberOfCharges(Charges);
-	.print("Recharged ",Charges," times");
-	?chargeDistance(ChargeDistance);
-	.print("Moved ",ChargeDistance," to recharge");
-	rover.act.recordStats(L, Distance, Wasted, ChargeDistance, "stats");
-	.print("**********************************");
-	.stopMAS. 
-
-+!endSimulation : true
- <- ?waypoint(X,Y);
- 	.print("Still have pending waypoints, failing.",waypoint(X,Y));
- 	+endSimulation.
-	
-+endSimulation [source(percept)]: true
- <- !endSimulation.
-
-
 //**************************************************************
 // Enough battery verification goal.
 +?canGo(X,Y,Xat,Yat) : battery(Batt) [source(self)]
@@ -92,12 +55,6 @@ numberOfCharges(0).
  	.print("Battery critical, charging station is ",Dist," units away, battery is ",Batt);
  	!recharge(Xcharge,Ycharge).
 
--charging : battery(NewBatt) [source(percept)]
- <- .print("Recharged, battery is now ",NewBatt);
- 	?numberOfCharges(Charges);
- 	-numberOfCharges(Charges);
- 	+numberOfCharges(Charges + 1).
- 
 @pcheckcharge2[atomic]
 +!checkCharge(Dist, Batt) : Dist < Batt
  <- true.//.print("Battery is OK, charging station is ",Dist," units away, battery is ", Batt).
@@ -108,14 +65,8 @@ numberOfCharges(0).
  <- .print("Moving to charge station");
  	+charging;
 	!suspendGoals;
-	?distance(Distance);
  	!move(Xcharge, Ycharge);	
 	charge;
-	?distance(Distance2);
-	//.print("Charge distance: ",Distance2 - Distance);
-	?chargeDistance(ChargeDistance);
-	-chargeDistance(ChargeDistance);
-	+chargeDistance(ChargeDistance + (Distance2 - Distance));
 	-charging;
 	.print("Just finished charging, checking for pending waypoints.");
  	!queryWaypoints.
@@ -136,13 +87,6 @@ numberOfCharges(0).
 	.drop_desire(doMove(_,_));
 	.print("Intention to ",goToWaypoint(X,Y)," dropped, releasing locks");
 	.print("Locks released");
-	?distance(Distance);
-	?previousDistance(PreviousDistance);
-	WastedDistance = (Distance - PreviousDistance);
-	.print("Wasted: ",WastedDistance);
-	?wastedDistance(Wasted);
-	-wastedDistance(Wasted);
-	+wastedDistance(Wasted + (Distance - PreviousDistance));
 	-moving.
 
 +!suspendGoals : not moving
@@ -153,17 +97,21 @@ numberOfCharges(0).
 // These are the main goals of this agent, to reach
 // waypoints
 //When a waypoint is received, store it and go for it
+
+/*
 @pwaypoint1[atomic]
 +waypoint(X,Y) [source(percept)] : not moving & not charging
  <- .print("New waypoint ", waypoint(X,Y));
  	+waypoint(X,Y);
  	!goToWaypoint(waypoint(X,Y)).
+*/
 
 @pwaypoint2[atomic]
-+waypoint(X,Y) [source(percept)] : moving | charging
- <- .print("New waypoint ", waypoint(X,Y), " but I'm busy, storing it.");
++waypoint(X,Y) [source(percept)] : true
+ <- .print("New waypoint ", waypoint(X,Y), " storing it.");
  	+waypoint(X,Y).
 
+/*
 +!queryWaypoints : waypoint(X,Y) [source(self)] & not moving
  <- .print("Found a pending waypoint, ", waypoint(X,Y), " trying to deal with it.");
  	!!goToWaypoint(waypoint(X,Y));
@@ -178,6 +126,7 @@ numberOfCharges(0).
 	
 +!queryWaypoints : not waypoint(X,Y) [source(self)]
  <- .print("No pending waypoints.").
+ */
 
 +!goToWaypoint(W) : charging | moving
  <- .print("Tried to go to ",W," but I'm busy, something is wrong here").
@@ -186,24 +135,13 @@ numberOfCharges(0).
 +!goToWaypoint(waypoint(X,Y)) : not charging & not moving
  <- +moving;
  	.print("Going to waypoint ",waypoint(X,Y));
-	?distance(D);
-	-previousDistance(Do);
-	+previousDistance(D);
  	!move(X,Y);
 	.print("Finished move to waypoint ",waypoint(X,Y), " releasing locks");
 	-waypoint(X,Y);
-	-moving;
-	!!queryWaypoints.
-
-//@pnotWaypoint[atomic]
--waypoint(X,Y) : true
- <- .print("Removing ",waypoint(X,Y)," from pending waypoints");
- 	?visitedWaypoints(W);
- 	-visitedWaypoints(W);
-	+visitedWaypoints([waypoint(X,Y) | W]);
-	?visitedWaypoints(Nw);
-	?distance(D);
-	.print("Waypoints visited so far, ",Nw,", distance covered so far, ",D).
+	-moving.
+	//;
+	//!queryWaypoints.
+	
 //*****************************************************
 
 //*****************************************************
@@ -236,29 +174,8 @@ numberOfCharges(0).
 
 @pDoMove[atomic]
 +!doMove(X,Y) : at(A,B) [source(self)]
- <- //?at(A,B); .print("Moving from ",at(A,B)," to ",at(X,Y)); 
+ <- .print("Moving from ",at(A,B)," to ",at(X,Y)); 
  	.wait(50);
 	-at(A,B);
 	+at(X,Y);
- 	move(X,Y);
-	?distance(D);
-	-distance(D);
-	+distance(D+1).
-//*****************************************************
-
-/*
-//Test for move operator
-+!move(X,Y) : true
- <- .print("Invoking move operator");
-    move(X,Y).
-*/
-
-/*
-//Tests for ability to move to a position
-+!move(X,Y) : at(Xat,Yat)
- <- ?canGo(X,Y,Xat,Yat);
-    .print("I can go to the waypoint").*/
-
-
-/*+!move(X,Y) : at(Xat,Yat)
- <- .print("I cannot go to the waypoint").*/
+ 	move(X,Y).
