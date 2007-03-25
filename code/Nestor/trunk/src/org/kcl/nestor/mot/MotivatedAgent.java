@@ -20,6 +20,7 @@ import java.util.List;
 import org.kcl.nestor.agent.ModularAgent;
 import org.kcl.nestor.agent.functions.defaults.DefaultActionSelectionFunction;
 import org.kcl.nestor.agent.functions.defaults.DefaultBeliefRevisionFunction;
+import org.kcl.nestor.agent.functions.defaults.DefaultIntentionSelectionFunction;
 import org.kcl.nestor.agent.functions.defaults.DefaultMessageSelectionFunction;
 import org.kcl.nestor.mot.functions.MotivatedBeliefUpdate;
 import org.kcl.nestor.mot.functions.MotivatedEventSelection;
@@ -69,7 +70,7 @@ public class MotivatedAgent extends ModularAgent {
 		
 		this.beliefUpdateFunction = new MotivatedBeliefUpdate();
 		this.optionSelectionFunction = new MotivatedOptionSelectionV2();
-		this.intentionSelectionFunction = new MotivatedIntentionSelection();
+		//this.intentionSelectionFunction = new MotivatedIntentionSelection();
 		this.eventSelectionFunction = new MotivatedEventSelection();
 		
 		//Default function implementations
@@ -78,7 +79,7 @@ public class MotivatedAgent extends ModularAgent {
 		this.messageSelectionFunction = new DefaultMessageSelectionFunction();
 		
 //		this.optionSelectionFunction = new DefaultOptionSelectionFunction();
-//		this.intentionSelectionFunction = new DefaultIntentionSelectionFunction();
+		this.intentionSelectionFunction = new DefaultIntentionSelectionFunction();
 	}
 	
 	@Override
