@@ -1,15 +1,17 @@
 Motivation navigate {
 	Threshold = 10;
 	IntensityUpdate org.kcl.nestor.mot.impl.IntensityUpdateFunctionImpl {
-		battery(Batt)
-		& at(X,Y)
-		& waypoint(Wx,Wy) 
-		& rover.act.distance(X,Y,Wx,Wy,Dist)
-		& Dist < Batt -> Dist;
+//		battery(Batt)
+//		& at(X,Y)
+//		& waypoint(Wx,Wy) 
+//		& rover.act.distance(X,Y,Wx,Wy,Dist)
+//		& Dist < Batt -> Dist;
+		waypoint(X,Y) -> 10;
 	}
 	
 	GoalGeneration org.kcl.nestor.mot.impl.GoalGenerationFunctionImpl {
 		waypoint(X,Y) -> +!goToWaypoint(waypoint(X,Y));
+		at(X,Y) & waypoint(X,Y) -> -waypoint(X,Y); // to avoid adopting an already achieved goal
 	}
 	
 	Mitigation org.kcl.nestor.mot.impl.MitigationFunctionImpl {
