@@ -1,13 +1,7 @@
 package org.kcl.nestor.mot.predictor;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-
 import jason.JasonException;
 import jason.architecture.AgArch;
-import jason.architecture.AgArchInfraTier;
 import jason.asSemantics.Agent;
 import jason.asSemantics.Circumstance;
 import jason.asSemantics.InternalAction;
@@ -20,8 +14,13 @@ import jason.asSyntax.PlanLibrary;
 import jason.asSyntax.Structure;
 import jason.asSyntax.Term;
 import jason.asSyntax.Trigger;
-import jason.infra.centralised.CentralisedAgArch;
+import jason.bb.BeliefBase;
 import jason.runtime.Settings;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * An agent class intended to simulate the execution of plans and subplans
@@ -31,6 +30,10 @@ import jason.runtime.Settings;
  *
  */
 public class PredictiveAgent extends Agent {
+	protected static final Term sourceSelf = Structure.parse("source(self)");
+	protected static final Term sourcePercept = Structure.parse("source(percept)");
+	protected static final Term sourceAny = Structure.parse("_");
+	
 	protected PredictiveBeliefBase predictiveBeliefBase;
 	protected Agent baseAgent;
 	
@@ -45,11 +48,8 @@ public class PredictiveAgent extends Agent {
 		this.baseAgent = agent;
 		this.predictiveBeliefBase = new PredictiveBeliefBase(agent.getBB());
 		this.fBB = predictiveBeliefBase;
-		AgArch agArch = new AgArch();
-		CentralisedAgArch infraTier = new CentralisedAgArch();
-		infraTier.setAgName("Predictor");
-		agArch.setArchInfraTier(infraTier);
-		
+		this.fPL = (PlanLibrary) agent.getPL().clone();
+		AgArch agArch = new SimpleAgArch();
 		this.fTS = new TransitionSystem(this, new Circumstance(), new Settings(), agArch);
 	}
 	
@@ -65,11 +65,6 @@ public class PredictiveAgent extends Agent {
 	@Override
 	public PlanLibrary getPL() {
 		return baseAgent.getPL();
-	}
-	
-	@Override
-	public TransitionSystem getTS() {
-		return baseAgent.getTS();
 	}
 	
 	@Override
@@ -90,6 +85,14 @@ public class PredictiveAgent extends Agent {
 	public boolean executeOption(Option option) {
 		//We don't want to affect the original option
 		option = (Option) option.clone();
+		
+		//Remove all percepts
+		/*for(Iterator<Literal> i = this.fBB.getPercepts(); i.hasNext(); ) {
+			Literal l = i.next();
+			l.clearAnnots();
+			l.addAnnot(BeliefBase.TPercept);
+			this.fBB.remove(l);
+		}*/
 		
 		for(Iterator<BodyLiteral> i = option.getPlan().getBody().iterator();
 			i.hasNext();) {
@@ -128,6 +131,8 @@ public class PredictiveAgent extends Agent {
 	public boolean executeStep(BodyLiteral bodyLiteral, Unifier unifier) {
 		Literal lit = bodyLiteral.getLiteralFormula();
 		lit = (Literal) lit.clone();
+		lit.addAnnot(PredictiveAgent.sourceSelf);
+		//lit.addAnnot(PredictiveAgent.sourcePercept);
 		lit.apply(unifier);
 		
 		switch (bodyLiteral.getType()) {

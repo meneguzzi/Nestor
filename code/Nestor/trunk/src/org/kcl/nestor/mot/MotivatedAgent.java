@@ -25,7 +25,9 @@ import org.kcl.nestor.mot.functions.MotivatedBeliefUpdate;
 import org.kcl.nestor.mot.functions.MotivatedEventSelection;
 import org.kcl.nestor.mot.functions.MotivatedIntentionSelection;
 import org.kcl.nestor.mot.functions.MotivatedOptionSelection;
+import org.kcl.nestor.mot.functions.MotivatedOptionSelectionV2;
 import org.kcl.nestor.mot.parser.MotivationParser;
+import org.w3c.dom.Document;
 
 /** 
  * This class represents a motivated agent, capable of generating goals autonomously
@@ -66,7 +68,7 @@ public class MotivatedAgent extends ModularAgent {
 		//TODO and generalize its instantiation process
 		
 		this.beliefUpdateFunction = new MotivatedBeliefUpdate();
-		this.optionSelectionFunction = new MotivatedOptionSelection();
+		this.optionSelectionFunction = new MotivatedOptionSelectionV2();
 		this.intentionSelectionFunction = new MotivatedIntentionSelection();
 		this.eventSelectionFunction = new MotivatedEventSelection();
 		
@@ -189,5 +191,13 @@ public class MotivatedAgent extends ModularAgent {
 	 */
 	public Motivation removePendingMotivatedGoal(Trigger trigger) {
 		return this.pendingMotivatedGoals.remove(trigger);
+	}
+	
+	@Override
+	public Document getAgProgram() {
+		Document document = super.getAgProgram();
+		// TODO Auto-generated method stub
+		// XXX Perhaps I should also export motivations from here?
+		return document;
 	}
 }

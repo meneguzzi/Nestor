@@ -40,6 +40,10 @@ public class MotivatedIntentionSelection implements IntentionSelectionFunction {
 			}
 			IntendedMeans intendedMeans = intention.get(0);
 			ListTerm annots = intendedMeans.getTrigger().getLiteral().getAnnots();
+			if(annots == null) {
+				logger.info("Intention "+intendedMeans+" is not motivated, skipping.");
+				continue;
+			}
 			for (Iterator iterator = annots.iterator(); iterator.hasNext();) {
 				Term term = (Term) iterator.next();
 				Motivation motivation = motivatedAgent.getMotivation(term.toString());

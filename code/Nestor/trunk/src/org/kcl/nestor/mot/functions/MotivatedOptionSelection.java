@@ -13,7 +13,6 @@ import java.util.logging.Logger;
 import org.kcl.nestor.agent.functions.OptionSelectionFunction;
 import org.kcl.nestor.mot.MotivatedAgent;
 import org.kcl.nestor.mot.Motivation;
-import org.kcl.nestor.mot.predictor.MockUpAgent;
 import org.kcl.nestor.mot.predictor.PredictiveAgent;
 
 public class MotivatedOptionSelection implements OptionSelectionFunction<MotivatedAgent> {
@@ -81,10 +80,10 @@ public class MotivatedOptionSelection implements OptionSelectionFunction<Motivat
 			} else {
 				//otherwise, update our simulated belief base with the consequences of the
 				//plan steps
-				for (Iterator<Literal> iter = consequences.iterator(); iter.hasNext();) {
+				/*for (Iterator<Literal> iter = consequences.iterator(); iter.hasNext();) {
 					Literal l = iter.next();
 					predictiveAgent.addBel(l);
-				}
+				}*/ // this update is now irrelevant, since the simulated agent is already up to date
 				//and calculate the resulting motivational value
 				for (Iterator<Motivation> iter = motivations.iterator(); iter.hasNext();) {
 					Motivation motivation = iter.next();
