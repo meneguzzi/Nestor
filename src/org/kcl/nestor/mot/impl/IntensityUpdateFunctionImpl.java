@@ -49,19 +49,25 @@ public class IntensityUpdateFunctionImpl extends MotivationFunction implements I
 	/* (non-Javadoc)
 	 * @see org.soton.peleus.mot.IntensityUpdateFunction#updateIntensity(jason.bb.BeliefBase)
 	 */
-	public int updateIntensity(Agent agent) {
+	public int updateIntensity(Agent agent, Unifier unif) {
 		int motivationDelta = 0;
 		for (LogicalFormula cue : beliefCues.keySet()) {
 			//logger.info("Updating intensity regarding "+positiveLiteral);
 			LogicalFormula formula = (LogicalFormula) cue.clone();
-			Iterator<Unifier> unifiers = logicalConsequence(formula, agent);
+			Iterator<Unifier> unifiers = formula.logicalConsequence(agent, unif);
+			//XXX Previous implementation, in which no unifier was supplied
+			//Iterator<Unifier> unifiers = logicalConsequence(formula, agent);
+			
 			//TODO consider the actual strategy to calculate motivations if more than one
 			//TODO unification is possible for a given formula
-			if(unifiers.hasNext()) {
+			if(unifiers != null && unifiers.hasNext()) {
 				NumberTerm value = (NumberTerm)beliefCues.get(formula).clone();
-				value.apply(unifiers.next());
-				//unifiers.next().apply(value);
+				Unifier unifier = unifiers.next();
+				// Apply the first unifier in order to determine the motivational value
+				value.apply(unifier);
 				motivationDelta += value.solve();
+				// And compose the unifier to the supplied parameter for the next functions
+				unif.compose(unifier);
 			}
 			/*if(supportedByBeliefBase(literal, beliefBase)) {
 				//logger.info(positiveLiteral+"is supported by the belief base");

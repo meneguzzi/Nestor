@@ -4,6 +4,7 @@
 package org.kcl.nestor.mot;
 
 import jason.asSemantics.Agent;
+import jason.asSemantics.Unifier;
 import jason.asSyntax.LogicalFormula;
 import jason.asSyntax.NumberTerm;
 
@@ -36,8 +37,9 @@ public interface IntensityUpdateFunction {
 	 * A delegate function used by <code>Motivation</code> to calculate
 	 * variations to a given motivation.
 	 * 
-	 * @param agent
+	 * @param agent The agent whose motivations are to be updated
+	 * @param unif  The unifier to be used later in the motivation cycle
 	 * @return A value to be added to a motivation's intesity.
 	 */
-	public int updateIntensity(Agent agent);
+	public int updateIntensity(Agent agent, Unifier unif);
 }

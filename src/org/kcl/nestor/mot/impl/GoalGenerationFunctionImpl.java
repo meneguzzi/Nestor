@@ -8,7 +8,6 @@ import jason.asSemantics.Unifier;
 import jason.asSyntax.Literal;
 import jason.asSyntax.LogicalFormula;
 import jason.asSyntax.Trigger;
-import jason.bb.BeliefBase;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -41,18 +40,24 @@ public class GoalGenerationFunctionImpl extends MotivationFunction implements Go
 	/* (non-Javadoc)
 	 * @see org.soton.peleus.mot.GoalGenerationFunction#generateGoals(jason.bb.BeliefBase)
 	 */
-	public List<Trigger> generateGoals(Agent agent) {
+	public List<Trigger> generateGoals(Agent agent, Unifier unif) {
 		logger.fine("Generating goals");
 		List<Trigger> list = new ArrayList<Trigger>();
-		Unifier unifier = null;
 		for (LogicalFormula formula : goals.keySet()) {
-			Iterator<Unifier> unifiers = logicalConsequence(formula, agent);
-			if(unifiers.hasNext()) {
-				unifier = unifiers.next();
+			Iterator<Unifier> unifiers = formula.logicalConsequence(agent, unif);
+			//XXX Previous implementation, in which no unifier was supplied 
+			//Iterator<Unifier> unifiers = logicalConsequence(formula, agent);
+			
+			if(unifiers != null && unifiers.hasNext()) {
+				Unifier unifier = unifiers.next();
 				Trigger trigger = (Trigger) goals.get(formula).clone();
-				//unifier.apply(trigger.getLiteral());
+				
+				//Apply the first unifier in order to get the instantiated goal
 				trigger.getLiteral().apply(unifier);
 				list.add(trigger);
+				
+				//And compose the unifier to the supplied parameter for the next functions
+				unif.compose(unifier);
 			}
 			/*if(formula.equals(Literal.LTrue) || 
 				(unifier = getUnifier(formula, beliefBase)) != null) {
@@ -64,31 +69,27 @@ public class GoalGenerationFunctionImpl extends MotivationFunction implements Go
 		return list;
 	}
 	
-	public Unifier getUnifier(Literal literal, BeliefBase beliefBase) {
-		Iterator<Literal> iter = beliefBase.getRelevant(literal);
-		Unifier unifier = new Unifier();
-		if(iter != null) {
-			for(;iter.hasNext();) {
-				Literal l = iter.next();
-				l = (Literal) l.clone();
-				l.clearAnnots();
-				if(unifier.unifies(l, literal))
-					return unifier;
-			}
-		}
-		
-		return null;
-	}
-
+	/*
+	 * (non-Javadoc)
+	 * @see org.kcl.nestor.mot.GoalGenerationFunction#addBeliefToGoalMapping(jason.asSyntax.LogicalFormula, jason.asSyntax.Trigger)
+	 */
 	public void addBeliefToGoalMapping(LogicalFormula formula, Trigger trigger) {
 		this.goals.put(formula, trigger);
 		
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see org.kcl.nestor.mot.GoalGenerationFunction#removeBeliefToGoalMapping(jason.asSyntax.LogicalFormula)
+	 */
 	public void removeBeliefToGoalMapping(LogicalFormula formula) {
 		this.goals.remove(formula);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see org.kcl.nestor.mot.GoalGenerationFunction#removeGoal(jason.asSyntax.Trigger)
+	 */
 	public void removeGoal(Trigger trigger) {
 		for (Iterator<Trigger> iter = this.goals.values().iterator(); iter.hasNext();) {
 			Trigger t = iter.next();
@@ -98,6 +99,10 @@ public class GoalGenerationFunctionImpl extends MotivationFunction implements Go
 		}
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("GoalGeneration ");

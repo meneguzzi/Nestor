@@ -2,6 +2,7 @@ package org.kcl.nestor.mot.functions;
 
 import jason.asSemantics.Agent;
 import jason.asSemantics.Option;
+import jason.asSemantics.Unifier;
 
 import java.util.Iterator;
 import java.util.List;
@@ -68,8 +69,9 @@ public class MotivatedOptionSelectionV2 implements OptionSelectionFunction<Motiv
 			//logger.info("Predicted beliefs are "+dummyAgent.getBB());
 			for (Iterator<Motivation> iter = motivations.iterator(); iter.hasNext();) {
 				Motivation motivation = iter.next();
-				motivationalValue += motivation.getIntensityUpdateFunction().updateIntensity(dummyAgent);
-				motivationalValue += motivation.getMitigationFunction().mitigate(dummyAgent);
+				Unifier unif = new Unifier();
+				motivationalValue += motivation.getIntensityUpdateFunction().updateIntensity(dummyAgent, unif);
+				motivationalValue += motivation.getMitigationFunction().mitigate(dummyAgent, unif);
 			} 
 		} else {
 			return 0;

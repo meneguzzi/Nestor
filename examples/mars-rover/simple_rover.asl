@@ -111,23 +111,6 @@ chargeStation(10,10).
  <- .print("New waypoint ", waypoint(X,Y), " storing it.");
  	+waypoint(X,Y).
 
-/*
-+!queryWaypoints : waypoint(X,Y) [source(self)] & not moving
- <- .print("Found a pending waypoint, ", waypoint(X,Y), " trying to deal with it.");
- 	!!goToWaypoint(waypoint(X,Y));
-	.print("Done querying waypoints").
-
-+!queryWaypoints : moving
- <- .print("I'm already moving, it's pointless to query for more waypoints.").
-
-+!queryWaypoints : not waypoint(X,Y) [source(self)] & endSimulation [source(self)]
- <- .print("It seems I've visited the last waypoint, ending simulation.");
-	!endSimulation.
-	
-+!queryWaypoints : not waypoint(X,Y) [source(self)]
- <- .print("No pending waypoints.").
- */
-
 +!goToWaypoint(W) : charging | moving
  <- .print("Tried to go to ",W," but I'm busy, something is wrong here").
 

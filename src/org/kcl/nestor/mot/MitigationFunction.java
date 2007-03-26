@@ -4,6 +4,7 @@
 package org.kcl.nestor.mot;
 
 import jason.asSemantics.Agent;
+import jason.asSemantics.Unifier;
 import jason.asSyntax.LogicalFormula;
 import jason.asSyntax.NumberTerm;
 
@@ -36,6 +37,8 @@ public interface MitigationFunction {
 	 * The function invoked when the goals associated with this motivation are 
 	 * achieved.
 	 * @param agent A reference to an agent
+	 * @param unif  The unifier from the triggered motivation
+	 * @return
 	 */
-	public int mitigate(Agent agent);
+	public int mitigate(Agent agent, Unifier unif);
 }

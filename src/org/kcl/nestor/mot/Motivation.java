@@ -4,6 +4,7 @@
 package org.kcl.nestor.mot;
 
 import jason.asSemantics.Agent;
+import jason.asSemantics.Unifier;
 import jason.asSyntax.Trigger;
 
 import java.util.ArrayList;
@@ -117,10 +118,11 @@ public class Motivation {
 	 * and returns whether or not this motivations's threshold has been reached.
 	 * 
 	 * @param agent A reference to the agent's <code>BeliefBase</code>
+	 * @param unif TODO
 	 * @return Whether or not this motivation's threshold has been reached.
 	 */
-	public boolean updateIntensity(Agent agent) {
-		this.motivationIntensity+=this.intensityUpdateFunction.updateIntensity(agent);
+	public boolean updateIntensity(Agent agent, Unifier unif) {
+		this.motivationIntensity+=this.intensityUpdateFunction.updateIntensity(agent, unif);
 		motivationIntensity = (motivationIntensity > 0) ? motivationIntensity : 0;
 		
 		logger.fine("Motivation '"+motivationName+"' intensity is "+motivationIntensity);
@@ -139,13 +141,14 @@ public class Motivation {
 	 * Generates the goals associated with this motivation.
 	 * 
 	 * @param agent A reference to the agent's <code>BeliefBase</code>
+	 * @param unif TODO
 	 * @return A list of new goals for the agent to accomplish 
 	 * (Actually <code>Triggers</code>)
 	 */
-	public List<Trigger> generateGoals(Agent agent) {
+	public List<Trigger> generateGoals(Agent agent, Unifier unif) {
 		if(this.motivationIntensity >= motivationThreshold) {
 			logger.info("Threshold exceeded, generating goals");
-			List<Trigger> generatedGoals = this.goalGenerationFunction.generateGoals(agent);
+			List<Trigger> generatedGoals = this.goalGenerationFunction.generateGoals(agent, unif);
 			/***************************************************/
 			motivationLog.addTriggeredGoals(generatedGoals);
 			/***************************************************/
@@ -158,10 +161,11 @@ public class Motivation {
 	 * The function invoked when the goals associated with this motivation are 
 	 * achieved.
 	 * @param agent A reference to the agent's <code>BeliefBase</code>
+	 * @param unif TODO
 	 * @return Whether or not this motivation has been mitigated
 	 */
-	public boolean mitigate(Agent agent) {
-		int mitigation = this.mitigationFunction.mitigate(agent);
+	public boolean mitigate(Agent agent, Unifier unif) {
+		int mitigation = this.mitigationFunction.mitigate(agent, unif);
 		//if the mitigation value is 0, the agent has not mitigated it.
 		if(mitigation == 0) {
 			return false;
