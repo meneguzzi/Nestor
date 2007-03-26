@@ -31,17 +31,24 @@ public class MitigationFunctionImpl extends MotivationFunction implements Mitiga
 	/* (non-Javadoc)
 	 * @see org.soton.peleus.mot.MitigationFunction#mitigate(jason.bb.BeliefBase)
 	 */
-	public int mitigate(Agent agent) {
+	public int mitigate(Agent agent, Unifier unif) {
 		int mitigation = 0;
 		
 		//logger.info("Belief Base at time of mitigation "+beliefBase);
 		
 		for (LogicalFormula formula : mapping.keySet()) {
-			Iterator<Unifier> unifiers = logicalConsequence(formula, agent);
-			if(unifiers.hasNext()) {
+			
+			Iterator<Unifier> unifiers = formula.logicalConsequence(agent, unif);
+			
+			//XXX Previous implementation, in which no unifier was supplied
+			//Iterator<Unifier> unifiers = logicalConsequence(formula, agent);
+			if(unifiers != null &&  unifiers.hasNext()) {
 				logger.fine(formula+" is supported by the belief base");
 				NumberTerm value = (NumberTerm) mapping.get(formula).clone();
-				unifiers.next().apply(value);
+				
+				Unifier unifier = unifiers.next();
+				value.apply(unifier);
+				
 				mitigation += value.solve();
 			}
 			/*if(supportedByBeliefBase(formula, beliefBase)) {

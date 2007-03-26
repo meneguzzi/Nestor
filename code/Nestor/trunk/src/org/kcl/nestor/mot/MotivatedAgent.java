@@ -193,12 +193,4 @@ public class MotivatedAgent extends ModularAgent {
 	public Motivation removePendingMotivatedGoal(Trigger trigger) {
 		return this.pendingMotivatedGoals.remove(trigger);
 	}
-	
-	@Override
-	public Document getAgProgram() {
-		Document document = super.getAgProgram();
-		// TODO Auto-generated method stub
-		// XXX Perhaps I should also export motivations from here?
-		return document;
-	}
 }

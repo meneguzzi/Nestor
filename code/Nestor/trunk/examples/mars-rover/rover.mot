@@ -6,16 +6,18 @@ Motivation navigate {
 //		& waypoint(Wx,Wy) 
 //		& rover.act.distance(X,Y,Wx,Wy,Dist)
 //		& Dist < Batt -> Dist;
-		waypoint(X,Y) -> 10;
+		waypoint(X,Y) [source(self)] -> 5;
 	}
 	
 	GoalGeneration org.kcl.nestor.mot.impl.GoalGenerationFunctionImpl {
-		waypoint(X,Y) -> +!goToWaypoint(waypoint(X,Y));
-		at(X,Y) & waypoint(X,Y) -> -waypoint(X,Y); // to avoid adopting an already achieved goal
+		not moving & not charging & waypoint(X,Y) [source(self)] -> +!goToWaypoint(waypoint(X,Y));
+		//at(X,Y) & waypoint(X,Y) -> -waypoint(X,Y); // to avoid adopting an already achieved goal
 	}
 	
 	Mitigation org.kcl.nestor.mot.impl.MitigationFunctionImpl {
-		at(X,Y) & waypoint(X,Y) -> -1000;
+		not moving & //not moving is to ensure that the plan has been completed before mitigating
+		at(X,Y) & 
+		waypoint(X,Y) -> -1000;
 	}
 }
 
@@ -24,17 +26,17 @@ Motivation keepBattery {
 	
 	IntensityUpdate org.kcl.nestor.mot.impl.IntensityUpdateFunctionImpl {
 		//Will need something like
-		at(X,Y) & chargeStation(Cx,Cy) 
+		at(X,Y) [source(percept)] & chargeStation(Cx,Cy) 
 		& rover.act.distance(X,Y,Cx,Cy,Dist) 
 		& battery(Batt)
-		& (Dist >= Batt) -> 1;
+		& (Dist >= Batt) -> 100;
 	}
 	
 	GoalGeneration org.kcl.nestor.mot.impl.GoalGenerationFunctionImpl {
-		true -> +!recharge;
+		chargeStation(Cx,Cy) -> +!recharge(Cx,Cy);
 	}
 	
 	Mitigation org.kcl.nestor.mot.impl.MitigationFunctionImpl {
-		battery(40) -> -10;
+		battery(40) -> -1000;
 	}
 }

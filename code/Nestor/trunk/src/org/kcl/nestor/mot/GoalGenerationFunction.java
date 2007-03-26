@@ -1,6 +1,7 @@
 package org.kcl.nestor.mot;
 
 import jason.asSemantics.Agent;
+import jason.asSemantics.Unifier;
 import jason.asSyntax.LogicalFormula;
 import jason.asSyntax.Trigger;
 
@@ -40,8 +41,9 @@ public interface GoalGenerationFunction {
 	 * Generates the goals associated with this motivation.
 	 * 
 	 * @param agent A reference to the motivated agent
+	 * @param unif  The unifier for this motivation
 	 * @return A list of new goals for the agent to accomplish 
 	 * (Actually <code>Triggers</code>)
 	 */
-	public List<Trigger> generateGoals(Agent agent);
+	public List<Trigger> generateGoals(Agent agent, Unifier unif);
 }

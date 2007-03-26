@@ -87,8 +87,9 @@ public class MotivatedOptionSelection implements OptionSelectionFunction<Motivat
 				//and calculate the resulting motivational value
 				for (Iterator<Motivation> iter = motivations.iterator(); iter.hasNext();) {
 					Motivation motivation = iter.next();
-					motivationalValue += motivation.getIntensityUpdateFunction().updateIntensity(predictiveAgent);
-					motivationalValue += motivation.getMitigationFunction().mitigate(predictiveAgent);
+					Unifier unifier = new Unifier();
+					motivationalValue += motivation.getIntensityUpdateFunction().updateIntensity(predictiveAgent, unifier);
+					motivationalValue += motivation.getMitigationFunction().mitigate(predictiveAgent, unifier);
 				}
 			}
 		}
