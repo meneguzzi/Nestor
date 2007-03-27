@@ -45,6 +45,10 @@ public class MotivatedBeliefUpdate extends DefaultBeliefUpdateFunction {
 		//first remove from the triggered motivations, any motivation whose plan failed
 		//TODO must implement a way of removing triggered motivations whose plan failed
 		//TODO this is probably the responsability of the event selection function
+		//XXX when drop_all_X is used, this will not work, so we have to remove them
+		//XXX manually
+		
+		//motivatedAgent.checkPendingGoals();
 		
 		//Then update motivational intensities
 		List<Motivation> newTriggeredMotivations = new ArrayList<Motivation>();
@@ -59,7 +63,7 @@ public class MotivatedBeliefUpdate extends DefaultBeliefUpdateFunction {
 			boolean thresholdReached = motivation.updateIntensity(agent, unif);
 			
 			if(thresholdReached && !motivatedAgent.getPendingMotivations().contains(motivation)) {
-				logger.info(motivation.getMotivationName()+" threshold reached.");
+				logger.fine(motivation.getMotivationName()+" threshold reached.");
 				//triggeredMotivations.add(motivation);
 				newTriggeredMotivations.add(motivation);
 				newMotivationUnifiers.add(unif);
@@ -80,16 +84,16 @@ public class MotivatedBeliefUpdate extends DefaultBeliefUpdateFunction {
 						//This information is used later on by the intention selection algorithm
 						trigger.getLiteral().addAnnot(DefaultTerm.parse(motivation.getMotivationName()));
 
-						logger.info("Adding goal "+trigger.toString());
+						logger.info("Adding goal "+trigger.toString()+" for motivation "+motivation.getMotivationName());
 						motivatedAgent.addMotivatedGoal(trigger, motivation);
 						//Store the unifier used so far for the later mitigation
 						this.triggeredMotivationUnifiers.put(motivation, unif);
 					} else {
-						logger.info("Goal "+trigger+" is already being pursued");
+						logger.fine("Goal "+trigger+" is already being pursued");
 					}
 				}
 			} else {
-				logger.info("No goal was generated for motivation "+motivation.getMotivationName());
+				logger.fine("No goal was generated for motivation "+motivation.getMotivationName());
 			}
 		}
 		//Then mitigate any triggered motivations that might have been satisfied

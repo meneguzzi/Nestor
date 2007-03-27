@@ -7,9 +7,9 @@ battery(30).
 </step>
 <step time="6">waypoint(4,15).
 </step>
-<!--  
 <step time="11">waypoint(0,13).
 </step>
+<!--
 <step time="16">waypoint(0,3).
 </step>
 <step time="21">waypoint(15,3).

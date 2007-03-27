@@ -3,7 +3,7 @@
 
 //at(0,0).
 //battery(10).
-chargeStation(10,10).
+chargeStation(15,15).
 
 //**************************************************************
 // Hack plans to get things working
@@ -68,8 +68,7 @@ chargeStation(10,10).
  	!move(Xcharge, Ycharge);	
 	charge;
 	-charging;
-	.print("Just finished charging, checking for pending waypoints.");
- 	!queryWaypoints.
+	.print("Just finished charging, checking for pending waypoints.").
 
 //To avoid adopting the recharge plan multiple times
 +!recharge(Xcharge,Ycharge) : charging
@@ -157,7 +156,7 @@ chargeStation(10,10).
 
 @pDoMove[atomic]
 +!doMove(X,Y) : at(A,B) [source(self)]
- <- .print("Moving from ",at(A,B)," to ",at(X,Y)); 
+ <- //.print("Moving from ",at(A,B)," to ",at(X,Y)); 
  	.wait(50);
 	-at(A,B);
 	+at(X,Y);
