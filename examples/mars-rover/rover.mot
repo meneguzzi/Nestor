@@ -1,12 +1,42 @@
+Motivation keepBattery {
+	Threshold = 10;
+	
+	IntensityUpdate org.kcl.nestor.mot.impl.IntensityUpdateFunctionImpl {
+		//Will need something like
+		at(X,Y) [source(percept)] & chargeStation(Cx,Cy) 
+		& rover.act.distance(X,Y,Cx,Cy,Dist) 
+		& battery(Batt)
+		& (Dist >= Batt) -> 100; // If we detect we are too far from the charge station, go there
+		
+		battery(Batt) [source(percept)]
+		& at(X,Y)
+		& waypoint(Wx,Wy) 
+		& rover.act.distance(X,Y,Wx,Wy,Dist)
+		& Dist + 1 >= Batt -> 5; // Similar condition to above, but now we want to charge before going
+	}
+	
+	GoalGeneration org.kcl.nestor.mot.impl.GoalGenerationFunctionImpl {
+		chargeStation(Cx,Cy) -> +!recharge(Cx,Cy);
+		//waypoint(X,Y) -> -!goToWaypoint(X,Y);
+	}
+	
+	Mitigation org.kcl.nestor.mot.impl.MitigationFunctionImpl {
+		battery(40) -> -1000;
+	}
+}
+
 Motivation navigate {
 	Threshold = 10;
 	IntensityUpdate org.kcl.nestor.mot.impl.IntensityUpdateFunctionImpl {
-//		battery(Batt)
-//		& at(X,Y)
-//		& waypoint(Wx,Wy) 
-//		& rover.act.distance(X,Y,Wx,Wy,Dist)
-//		& Dist < Batt -> Dist;
-		waypoint(X,Y) [source(self)] -> 5;
+		waypoint(X,Y) [source(self)] -> 5; // If there's a waypoint, we want to go there
+		
+		battery(Batt) [source(percept)]
+		& at(X,Y)
+		& waypoint(Wx,Wy) 
+		& rover.act.distance(X,Y,Wx,Wy,Dist)
+		& Dist >= Batt -> -10; // But if we don't have enough battery to do, we'd better stay
+		
+		charging -> -5;
 	}
 	
 	GoalGeneration org.kcl.nestor.mot.impl.GoalGenerationFunctionImpl {
@@ -18,25 +48,5 @@ Motivation navigate {
 		not moving & //not moving is to ensure that the plan has been completed before mitigating
 		at(X,Y) & 
 		waypoint(X,Y) -> -1000;
-	}
-}
-
-Motivation keepBattery {
-	Threshold = 10;
-	
-	IntensityUpdate org.kcl.nestor.mot.impl.IntensityUpdateFunctionImpl {
-		//Will need something like
-		at(X,Y) [source(percept)] & chargeStation(Cx,Cy) 
-		& rover.act.distance(X,Y,Cx,Cy,Dist) 
-		& battery(Batt)
-		& (Dist >= Batt) -> 100;
-	}
-	
-	GoalGeneration org.kcl.nestor.mot.impl.GoalGenerationFunctionImpl {
-		chargeStation(Cx,Cy) -> +!recharge(Cx,Cy);
-	}
-	
-	Mitigation org.kcl.nestor.mot.impl.MitigationFunctionImpl {
-		battery(40) -> -1000;
 	}
 }

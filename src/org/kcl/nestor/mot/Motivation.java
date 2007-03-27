@@ -147,7 +147,7 @@ public class Motivation {
 	 */
 	public List<Trigger> generateGoals(Agent agent, Unifier unif) {
 		if(this.motivationIntensity >= motivationThreshold) {
-			logger.info("Threshold exceeded, generating goals");
+			//logger.info("Threshold exceeded, generating goals");
 			List<Trigger> generatedGoals = this.goalGenerationFunction.generateGoals(agent, unif);
 			/***************************************************/
 			motivationLog.addTriggeredGoals(generatedGoals);

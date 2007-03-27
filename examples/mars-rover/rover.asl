@@ -3,7 +3,7 @@
 
 //at(0,0).
 //battery(10).
-chargeStation(10,10).
+chargeStation(15,15).
 visitedWaypoints([]).
 distance(0).
 previousDistance(0).
