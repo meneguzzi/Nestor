@@ -7,7 +7,6 @@ import jason.asSyntax.Literal;
 import jason.asSyntax.Trigger;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
@@ -19,15 +18,8 @@ import org.kcl.nestor.mot.Motivation;
 public class MotivatedBeliefUpdate extends DefaultBeliefUpdateFunction {
 	private Logger logger = Logger.getLogger(Agent.class.getName());
 	
-	/**
-	 * XXX this might have to be cleaned up in the future,
-	 * Right now it serves to store the unifiers created when a motivation is triggered
-	 */
-	protected HashMap<Motivation, Unifier> triggeredMotivationUnifiers;
-	
 	public MotivatedBeliefUpdate() {
 		//Nothing here so far
-		triggeredMotivationUnifiers = new HashMap<Motivation, Unifier>();
 	}
 	
 	@Override
@@ -85,9 +77,7 @@ public class MotivatedBeliefUpdate extends DefaultBeliefUpdateFunction {
 						trigger.getLiteral().addAnnot(DefaultTerm.parse(motivation.getMotivationName()));
 
 						logger.info("Adding goal "+trigger.toString()+" for motivation "+motivation.getMotivationName());
-						motivatedAgent.addMotivatedGoal(trigger, motivation);
-						//Store the unifier used so far for the later mitigation
-						this.triggeredMotivationUnifiers.put(motivation, unif);
+						motivatedAgent.addMotivatedGoal(trigger, motivation, unif);
 					} else {
 						logger.fine("Goal "+trigger+" is already being pursued");
 					}
@@ -102,7 +92,7 @@ public class MotivatedBeliefUpdate extends DefaultBeliefUpdateFunction {
 			
 			// XXX, recover this from the stored motivations
 			//Unifier unif = new Unifier();
-			Unifier unif = this.triggeredMotivationUnifiers.get(motivation);
+			Unifier unif = motivatedAgent.getMotivationUnifier(motivation);
 			
 			if(motivation.mitigate(agent, unif)) {
 				logger.info("Motivation "+motivation.getMotivationName()+" mitigated");

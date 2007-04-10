@@ -13,12 +13,12 @@
     <property name="mas2j.project.file" value="Mars.mas2j"/>
     <property name="debug" value=""/> <!-- use "-debug" to run in debug mode -->
 
-    <property name="jasonJar" value="C:\Documents and Settings\menegufe\My Documents\workspace\JasonSVN\bin\"/>
+    <property name="jasonJar" value="C:/Documents and Settings/Felipe/My Documents/workspace/JasonSVN/bin"/>
 
     <path id="project.classpath">
         <!-- pathelement location="."/> -->
         <pathelement location="${jasonJar}"/>
-    	<pathelement location="C:\Documents and Settings\menegufe\My Documents\workspace\Nestor\bin"/>
+    	<pathelement location="C:/Documents and Settings/Felipe/My Documents/workspace/Nestor/bin"/>
     </path>
 	
 	<target name="generate-scripts">

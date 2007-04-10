@@ -4,6 +4,12 @@
 //at(0,0).
 //battery(10).
 chargeStation(15,15).
+visitedWaypoints([]).
+distance(0).
+previousDistance(0).
+wastedDistance(0).
+chargeDistance(0).
+numberOfCharges(0).
 
 //**************************************************************
 // Hack plans to get things working
@@ -23,6 +29,37 @@ chargeStation(15,15).
 +!move(X,Y) : at(X, Y)
  <- .print("Arrived ", at(X,Y));
     true.
+
+//**************************************************************
+//Goals to check gathered information
+
++!endSimulation : not waypoint(_,_) [source(self)]
+ <- .print("Finished going through waypoints");
+ 	?visitedWaypoints(Waypoints);
+ 	.length(Waypoints, L);
+	.print("Visited ",L," waypoints");
+	?distance(Distance);
+	.print("Total distance: ", Distance);
+	?wastedDistance(Wasted);
+	.print("Wasted Distance: ", Wasted);
+	?numberOfCharges(Charges);
+	.print("Recharged ",Charges," times");
+	?chargeDistance(ChargeDistance);
+	.print("Moved ",ChargeDistance," to recharge");
+	rover.act.recordStats(L, Distance, Wasted, ChargeDistance, "stats");
+	.print("**********************************");
+	.stopMAS. 
+
++!endSimulation : true
+ <- ?waypoint(X,Y);
+ 	.print("Still have pending waypoints, failing.",waypoint(X,Y));
+ 	+endSimulation.
+	
++endSimulation [source(percept)]: true
+ <- !endSimulation.
+
+
+//**************************************************************
 //**************************************************************
 // Enough battery verification goal.
 +?canGo(X,Y,Xat,Yat) : battery(Batt) [source(self)]
@@ -39,14 +76,6 @@ chargeStation(15,15).
 //*****************************************************
 // Plans to deal with battery
 //And check if we are in a danger zone
-/*
-@pbattery2[atomic] // To ensure battery is handled without interruption
-+battery(Batt) [source(self)] : at(X,Y) 
-						   	  & chargeStation(Xcharge,Ycharge)
-						      & not charging
- <- rover.act.distance(X,Y,Xcharge,Ycharge,Dist);
- 	!checkCharge(Dist, Batt).
-*/
 	
 //If we risk not reaching the charging station
 @pcheckcharge1[atomic]
@@ -84,6 +113,7 @@ chargeStation(15,15).
 	.drop_desire(move(_,_));
 	.drop_intention(doMove(_,_));
 	.drop_desire(doMove(_,_));
+	org.kcl.nestor.mot.act.drop_motivation("navigate");
 	.print("Intention to ",goToWaypoint(X,Y)," dropped, releasing locks");
 	.print("Locks released");
 	-moving.
@@ -95,15 +125,7 @@ chargeStation(15,15).
 //*****************************************************
 // These are the main goals of this agent, to reach
 // waypoints
-//When a waypoint is received, store it and go for it
-
-/*
-@pwaypoint1[atomic]
-+waypoint(X,Y) [source(percept)] : not moving & not charging
- <- .print("New waypoint ", waypoint(X,Y));
- 	+waypoint(X,Y);
- 	!goToWaypoint(waypoint(X,Y)).
-*/
+// When a waypoint is received, store it and go for it
 
 @pwaypoint2[atomic]
 +waypoint(X,Y) [source(percept)] : true
@@ -128,11 +150,6 @@ chargeStation(15,15).
 
 //*****************************************************
 // Plans to move the agent around
-/* Moved this plan up to avoid having the agent miss a waypoint it already visited
-+!move(X,Y) : at(X, Y)
- <- .print("Arrived ", at(X,Y));
-    true.
-*/
 
 +!move(X,Y) : at(Xat,Yat)[source(self)] & Xat > X
  <- 
@@ -157,7 +174,7 @@ chargeStation(15,15).
 @pDoMove[atomic]
 +!doMove(X,Y) : at(A,B) [source(self)]
  <- //.print("Moving from ",at(A,B)," to ",at(X,Y)); 
- 	.wait(50);
+ 	.wait(30);
 	-at(A,B);
 	+at(X,Y);
  	move(X,Y).
