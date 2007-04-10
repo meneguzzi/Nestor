@@ -1,5 +1,6 @@
 package org.kcl.nestor.mot.gui;
 
+import jason.asSemantics.Unifier;
 import jason.asSyntax.Literal;
 import jason.asSyntax.Trigger;
 
@@ -36,8 +37,8 @@ public class MotivatedAgentWrapper extends MotivatedAgent {
 	}
 	
 	@Override
-	public void addMotivatedGoal(Trigger trigger, Motivation motivation) {
-		super.addMotivatedGoal(trigger, motivation);
+	public void addMotivatedGoal(Trigger trigger, Motivation motivation, Unifier unifier) {
+		super.addMotivatedGoal(trigger, motivation, unifier);
 		motivationsWindow.addMotivatedGoal(trigger, motivation);
 	}
 	

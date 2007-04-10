@@ -14,6 +14,7 @@ import jason.bb.BeliefBase;
 import jason.runtime.Settings;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
@@ -46,19 +47,24 @@ public class MotivatedAgent extends ModularAgent {
 	protected List<Motivation> motivations;
 	
 	/**
-	 * 
+	 * The goals associated with pending motivations
 	 */
 	protected Hashtable<Trigger, Motivation> pendingMotivatedGoals;
-	
-	/**
-	 * An intention used solely for the addition of motivated Goals
-	 */
-	protected Intention motivatedIntention;
 
 	/**
 	 * The list of motivations that have been triggered
 	 */
 	protected List<Motivation> pendingMotivations;
+	
+	/**
+	 * The unifiers created when a motivation is triggered
+	 */
+	protected HashMap<Motivation, Unifier> triggeredMotivationUnifiers;
+	
+	/**
+	 * An intention used solely for the addition of motivated Goals
+	 */
+	protected Intention motivatedIntention;
 	
 	public MotivatedAgent() {
 		this.motivations = new ArrayList<Motivation>();
@@ -66,6 +72,7 @@ public class MotivatedAgent extends ModularAgent {
 		
 		this.pendingMotivations = new ArrayList<Motivation>();
 		this.pendingMotivatedGoals = new Hashtable<Trigger, Motivation>();
+		this.triggeredMotivationUnifiers = new HashMap<Motivation, Unifier>();
 		
 		//TODO Review the configuration of the functions 
 		//TODO and generalize its instantiation process
@@ -111,18 +118,6 @@ public class MotivatedAgent extends ModularAgent {
 	public void readMotivations(String filename) throws Exception {
 		this.motivations.addAll(MotivationParser.parseFile(filename));
 	}
-
-	/**
-	 * Posts a motivation-generated goal to the agent's events, while keeping
-	 * a reference to the posted trigger for future removal.
-	 * @param trigger
-	 * @param motivation TODO
-	 */
-	public void addMotivatedGoal(Trigger trigger, Motivation motivation) {
-		this.pendingMotivatedGoals.put(trigger, motivation);
-		//this.fTS.updateEvents(new Event(trigger, motivatedIntention));
-		this.fTS.updateEvents(new Event(trigger, Intention.EmptyInt));
-	}
 	
 	/**
 	 * Returns a reference to the named motivation from this agent if this agent,
@@ -149,6 +144,8 @@ public class MotivatedAgent extends ModularAgent {
 	}
 	
 	/**
+	 * Returns the motivations which have been triggered but have not yet been satisfied.
+	 *  
 	 * @return the triggeredMotivations
 	 */
 	public List<Motivation> getPendingMotivations() {
@@ -163,21 +160,36 @@ public class MotivatedAgent extends ModularAgent {
 		//removes a pending motivation, as well as the list of goals associated
 		//to this motivation
 		this.pendingMotivations.remove(motivation);
+		this.triggeredMotivationUnifiers.remove(motivation);
 		for(Iterator<Trigger> i = pendingMotivatedGoals.keySet().iterator() ; i.hasNext(); ){
 			Trigger pendTrigger = i.next();
 			if(pendingMotivatedGoals.get(pendTrigger) == motivation) {
 				i.remove();
 			}
 		}
-		/*
-		for (Trigger pendTrigger : pendingMotivatedGoals.keySet()) {
-			if(pendingMotivatedGoals.get(pendTrigger) == motivation) {
-				//pendingMotivatedGoals.remove(pendTrigger);
-				//to maintain compatibility with subclasses
-				this.removePendingMotivatedGoal(pendTrigger);
-			}
-		}
-		*/
+	}
+
+	/**
+	 * Posts a motivation-generated goal to the agent's events, while keeping
+	 * a reference to the posted trigger for future removal.
+	 * @param trigger    The trigger/goal to be added
+	 * @param motivation The motivation associated with the added goal
+	 * @param unifier 	 The unifier used in the generation of the added goal
+	 */
+	public void addMotivatedGoal(Trigger trigger, Motivation motivation, Unifier unifier) {
+		this.pendingMotivatedGoals.put(trigger, motivation);
+		this.triggeredMotivationUnifiers.put(motivation, unifier);
+		//this.fTS.updateEvents(new Event(trigger, motivatedIntention));
+		this.fTS.updateEvents(new Event(trigger, Intention.EmptyInt));
+	}
+	
+	/**
+	 * Returns the unifier associated with a pending motivation.
+	 * @param motivation The motivation whose triggering unifier is desired.
+	 * @return The unifier assocaited with the specified motivation.
+	 */
+	public Unifier getMotivationUnifier(Motivation motivation) {
+		return this.triggeredMotivationUnifiers.get(motivation);
 	}
 	
 	/**

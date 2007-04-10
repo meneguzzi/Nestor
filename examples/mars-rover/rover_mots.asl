@@ -16,12 +16,12 @@ numberOfCharges(0).
 //Wait till the first perception of position to get things going
 @pat[atomic]
 +at(X,Y) [source(percept)] : not at(Z,W) [source(self)]
- <- .print("Now that I know where I am, I can start working");
+ <- .print("Now that I know where I am, I can start working - Motivated Agent");
  	+at(X,Y).
 
 @pbattery[atomic]
 +battery(X) [source(percept)] : not battery(B) [source(self)]
- <- .print("Now that I know my battery, I can start moving");
+ <- .print("Now that I know my battery, I can start moving - Motivated Agent");
  	+battery(X).
 
 //This plan has got to be before the battery check to avoid the agent
@@ -29,8 +29,7 @@ numberOfCharges(0).
 +!move(X,Y) : at(X, Y)
  <- .print("Arrived ", at(X,Y));
     true.
-//**************************************************************
- 
+
 //**************************************************************
 //Goals to check gathered information
 
@@ -51,15 +50,11 @@ numberOfCharges(0).
 	.print("**********************************");
 	.stopMAS. 
 
-+!endSimulation : true
- <- ?waypoint(X,Y);
- 	.print("Still have pending waypoints, failing.",waypoint(X,Y));
- 	+endSimulation.
-	
 +endSimulation [source(percept)]: true
- <- !endSimulation.
+ <- +endSimulation.
 
 
+//**************************************************************
 //**************************************************************
 // Enough battery verification goal.
 +?canGo(X,Y,Xat,Yat) : battery(Batt) [source(self)]
@@ -76,14 +71,6 @@ numberOfCharges(0).
 //*****************************************************
 // Plans to deal with battery
 //And check if we are in a danger zone
-/*
-@pbattery2[atomic] // To ensure battery is handled without interruption
-+battery(Batt) [source(self)] : at(X,Y) 
-						   	  & chargeStation(Xcharge,Ycharge)
-						      & not charging
- <- rover.act.distance(X,Y,Xcharge,Ycharge,Dist);
- 	!checkCharge(Dist, Batt).
-*/
 	
 //If we risk not reaching the charging station
 @pcheckcharge1[atomic]
@@ -92,12 +79,6 @@ numberOfCharges(0).
  	.print("Battery critical, charging station is ",Dist," units away, battery is ",Batt);
  	!recharge(Xcharge,Ycharge).
 
--charging : battery(NewBatt) [source(percept)]
- <- .print("Recharged, battery is now ",NewBatt);
- 	?numberOfCharges(Charges);
- 	-numberOfCharges(Charges);
- 	+numberOfCharges(Charges + 1).
- 
 @pcheckcharge2[atomic]
 +!checkCharge(Dist, Batt) : Dist < Batt
  <- true.//.print("Battery is OK, charging station is ",Dist," units away, battery is ", Batt).
@@ -112,13 +93,10 @@ numberOfCharges(0).
  	!move(Xcharge, Ycharge);	
 	charge;
 	?distance(Distance2);
-	//.print("Charge distance: ",Distance2 - Distance);
 	?chargeDistance(ChargeDistance);
-	-chargeDistance(ChargeDistance);
-	+chargeDistance(ChargeDistance + (Distance2 - Distance));
+	-+chargeDistance(ChargeDistance + (Distance2 - Distance));
 	-charging;
-	.print("Just finished charging, checking for pending waypoints.");
- 	!queryWaypoints.
+	.print("Just finished charging, checking for pending waypoints.").
 
 //To avoid adopting the recharge plan multiple times
 +!recharge(Xcharge,Ycharge) : charging
@@ -134,6 +112,7 @@ numberOfCharges(0).
 	.drop_desire(move(_,_));
 	.drop_intention(doMove(_,_));
 	.drop_desire(doMove(_,_));
+	org.kcl.nestor.mot.act.drop_motivation("navigate");
 	.print("Intention to ",goToWaypoint(X,Y)," dropped, releasing locks");
 	.print("Locks released");
 	?distance(Distance);
@@ -141,8 +120,7 @@ numberOfCharges(0).
 	WastedDistance = (Distance - PreviousDistance);
 	.print("Wasted: ",WastedDistance);
 	?wastedDistance(Wasted);
-	-wastedDistance(Wasted);
-	+wastedDistance(Wasted + (Distance - PreviousDistance));
+	-+wastedDistance(Wasted + (Distance - PreviousDistance));
 	-moving.
 
 +!suspendGoals : not moving
@@ -152,67 +130,48 @@ numberOfCharges(0).
 //*****************************************************
 // These are the main goals of this agent, to reach
 // waypoints
-//When a waypoint is received, store it and go for it
-@pwaypoint1[atomic]
-+waypoint(X,Y) [source(percept)] : not moving & not charging
- <- .print("New waypoint ", waypoint(X,Y));
- 	+waypoint(X,Y);
- 	!goToWaypoint(waypoint(X,Y)).
+// When a waypoint is received, store it and go for it
 
 @pwaypoint2[atomic]
-+waypoint(X,Y) [source(percept)] : moving | charging
- <- .print("New waypoint ", waypoint(X,Y), " but I'm busy, storing it.");
++waypoint(X,Y) [source(percept)] : true
+ <- .print("New waypoint ", waypoint(X,Y), " storing it.");
  	+waypoint(X,Y).
 
-+!queryWaypoints : waypoint(X,Y) [source(self)] & not moving
- <- .print("Found a pending waypoint, ", waypoint(X,Y), " trying to deal with it.");
- 	!!goToWaypoint(waypoint(X,Y));
-	.print("Done querying waypoints").
-
-+!queryWaypoints : moving
- <- .print("I'm already moving, it's pointless to query for more waypoints.").
-
-+!queryWaypoints : not waypoint(X,Y) [source(self)] & endSimulation [source(self)]
- <- .print("It seems I've visited the last waypoint, ending simulation.");
-	!endSimulation.
-	
-+!queryWaypoints : not waypoint(X,Y) [source(self)]
- <- .print("No pending waypoints.").
-
 +!goToWaypoint(W) : charging | moving
- <- .print("Tried to go to ",W," but I'm busy, something is wrong here").
+ <- .print("Tried to go to ",W," but I'm busy, something is wrong here");
+ 	org.kcl.nestor.mot.act.drop_motivation("navigate");
+ 	.print("Dropping motivation for a later time").
 
 //@pgoToWaypoint[atomic]
 +!goToWaypoint(waypoint(X,Y)) : not charging & not moving
  <- +moving;
- 	.print("Going to waypoint ",waypoint(X,Y));
-	?distance(D);
-	-previousDistance(Do);
-	+previousDistance(D);
+ 	//.print("Going to waypoint ",waypoint(X,Y));
+ 	?battery(Batt);
+ 	.print("Going to waypoint ",waypoint(X,Y)," - battery is ",battery(Batt));
+ 	
+ 	?distance(D);
+	-+previousDistance(D);
+ 	
  	!move(X,Y);
 	.print("Finished move to waypoint ",waypoint(X,Y), " releasing locks");
 	-waypoint(X,Y);
-	-moving;
-	!!queryWaypoints.
+	-moving.
+	//;
+	//!queryWaypoints.
 
-//@pnotWaypoint[atomic]
 -waypoint(X,Y) : true
  <- .print("Removing ",waypoint(X,Y)," from pending waypoints");
  	?visitedWaypoints(W);
- 	-visitedWaypoints(W);
-	+visitedWaypoints([waypoint(X,Y) | W]);
+	-+visitedWaypoints([waypoint(X,Y) | W]);
 	?visitedWaypoints(Nw);
 	?distance(D);
-	.print("Waypoints visited so far, ",Nw,", distance covered so far, ",D).
+	.length(Nw,Nvw);
+	.print(Nvw, " waypoints visited so far, ",Nw,", distance covered so far, ",D).
+	
 //*****************************************************
 
 //*****************************************************
 // Plans to move the agent around
-/* Moved this plan up to avoid having the agent miss a waypoint it already visited
-+!move(X,Y) : at(X, Y)
- <- .print("Arrived ", at(X,Y));
-    true.
-*/
 
 +!move(X,Y) : at(Xat,Yat)[source(self)] & Xat > X
  <- 
@@ -236,29 +195,10 @@ numberOfCharges(0).
 
 @pDoMove[atomic]
 +!doMove(X,Y) : at(A,B) [source(self)]
- <- //?at(A,B); .print("Moving from ",at(A,B)," to ",at(X,Y)); 
- 	.wait(50);
+ <- //.print("Moving from ",at(A,B)," to ",at(X,Y)); 
+ 	.wait(30);
 	-at(A,B);
 	+at(X,Y);
  	move(X,Y);
-	?distance(D);
-	-distance(D);
-	+distance(D+1).
-//*****************************************************
-
-/*
-//Test for move operator
-+!move(X,Y) : true
- <- .print("Invoking move operator");
-    move(X,Y).
-*/
-
-/*
-//Tests for ability to move to a position
-+!move(X,Y) : at(Xat,Yat)
- <- ?canGo(X,Y,Xat,Yat);
-    .print("I can go to the waypoint").*/
-
-
-/*+!move(X,Y) : at(Xat,Yat)
- <- .print("I cannot go to the waypoint").*/
+ 	?distance(D);
+	-+distance(D+1).
