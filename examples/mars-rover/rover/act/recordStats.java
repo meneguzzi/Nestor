@@ -15,7 +15,7 @@ public class recordStats extends DefaultInternalAction {
 	@Override
 	public Object execute(TransitionSystem ts, Unifier un, Term[] args)
 			throws Exception {
-		if(args.length < 5 ) {
+		if(args.length < 6 ) {
 			logger.info("Wrong number of arguments for stats.");
 			return false;
 		}
@@ -24,13 +24,15 @@ public class recordStats extends DefaultInternalAction {
 		NumberTerm arg1 = (NumberTerm) args[1];
 		NumberTerm arg2 = (NumberTerm) args[2];
 		NumberTerm arg3 = (NumberTerm) args[3];
+		NumberTerm arg4 = (NumberTerm) args[4];
 		
 		int waypoints = (int) arg0.solve();
 		int distance = (int) arg1.solve();
 		int wastedDistance = (int) arg2.solve();
 		int chargeDistance = (int) arg3.solve();
+		int droppedGoals = (int) arg4.solve();
 		
-		String filename = args[4].toString();
+		String filename = args[5].toString();
 		filename = filename.replaceAll("\"", "");
 		//filename = filename + waypoints + ".txt";
 		filename = filename + ".txt";
@@ -38,7 +40,7 @@ public class recordStats extends DefaultInternalAction {
 		//System.out.println("Will write to file" + filename);
 		File file = new File(filename);
 		FileWriter writer = new FileWriter(file, true);
-		writer.write(""+waypoints+" "+distance+" "+wastedDistance+" "+chargeDistance+System.getProperty("line.separator"));
+		writer.write(""+waypoints+" "+distance+" "+wastedDistance+" "+chargeDistance+" "+droppedGoals+System.getProperty("line.separator"));
 		writer.close();
 		
 		return true;
