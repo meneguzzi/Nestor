@@ -28,6 +28,8 @@ import jason.asSyntax.VarTerm;
 import jason.asSyntax.ArithExpr.ArithmeticOp;
 import jason.asSyntax.LogExpr.LogicalOp;
 import jason.asSyntax.RelExpr.RelationalOp;
+import jason.asSyntax.Trigger.TEOperator;
+import jason.asSyntax.Trigger.TEType;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -250,24 +252,26 @@ MitigationFunction mitigation() : 					{String classname;}
 /* ************************************************************************* */
 /* Definitions stolen from Jason's parser*/
 /* Trigger */
-Trigger trigger() : { 
-               		boolean teType;
-			    	byte    teGoal = Trigger.TEBel;
+/* Trigger */
+Trigger trigger() : 
+               { 
+               		TEOperator teOp;
+			    	TEType     teType = TEType.belief;
 				 	Literal F; 
                }
 {
-  ( "+"        { teType = Trigger.TEAdd; }
-  | "-"        { teType = Trigger.TEDel; }
+  ( "+"        { teOp = TEOperator.add; }
+  | "-"        { teOp = TEOperator.del; }
   )
   
-  [ ( "!"      { teGoal = Trigger.TEAchvG; }
-    | "?"      { teGoal = Trigger.TETestG; }
+  [ ( "!"      { teType = TEType.achieve; }
+    | "?"      { teType = TEType.test; }
     )
   ]
   
   ( F=literal()
   | F=var()
-  )            { return new Trigger(teType,teGoal,F); }
+  )            { return new Trigger(teOp,teType,F); }
 }
 
 /* Literal */

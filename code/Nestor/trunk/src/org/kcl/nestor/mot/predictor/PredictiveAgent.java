@@ -47,10 +47,10 @@ public class PredictiveAgent extends Agent {
 	public PredictiveAgent(Agent agent) {
 		this.baseAgent = agent;
 		this.predictiveBeliefBase = new PredictiveBeliefBase(agent.getBB());
-		this.fBB = predictiveBeliefBase;
-		this.fPL = (PlanLibrary) agent.getPL().clone();
+		this.bb = predictiveBeliefBase;
+		this.pl = (PlanLibrary) agent.getPL().clone();
 		AgArch agArch = new SimpleAgArch();
-		this.fTS = new TransitionSystem(this, new Circumstance(), new Settings(), agArch);
+		this.ts = new TransitionSystem(this, new Circumstance(), new Settings(), agArch);
 	}
 	
 	/**
@@ -97,7 +97,7 @@ public class PredictiveAgent extends Agent {
 		for(Iterator<BodyLiteral> i = option.getPlan().getBody().iterator();
 			i.hasNext();) {
 			BodyLiteral bodyLiteral = i.next();
-			if(!executeStep(bodyLiteral, option.getUnif())) {
+			if(!executeStep(bodyLiteral, option.getUnifier())) {
 				return false;
 			}
 		}
@@ -154,7 +154,7 @@ public class PredictiveAgent extends Agent {
 		case achieve:
 			// "execute" new plan in our little sandbox
 			lit.makeVarsAnnon();
-			Trigger trigger = new Trigger(false, Trigger.TEAchvG, lit);
+			Trigger trigger = new Trigger(Trigger.TEOperator.add, Trigger.TEType.achieve, lit);
 			return processTrigger(trigger);
 			// logger.fine("Ignoring subgoal "+bodyLiteral);
 			//break;
@@ -195,7 +195,7 @@ public class PredictiveAgent extends Agent {
 		case test:
 			if (!this.believes(lit, unifier)) {
 				lit.makeVarsAnnon();
-				Trigger trig = new Trigger(false, Trigger.TETestG, lit);
+				Trigger trig = new Trigger(Trigger.TEOperator.add, Trigger.TEType.test, lit);
 				return processTrigger(trig);
 			}
 			break;

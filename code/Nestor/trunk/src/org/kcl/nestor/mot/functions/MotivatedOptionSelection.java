@@ -68,7 +68,7 @@ public class MotivatedOptionSelection implements OptionSelectionFunction<Motivat
 	protected int getMotivationalValue(PredictiveAgent predictiveAgent, List<Motivation> motivations, Option option) {
 		logger.fine("Calculating motivational value for plan "+option);
 		int motivationalValue = 0;
-		Unifier unif = option.getUnif();
+		Unifier unif = option.getUnifier();
 		//for each step of the plan
 		for (Iterator<BodyLiteral> i = option.getPlan().getBody().iterator(); i.hasNext();) {
 			BodyLiteral literal = i.next();

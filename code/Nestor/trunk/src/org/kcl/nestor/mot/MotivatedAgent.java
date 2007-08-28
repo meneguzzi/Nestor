@@ -180,7 +180,7 @@ public class MotivatedAgent extends ModularAgent {
 		this.pendingMotivatedGoals.put(trigger, motivation);
 		this.triggeredMotivationUnifiers.put(motivation, unifier);
 		//this.fTS.updateEvents(new Event(trigger, motivatedIntention));
-		this.fTS.updateEvents(new Event(trigger, Intention.EmptyInt));
+		this.ts.updateEvents(new Event(trigger, Intention.EmptyInt));
 	}
 	
 	/**

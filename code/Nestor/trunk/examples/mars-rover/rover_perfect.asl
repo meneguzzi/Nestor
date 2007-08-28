@@ -1,8 +1,3 @@
-// position(X,Y)
-// adjacent
-
-//at(0,0).
-//battery(10).
 chargeStation(10,10).
 visitedWaypoints([]).
 distance(0).
@@ -41,7 +36,7 @@ numberOfCharges(0).
 	.print("Recharged ",Charges," times");
 	?chargeDistance(ChargeDistance);
 	.print("Moved ",ChargeDistance," to recharge");
-	rover.act.recordStats(L, Distance, Wasted, ChargeDistance, "stats");
+	rover.act.recordStats(L, Distance, Wasted, ChargeDistance, _,"stats");
 	.print("**********************************");
 	.stopMAS. 
 

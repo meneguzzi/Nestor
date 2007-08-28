@@ -3,6 +3,7 @@ package org.kcl.nestor.mot.functions;
 import jason.asSemantics.Agent;
 import jason.asSemantics.Event;
 import jason.asSyntax.Trigger;
+import jason.asSyntax.Trigger.TEOperator;
 
 import java.util.Queue;
 import java.util.logging.Logger;
@@ -21,7 +22,13 @@ public class MotivatedEventSelection implements EventSelectionFunction<Motivated
 		if(!event.getTrigger().isAddition() && event.getTrigger().isAchvGoal()) {
 			Trigger trigger = event.getTrigger();
 			//If the inverse of this deletion is in a pending motivated goal,
-			Trigger oppositeTrigger = new Trigger(!trigger.isAddition(), trigger.getGoal(), trigger.getLiteral());
+			TEOperator oppositeOperator;
+			if(trigger.isAddition()) {
+				oppositeOperator = TEOperator.del;
+			} else {
+				oppositeOperator = TEOperator.add;
+			}
+			Trigger oppositeTrigger = new Trigger(oppositeOperator, trigger.getType(), trigger.getLiteral());
 			logger.info("Event "+event+" generated. Plan to achieve "+oppositeTrigger+" failed.");
 			//Then we must remove it from the list of pending motivated goals
 			if(agent.isPendingMotivatedGoal(oppositeTrigger)) {
