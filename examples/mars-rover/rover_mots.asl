@@ -1,8 +1,3 @@
-// position(X,Y)
-// adjacent
-
-//at(0,0).
-//battery(10).
 chargeStation(10,10).
 visitedWaypoints([]).
 distance(0).
@@ -10,6 +5,7 @@ previousDistance(0).
 wastedDistance(0).
 chargeDistance(0).
 numberOfCharges(0).
+droppedGoals(0).
 
 //**************************************************************
 // Hack plans to get things working
@@ -46,7 +42,9 @@ numberOfCharges(0).
 	.print("Recharged ",Charges," times");
 	?chargeDistance(ChargeDistance);
 	.print("Moved ",ChargeDistance," to recharge");
-	rover.act.recordStats(L, Distance, Wasted, ChargeDistance, "stats");
+	?droppedGoals(Dropped);
+	.print("Dropped ", Dropped, " goals");
+	rover.act.recordStats(L, Distance, Wasted, ChargeDistance, Dropped, "stats");
 	.print("**********************************");
 	.stopMAS. 
 
@@ -121,6 +119,8 @@ numberOfCharges(0).
 	.print("Wasted: ",WastedDistance);
 	?wastedDistance(Wasted);
 	-+wastedDistance(Wasted + (Distance - PreviousDistance));
+	?droppedGoals(Dropped);
+	-+droppedGoals(Dropped+1);
 	-moving.
 
 +!suspendGoals : not moving

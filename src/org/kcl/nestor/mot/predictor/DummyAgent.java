@@ -51,10 +51,10 @@ public class DummyAgent extends Agent {
 		logger.setLevel(agent.getTS().getSettings().logLevel());
 
 		this.beliefBase = new PredictiveBeliefBase((BeliefBase) agent.getBB().clone());
-		this.fBB = beliefBase;
+		this.bb = beliefBase;
 
-		this.fPL = (PlanLibrary) agent.getPL().clone();
-		this.aslSource = agent.getASLSource();
+		this.pl = (PlanLibrary) agent.getPL().clone();
+		this.aslSource = agent.getASLSrc();
 
 //		this.setTS(new TransitionSystem(this, 
 //				(Circumstance) agent.getTS().getC().clone(), 
@@ -68,7 +68,7 @@ public class DummyAgent extends Agent {
 	}
 
 	public BeliefBase getOriginalBB() {
-		return this.fBB;
+		return this.bb;
 	}
 
 	@Override
@@ -136,7 +136,7 @@ public class DummyAgent extends Agent {
 		
 		// To check if we had plan failure
 		Literal triggerLiteral = (Literal) option.getPlan().getTriggerEvent().getLiteral().clone();
-		triggerLiteral.apply((Unifier) option.getUnif().clone());
+		triggerLiteral.apply((Unifier) option.getUnifier().clone());
 		
 		
 		int numberOfSubgoals = 0;

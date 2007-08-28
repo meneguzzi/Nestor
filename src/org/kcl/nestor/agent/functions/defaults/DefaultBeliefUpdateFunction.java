@@ -5,6 +5,8 @@ import jason.asSemantics.Event;
 import jason.asSemantics.Intention;
 import jason.asSyntax.Literal;
 import jason.asSyntax.Trigger;
+import jason.asSyntax.Trigger.TEOperator;
+import jason.asSyntax.Trigger.TEType;
 import jason.bb.BeliefBase;
 
 import java.util.Iterator;
@@ -47,7 +49,7 @@ public class DefaultBeliefUpdateFunction implements BeliefUpdateFunction {
             	l.clearAnnots();
             	l.addAnnot(BeliefBase.TPercept);
             	if(agent.getBB().remove(l)) {
-            		agent.getTS().updateEvents(new Event(new Trigger(Trigger.TEDel,Trigger.TEBel, l), Intention.EmptyInt));
+            		agent.getTS().updateEvents(new Event(new Trigger(TEOperator.del,TEType.belief, l), Intention.EmptyInt));
             	}
             }
         }
@@ -59,7 +61,7 @@ public class DefaultBeliefUpdateFunction implements BeliefUpdateFunction {
                 lp = (Literal) lp.clone();
                 lp.addAnnot(BeliefBase.TPercept);
                 if (agent.getBB().add(lp)) {
-                    Trigger te = new Trigger(Trigger.TEAdd, Trigger.TEBel, lp);
+                    Trigger te = new Trigger(TEOperator.add, TEType.belief, lp);
                     agent.getTS().updateEvents(new Event(te, Intention.EmptyInt));
                 }
             } catch (Exception e) {

@@ -2,24 +2,22 @@ Motivation keepBattery {
 	Threshold = 10;
 	
 	IntensityUpdate org.kcl.nestor.mot.impl.IntensityUpdateFunctionImpl {
-		//Will need something like
 		at(X,Y) [source(percept)] 
 		& chargeStation(Cx,Cy) 
-		& rover.act.distance(X,Y,Cx,Cy,Dist) 
-		& battery(Batt) [source(percept)]
-		& (Dist >= Batt) -> 100; // If we detect we are too far from the charge station, go there
+		& rover.act.distance(X,Y,Cx,Cy,Dist) // If we detect we are too far 
+		& battery(Batt) [source(percept)]    // from the charge station,
+		& (Dist >= Batt) -> 100;             // increase threshold
 		
 		battery(Batt) [source(percept)]
 		& at(X,Y)
 		& not moving
-		& waypoint(Wx,Wy) 
-		& rover.act.distance(X,Y,Wx,Wy,DistW)
-		& DistW >= Batt -> 10; // Similar condition to above, but now we want to charge before going
+		& waypoint(Wx,Wy)                    // Similar condition to above, 
+		& rover.act.distance(X,Y,Wx,Wy,DistW)// but now we want to charge
+		& DistW >= Batt -> 10;               // before going to the waypoint
 	}
 	
 	GoalGeneration org.kcl.nestor.mot.impl.GoalGenerationFunctionImpl {
 		chargeStation(Cx,Cy) -> +!recharge(Cx,Cy);
-		//waypoint(X,Y) -> -!goToWaypoint(X,Y);
 	}
 	
 	Mitigation org.kcl.nestor.mot.impl.MitigationFunctionImpl {
@@ -30,23 +28,25 @@ Motivation keepBattery {
 Motivation navigate {
 	Threshold = 10;
 	IntensityUpdate org.kcl.nestor.mot.impl.IntensityUpdateFunctionImpl {
-		waypoint(Wx,Wy) [source(self)] & not charging -> 5; // If there's a waypoint, we want to go there
+		waypoint(Wx,Wy) [source(self)] // If there's a waypoint, 
+		& not charging -> 5;           // we want to go there
 		
 		battery(Batt) [source(percept)]
-		& at(X,Y)
-		& waypoint(Wx,Wy) 
+		& at(X,Y)                      // But if we don't have enough
+		& waypoint(Wx,Wy)              // battery to do, we'd better stay
 		& rover.act.distance(X,Y,Wx,Wy,Dist)
-		& Dist >= Batt -> -10; // But if we don't have enough battery to do, we'd better stay
+		& Dist >= Batt -> -10;
 	}
 	
 	GoalGeneration org.kcl.nestor.mot.impl.GoalGenerationFunctionImpl {
-		not moving & not charging & waypoint(X,Y) [source(self)] -> +!goToWaypoint(waypoint(X,Y));
-		//at(X,Y) & waypoint(X,Y) -> -waypoint(X,Y); // to avoid adopting an already achieved goal
+		not moving 
+		& not charging 
+		& waypoint(X,Y) [source(self)] -> +!goToWaypoint(waypoint(X,Y));
 	}
 	
 	Mitigation org.kcl.nestor.mot.impl.MitigationFunctionImpl {
-		not moving & //not moving is to ensure that the plan has been completed before mitigating
-		at(X,Y) & 
+		not moving & //not moving is to ensure that the plan
+		at(X,Y) &    //has been completed before mitigating
 		waypoint(X,Y) -> -1000;
 	}
 }
@@ -55,7 +55,8 @@ Motivation finish {
 	Threshold = 10;
 	
 	IntensityUpdate org.kcl.nestor.mot.impl.IntensityUpdateFunctionImpl {
-		not waypoint(_,_) [source(self)] & endSimulation [source(self)] -> 10;
+		not waypoint(_,_) [source(self)] 
+		& endSimulation [source(self)] -> 10;
 	}
 	
 	GoalGeneration org.kcl.nestor.mot.impl.GoalGenerationFunctionImpl {
