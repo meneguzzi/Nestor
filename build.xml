@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     8 Oct 2007 10:14:07                                                        
+
+     Nestor    
+     An implementation of AgentSpeak(MPL) based on Jason
+                   
+     meneguzz                                                                
+     ====================================================================== -->
+<project name="Nestor" default="jar">
+	<description>
+            An implementation of AgentSpeak(MPL) based on Jason
+    </description>
+
+	<property name="Nestor.location" value="./" />
+	<property name="Nestor.project" value="Peleus.mas2j" />
+
+	<property name="build.dir" value="${basedir}/bin" />
+	<property name="jasonJar" value="${basedir}/lib/jason.jar" />
+	<property name="nestorJar" value="${basedir}/lib/nestor.jar" />
+	
+	<property name="dist.properties" value="${basedir}/bin/dist.properties" />
+	<property name="version" value="0.4" />
+	<property name="release" value="1" />
+
+	<path id="run.classpath">
+		<pathelement location="bin" />
+		<pathelement location="${jasonJar}" />
+	</path>
+
+	<path id="project.classpath">
+		<path refid="run.classpath" />
+		<pathelement location="${JUNIT_HOME}/junit.jar" />
+	</path>
+
+	<!-- ================================= 
+          target: jar              
+         ================================= -->
+	<target name="jar" depends="compile" description="--> An implementation of AgentSpeak(MPL) based on Jason">
+		<propertyfile file="${dist.properties}">
+			<entry key="version" value="${version}" />
+			<entry key="release" value="${release}" />
+			<entry default="0" key="build" operation="+" type="int" />
+			<entry key="build.date" type="date" value="now" />
+		</propertyfile>
+		<property file="${dist.properties}" />
+
+		<jar jarfile="${nestorJar}">
+			<fileset dir="${build.dir}">
+				<include name="org/**/*.class" />
+			</fileset>
+			<manifest>
+				<attribute name="Main-Class" value="jason.infra.centralised.RunCentralisedMAS" />
+				<attribute name="Classpath" value="jason.jar"/>
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="compile" depends="init,parser">
+		<javac srcdir="src" destdir="${build.dir}" debug="true" deprecation="true" optimize="true" nowarn="true" source="1.5" target="1.5">
+			<classpath refid="project.classpath" />
+		</javac>
+	</target>
+
+	<!-- ================================= 
+	      target: clean              
+	     ================================= -->
+	<target name="clean" description="--> description">
+		<delete dir="${build.dir}" />
+		<delete failonerror="no">
+			<fileset dir="${basedir}/src/org/kcl/nestor/mot/parser" includes="*.java" />
+		</delete>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: init                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="init">
+		<mkdir dir="${build.dir}" />
+	</target>
+
+	<condition property="parser-ok" value="ok">
+		<and>
+			<uptodate property="parser-ok" targetfile="${basedir}/src/org/kcl/nestor/mot/parser/MotivationParser.java" srcfile="${basedir}/src/org/kcl/nestor/mot/parser/MotivationParser.jj" />
+		</and>
+	</condition>
+
+	<!-- ================================= 
+	      target: parsers              
+	     ================================= -->
+	<target name="parser" depends="init" unless="parser-ok">
+		<delete failonerror="no">
+			<fileset dir="${basedir}/src/org/kcl/nestor/mot/parser" includes="*.java" />
+		</delete>
+
+		<java dir="${basedir}/src/org/kcl/nestor/mot/parser" classname="javacc" fork="yes">
+			<classpath location="${basedir}/lib/javacc.jar" />
+			<arg line="MotivationParser.jj" />
+		</java>
+
+		<!-- No documentation generated so far -->
+		<!--  
+		<java dir="${basedir}/src/org/kcl/nestor/mot/parser" classname="jjdoc" fork="yes">
+			<classpath location="${basedir}/lib/javacc.jar" />
+			<arg line="MotivationParser.jj" />
+		</java>
+		<move file="${basedir}/src/org/kcl/nestor/mot/parser/MotivationParser.html" todir="${basedir}/doc" />
+		-->
+
+	</target>
+</project>
