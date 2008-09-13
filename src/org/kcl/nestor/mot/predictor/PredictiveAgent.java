@@ -1,6 +1,7 @@
 package org.kcl.nestor.mot.predictor;
 
 import jason.JasonException;
+import jason.RevisionFailedException;
 import jason.architecture.AgArch;
 import jason.asSemantics.Agent;
 import jason.asSemantics.Circumstance;
@@ -10,6 +11,8 @@ import jason.asSemantics.TransitionSystem;
 import jason.asSemantics.Unifier;
 import jason.asSyntax.BodyLiteral;
 import jason.asSyntax.Literal;
+import jason.asSyntax.PlanBody;
+import jason.asSyntax.PlanBodyImpl;
 import jason.asSyntax.PlanLibrary;
 import jason.asSyntax.Structure;
 import jason.asSyntax.Term;
@@ -68,15 +71,20 @@ public class PredictiveAgent extends Agent {
 	}
 	
 	@Override
-	public InternalAction getIA(Structure action) throws Exception {
+	public InternalAction getIA(String action) throws ClassNotFoundException, InstantiationException, IllegalAccessException  {
 		return baseAgent.getIA(action);
 	}
 	
-	public List<Literal> getConsequences(BodyLiteral bodyLiteral, Unifier unifier) {
+	public List<Literal> getConsequences(PlanBody planBody, Unifier unifier) {
 		List<Literal> consequences = new ArrayList<Literal>();
-		if(this.executeStep(bodyLiteral, unifier)) {
-			consequences = this.getDelta();
-		} else {
+		try {
+			if(this.executeStep(planBody, unifier)) {
+				consequences = this.getDelta();
+			} else {
+				consequences.add(Literal.LFalse);
+			}
+		} catch (RevisionFailedException e) {
+			e.printStackTrace();
 			consequences.add(Literal.LFalse);
 		} 
 		return consequences;
@@ -94,10 +102,13 @@ public class PredictiveAgent extends Agent {
 			this.fBB.remove(l);
 		}*/
 		
-		for(Iterator<BodyLiteral> i = option.getPlan().getBody().iterator();
-			i.hasNext();) {
-			BodyLiteral bodyLiteral = i.next();
-			if(!executeStep(bodyLiteral, option.getUnifier())) {
+		for(PlanBody planBody : (PlanBodyImpl)option.getPlan().getBody()) {
+			try {
+				if(!executeStep(planBody, option.getUnifier())) {
+					return false;
+				}
+			} catch (RevisionFailedException e) {
+				e.printStackTrace();
 				return false;
 			}
 		}
@@ -123,19 +134,19 @@ public class PredictiveAgent extends Agent {
 	
 	/**
 	 * Executes a single plan-step for an AgentSpeak plan
-	 * @param bodyLiteral
+	 * @param planBody
 	 * @param unifier
 	 * @return
+	 * @throws RevisionFailedException 
 	 */
 	@SuppressWarnings("unchecked")
-	public boolean executeStep(BodyLiteral bodyLiteral, Unifier unifier) {
-		Literal lit = bodyLiteral.getLiteralFormula();
-		lit = (Literal) lit.clone();
+	public boolean executeStep(PlanBody planBody, Unifier unifier) throws RevisionFailedException {
+		Literal lit = (Literal) planBody.getBodyTerm().clone();
 		lit.addAnnot(PredictiveAgent.sourceSelf);
 		//lit.addAnnot(PredictiveAgent.sourcePercept);
 		lit.apply(unifier);
 		
-		switch (bodyLiteral.getType()) {
+		switch (planBody.getBodyType()) {
 		case delAddBel:
 			Literal del = (Literal) lit.clone();
 			del.makeVarsAnnon();
@@ -171,7 +182,7 @@ public class PredictiveAgent extends Agent {
 					}
 
 					// calls execute
-					Object oresult = this.getIA(lit).execute(getTS(), unifier, clone);
+					Object oresult = this.getIA(lit.toString()).execute(getTS(), unifier, clone);
 					boolean ok = false;
 					ok = oresult instanceof Boolean && (Boolean)oresult;
                     if (!ok && oresult instanceof Iterator) { // ia result is an Iterator

@@ -58,7 +58,7 @@ public class ScriptedEnvironmentActionsTest extends TestCase {
 		
 		battLiteral = actions.updateBattery(battLiteral);
 		
-		if(!battLiteral.equalsAsTerm(battLiteralExpected)) {
+		if(!battLiteral.equals(battLiteralExpected)) {
 			fail("Failure to update battery, expecting "+battLiteralExpected+", but got"+battLiteral);
 		}
 	}

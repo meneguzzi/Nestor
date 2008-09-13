@@ -4,14 +4,11 @@
 package org.kcl.nestor.mot;
 
 import jason.JasonException;
-import jason.architecture.AgArch;
 import jason.asSemantics.Event;
 import jason.asSemantics.Intention;
 import jason.asSemantics.TransitionSystem;
 import jason.asSemantics.Unifier;
 import jason.asSyntax.Trigger;
-import jason.bb.BeliefBase;
-import jason.runtime.Settings;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,11 +24,7 @@ import org.kcl.nestor.agent.functions.defaults.DefaultMessageSelectionFunction;
 import org.kcl.nestor.agent.functions.defaults.DefaultOptionSelectionFunction;
 import org.kcl.nestor.mot.functions.MotivatedBeliefUpdate;
 import org.kcl.nestor.mot.functions.MotivatedEventSelection;
-import org.kcl.nestor.mot.functions.MotivatedIntentionSelection;
-import org.kcl.nestor.mot.functions.MotivatedOptionSelection;
-import org.kcl.nestor.mot.functions.MotivatedOptionSelectionV2;
 import org.kcl.nestor.mot.parser.MotivationParser;
-import org.w3c.dom.Document;
 
 /** 
  * This class represents a motivated agent, capable of generating goals autonomously
@@ -92,9 +85,9 @@ public class MotivatedAgent extends ModularAgent {
 	}
 	
 	@Override
-	public TransitionSystem initAg(AgArch arch, BeliefBase bb, String asSrc, Settings stts) throws JasonException {
-		TransitionSystem transitionSystem = super.initAg(arch, bb, asSrc, stts);
-		String motivationsFile = stts.getUserParameter("motivations");
+	public TransitionSystem initAg(String asSrc) throws JasonException {
+		super.initAg(asSrc);
+		String motivationsFile = ts.getSettings().getUserParameter("motivations");
 		motivationsFile = (motivationsFile != null ? motivationsFile : "motivations.mot");
 		
 //		XXX Review this
@@ -107,7 +100,7 @@ public class MotivatedAgent extends ModularAgent {
 			e.printStackTrace();
 		}
 		
-		return transitionSystem;
+		return ts;
 	}
 	
 	/**
@@ -126,8 +119,8 @@ public class MotivatedAgent extends ModularAgent {
 	 * @return The named motivation, if the agent has one such motivation, or null otherwise.
 	 */
 	public Motivation getMotivation(String motivationName) {
-		for (Iterator iter = motivations.iterator(); iter.hasNext();) {
-			Motivation motivation = (Motivation) iter.next();
+		for (Iterator<Motivation> iter = motivations.iterator(); iter.hasNext();) {
+			Motivation motivation = iter.next();
 			if(motivation.getMotivationName().equals(motivationName)) {
 				return motivation;
 			}
@@ -186,7 +179,7 @@ public class MotivatedAgent extends ModularAgent {
 	/**
 	 * Returns the unifier associated with a pending motivation.
 	 * @param motivation The motivation whose triggering unifier is desired.
-	 * @return The unifier assocaited with the specified motivation.
+	 * @return The unifier associated with the specified motivation.
 	 */
 	public Unifier getMotivationUnifier(Motivation motivation) {
 		return this.triggeredMotivationUnifiers.get(motivation);

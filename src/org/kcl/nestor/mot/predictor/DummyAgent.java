@@ -11,7 +11,6 @@ import jason.asSemantics.TransitionSystem;
 import jason.asSemantics.Unifier;
 import jason.asSyntax.Literal;
 import jason.asSyntax.PlanLibrary;
-import jason.asSyntax.Structure;
 import jason.asSyntax.Term;
 import jason.asSyntax.Trigger;
 import jason.bb.BeliefBase;
@@ -77,10 +76,10 @@ public class DummyAgent extends Agent {
 	}
 
 	@Override
-	public InternalAction getIA(Structure action) throws Exception {
+	public InternalAction getIA(String action) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		// If the interpreter wants an action that is supposed to be ignored,
 		// return our empty noop.
-		if (!ignoreInternalAction(action.getFunctor())) {
+		if (!ignoreInternalAction(action)) {
 			return super.getIA(action);
 		} else {
 			return noop;
@@ -127,7 +126,7 @@ public class DummyAgent extends Agent {
 		this.removePercepts();
 
 		Intention newIntention = new Intention();
-		Trigger trigger = (Trigger) option.getPlan().getTriggerEvent().clone();
+		Trigger trigger = (Trigger) option.getPlan().getTrigger().clone();
 		IntendedMeans intendedMeans = new IntendedMeans(
 				(Option) option.clone(), trigger);
 		newIntention.push(intendedMeans);
@@ -135,7 +134,7 @@ public class DummyAgent extends Agent {
 		this.getTS().getC().addIntention(newIntention);
 		
 		// To check if we had plan failure
-		Literal triggerLiteral = (Literal) option.getPlan().getTriggerEvent().getLiteral().clone();
+		Literal triggerLiteral = (Literal) option.getPlan().getTrigger().getLiteral().clone();
 		triggerLiteral.apply((Unifier) option.getUnifier().clone());
 		
 		
@@ -196,6 +195,11 @@ public class DummyAgent extends Agent {
 		}
 
 		public boolean suspendIntention() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		public boolean canBeUsedInContext() {
 			// TODO Auto-generated method stub
 			return false;
 		}
