@@ -3,8 +3,9 @@ package org.kcl.nestor.mot.functions;
 import jason.asSemantics.Agent;
 import jason.asSemantics.Option;
 import jason.asSemantics.Unifier;
-import jason.asSyntax.BodyLiteral;
 import jason.asSyntax.Literal;
+import jason.asSyntax.PlanBody;
+import jason.asSyntax.PlanBodyImpl;
 
 import java.util.Iterator;
 import java.util.List;
@@ -70,9 +71,8 @@ public class MotivatedOptionSelection implements OptionSelectionFunction<Motivat
 		int motivationalValue = 0;
 		Unifier unif = option.getUnifier();
 		//for each step of the plan
-		for (Iterator<BodyLiteral> i = option.getPlan().getBody().iterator(); i.hasNext();) {
-			BodyLiteral literal = i.next();
-			List<Literal> consequences = predictiveAgent.getConsequences(literal, unif);
+		for (PlanBody planBody : (PlanBodyImpl)option.getPlan().getBody()) {
+			List<Literal> consequences = predictiveAgent.getConsequences(planBody, unif);
 			//if this plan would fail, then its motivational value should be zero 
 			if(consequences.size() == 1 && consequences.get(0) == Literal.LFalse) {
 				motivationalValue = 0;

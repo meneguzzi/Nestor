@@ -4,8 +4,10 @@ import jason.JasonException;
 import jason.asSemantics.Agent;
 import jason.asSemantics.Option;
 import jason.asSemantics.Unifier;
-import jason.asSyntax.BodyLiteral;
+import jason.asSyntax.PlanBodyImpl;
+import jason.asSyntax.PlanBody.BodyType;
 import jason.asSyntax.Literal;
+import jason.asSyntax.PlanBody;
 import jason.asSyntax.Term;
 import jason.asSyntax.Trigger;
 import jason.asSyntax.Trigger.TEOperator;
@@ -60,7 +62,7 @@ public class MockUpAgent extends Agent {
 	 * additions and belief deletions, if the step is successful, otherwise the
 	 * list will contain the default <code>false</code> Literal.
 	 * 
-	 * @param bodyLiteral
+	 * @param planBody
 	 *            A <code>BodyLiteral</code> representing the plan step whose
 	 *            consequences are to be inferred.
 	 * @param unif
@@ -70,14 +72,14 @@ public class MockUpAgent extends Agent {
 	 *         successful, otherwise the list will contain the default
 	 *         <code>false</code> Literal.
 	 */
-	public List<Literal> getConsequences(BodyLiteral bodyLiteral, Unifier unif) {
-		logger.fine("Getting consequences for " + bodyLiteral);
+	public List<Literal> getConsequences(PlanBody planBody, Unifier unif) {
+		logger.fine("Getting consequences for " + planBody);
 		List<Literal> consequences = new ArrayList<Literal>();
 		// unif = (Unifier) unif.clone();
-		Literal lit = (Literal) bodyLiteral.getLiteralFormula().clone();
+		Literal lit = (Literal) planBody.getBodyTerm().clone();
 		lit.apply(unif);
 
-		switch (bodyLiteral.getType()) {
+		switch (planBody.getBodyType()) {
 		case delAddBel:
 			Literal del = (Literal) lit.clone();
 			del.makeVarsAnnon();
@@ -116,7 +118,7 @@ public class MockUpAgent extends Agent {
 					// calls execute
 					Object oresult;
 
-					oresult = this.getIA(lit)
+					oresult = this.getIA(lit.toString())
 							.execute(this.getTS(), unif, clone);
 					if (oresult instanceof Boolean && (Boolean) oresult) {
 						// return LogExpr.createUnifIterator(un);
@@ -174,10 +176,11 @@ public class MockUpAgent extends Agent {
 		List<Literal> consequences = new ArrayList<Literal>();
 		option = (Option) option.clone();
 
-		for (Iterator<BodyLiteral> i = option.getPlan().getBody().iterator(); i
-				.hasNext();) {
-			BodyLiteral literal = i.next();
-			List<Literal> stepConsequences = getConsequences(literal, option.getUnifier());
+		
+			
+		
+		for(PlanBody planBody: (PlanBodyImpl)option.getPlan().getBody()) {
+			List<Literal> stepConsequences = getConsequences(planBody, option.getUnifier());
 			// if this plan would fail, then its consequences are a simple
 			// failure
 			if (consequences.size() == 1

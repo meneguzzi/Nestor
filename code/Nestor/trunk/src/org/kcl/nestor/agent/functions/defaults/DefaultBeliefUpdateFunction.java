@@ -37,7 +37,7 @@ public class DefaultBeliefUpdateFunction implements BeliefUpdateFunction {
             while (ip.hasNext()) {
             	Literal t = ip.next();
                 // if percept t is already in BB
-                if (l.equalsAsTerm(t) && l.negated() == t.negated()) {
+                if (l.equals(t) && l.negated() == t.negated()) {
                     wasPerceived = true;
                     ip.remove();
                     break;

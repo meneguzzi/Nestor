@@ -10,6 +10,7 @@ import jason.asSyntax.parser.as2j;
 
 import java.io.CharArrayReader;
 import java.io.CharArrayWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,15 +20,16 @@ import org.xml.sax.helpers.DefaultHandler;
 
 /**
  * An XML event handler for a JasonScript
+ * 
  * @author Felipe Meneguzzi
  */
 public class JasonScriptContentHandler extends DefaultHandler {
-	
-	public static final String SCRIPT="script";
-	public static final String STEP="step";
-	
-	public static final String ATTR_TIME="time";
-	
+
+	public static final String SCRIPT = "script";
+	public static final String STEP = "step";
+
+	public static final String ATTR_TIME = "time";
+
 	protected JasonScript jasonScript;
 	protected List<Literal> currentEventList;
 	protected int currentTime;
@@ -56,14 +58,15 @@ public class JasonScriptContentHandler extends DefaultHandler {
 	@Override
 	public void startElement(String uri, String localName, String qName,
 			Attributes attributes) throws SAXException {
-		if(qName.equals(STEP)) {
-			//System.out.println("Processing "+STEP);
-			if(attributes.getValue(ATTR_TIME) == null)
-				throw new SAXException("Element "+STEP+" must have a "+ATTR_TIME+" attribute");
-			try{
+		if (qName.equals(STEP)) {
+			// System.out.println("Processing "+STEP);
+			if (attributes.getValue(ATTR_TIME) == null)
+				throw new SAXException("Element " + STEP + " must have a "
+						+ ATTR_TIME + " attribute");
+			try {
 				currentTime = Integer.parseInt(attributes.getValue(ATTR_TIME));
 			} catch (Exception e) {
-				throw new SAXException("Invalid "+ATTR_TIME+" attribute", e);
+				throw new SAXException("Invalid " + ATTR_TIME + " attribute", e);
 			}
 			currentEventList = new ArrayList<Literal>();
 		}
@@ -72,7 +75,7 @@ public class JasonScriptContentHandler extends DefaultHandler {
 	@Override
 	public void characters(char[] ch, int start, int length)
 			throws SAXException {
-		if(currentEventList != null && charArrayWriter != null) {
+		if (currentEventList != null && charArrayWriter != null) {
 			charArrayWriter.write(ch, start, length);
 		}
 	}
@@ -81,14 +84,21 @@ public class JasonScriptContentHandler extends DefaultHandler {
 	public void endElement(String uri, String localName, String qName)
 			throws SAXException {
 		if (qName.equals(STEP)) {
-			if(charArrayWriter != null && charArrayWriter.size() > 0) {
-//				System.out.println("Processing events at time "+currentTime);
-				charArrayReader = new CharArrayReader(charArrayWriter.toCharArray());
+			if (charArrayWriter != null && charArrayWriter.size() > 0) {
+				// System.out.println("Processing events at time "+currentTime);
+				charArrayReader = new CharArrayReader(charArrayWriter
+						.toCharArray());
 				jasonParser.ReInit(charArrayReader);
 				try {
-					jasonParser.belief_base(currentEventList);
+					while (charArrayReader.ready()) {
+						Literal belief = jasonParser.belief();
+						currentEventList.add(belief);
+					}
+				} catch (IOException e) {
+					throw new SAXException(e);
 				} catch (ParseException e) {
-					throw new SAXException("Invalid events at time "+currentTime, e);
+					throw new SAXException("Invalid events at time "
+							+ currentTime, e);
 				}
 				this.jasonScript.addEvents(currentTime, currentEventList);
 				charArrayWriter.reset();
