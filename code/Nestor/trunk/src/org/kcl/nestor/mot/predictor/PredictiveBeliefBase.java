@@ -1,6 +1,7 @@
 package org.kcl.nestor.mot.predictor;
 
 import jason.asSyntax.Literal;
+import jason.asSyntax.LiteralImpl;
 import jason.bb.BeliefBase;
 import jason.bb.DefaultBeliefBase;
 
@@ -73,7 +74,7 @@ public class PredictiveBeliefBase extends DefaultBeliefBase {
 			if(existing == null) {
 				//If the belief is not on the belief base, we might look for
 				//it's negation
-				Literal negated = new Literal(literal.negated(), literal);
+				Literal negated = new LiteralImpl(literal.negated(), literal);
 				existing = this.contains(literal);
 				//If the negated version exists, and the new belief is false,
 				//remove the existing one.

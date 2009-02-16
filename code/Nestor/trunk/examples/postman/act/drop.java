@@ -1,6 +1,7 @@
 package act;
 
 import jason.asSyntax.Literal;
+import jason.asSyntax.LiteralImpl;
 import jason.asSyntax.Term;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class drop implements ExternalAction<ScriptedEnvironment> {
 		Literal remove = env.findMatchingLiteral(prot, percepts);
 		
 		if(remove != null) {
-			remove = new Literal(false, remove);
+			remove = new LiteralImpl(false, remove);
 			prot = Literal.parseLiteral("at(A)");
 			Literal add = env.findMatchingLiteral(prot, percepts);
 			if(add != null) {

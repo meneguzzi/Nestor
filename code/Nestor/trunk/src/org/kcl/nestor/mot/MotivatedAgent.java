@@ -85,7 +85,7 @@ public class MotivatedAgent extends ModularAgent {
 	}
 	
 	@Override
-	public TransitionSystem initAg(String asSrc) throws JasonException {
+	public void initAg(String asSrc) throws JasonException {
 		super.initAg(asSrc);
 		String motivationsFile = ts.getSettings().getUserParameter("motivations");
 		motivationsFile = (motivationsFile != null ? motivationsFile : "motivations.mot");
@@ -99,8 +99,6 @@ public class MotivatedAgent extends ModularAgent {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		return ts;
 	}
 	
 	/**

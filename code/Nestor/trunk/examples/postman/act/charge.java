@@ -1,6 +1,7 @@
 package act;
 
 import jason.asSyntax.Literal;
+import jason.asSyntax.LiteralImpl;
 import jason.asSyntax.Term;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class charge implements ExternalAction<ScriptedEnvironment> {
 		List<Literal> consequences = new ArrayList<Literal>(2);
 		
 		Literal batt = env.findLiteralByFunctor("batt", percepts);
-		batt = new Literal(false, batt);
+		batt = new LiteralImpl(false, batt);
 		Literal newBatt = Literal.parseLiteral("batt(10)");
 		
 		consequences.add(batt);
