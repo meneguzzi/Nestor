@@ -1,6 +1,7 @@
 package act;
 
 import jason.asSyntax.Literal;
+import jason.asSyntax.LiteralImpl;
 import jason.asSyntax.NumberTerm;
 import jason.asSyntax.Term;
 
@@ -25,7 +26,7 @@ public class move implements ExternalAction<ScriptedEnvironment> {
 		
 		Literal batt = env.findLiteralByFunctor("batt", percepts);
 		Literal resBatt = updateBattery(batt);
-		batt = new Literal(false, batt);
+		batt = new LiteralImpl(false, batt);
 		
 		consequences.add(precond0);
 		consequences.add(effect0);

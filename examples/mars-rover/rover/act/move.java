@@ -1,6 +1,7 @@
 package rover.act;
 
 import jason.asSyntax.Literal;
+import jason.asSyntax.LiteralImpl;
 import jason.asSyntax.NumberTerm;
 import jason.asSyntax.NumberTermImpl;
 import jason.asSyntax.Term;
@@ -31,7 +32,7 @@ public class move implements ExternalAction<ScriptedEnvironment> {
 			logger.warning("No recent battery percept.");
 			resBatt = batt;
 		}
-		batt = new Literal(false, batt);
+		batt = new LiteralImpl(false, batt);
 		
 		consequences.add(precond);
 		consequences.add(effect0);

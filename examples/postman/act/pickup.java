@@ -1,6 +1,7 @@
 package act;
 
 import jason.asSyntax.Literal;
+import jason.asSyntax.LiteralImpl;
 import jason.asSyntax.Term;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class pickup implements ExternalAction<ScriptedEnvironment> {
 		Literal prot = Literal.parseLiteral("over("+terms[0]+", A)");
 		Literal remove = env.findMatchingLiteral(prot, percepts);
 		if(remove != null) {
-			remove = new Literal(false, remove);
+			remove = new LiteralImpl(false, remove);
 			consequences.add(remove);
 			consequences.add(Literal.parseLiteral("held("+terms[0]+")"));
 		} else {
