@@ -36,8 +36,8 @@ public class LoggingAgArch extends AgArch {
 		if(agent instanceof MotivatedAgent) {
 			MotivatedAgent motivatedAgent = (MotivatedAgent) agent;
 			List<Motivation> motivations = motivatedAgent.getMotivations();
-			for (Iterator i = motivations.iterator(); i.hasNext();) {
-				Motivation motivation = (Motivation) i.next();
+			for (Iterator<Motivation> i = motivations.iterator(); i.hasNext();) {
+				Motivation motivation = i.next();
 				try {
 					FileWriter writer = new FileWriter(motivation.getMotivationName()+".log");
 					writer.write(motivation.getMotivationLog().toString());

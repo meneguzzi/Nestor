@@ -4,7 +4,6 @@
 package org.kcl.nestor.script;
 
 import jason.asSyntax.Literal;
-import jason.asSyntax.Rule;
 import jason.asSyntax.parser.ParseException;
 import jason.asSyntax.parser.as2j;
 

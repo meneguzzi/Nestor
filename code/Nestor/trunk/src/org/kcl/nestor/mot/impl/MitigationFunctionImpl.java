@@ -19,7 +19,7 @@ import org.kcl.nestor.mot.MitigationFunction;
  *
  */
 public class MitigationFunctionImpl extends MotivationFunction implements MitigationFunction {
-	@SuppressWarnings("unused")
+	
 	private static Logger logger = Logger.getLogger(MotivationFunction.class.getName());
 	
 	protected Hashtable<LogicalFormula, NumberTerm> mapping;

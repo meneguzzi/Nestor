@@ -78,8 +78,8 @@ public class MotivationsWindow extends JFrame {
 	}
 
 	public void updateData() {
-		for (Iterator iter = motivationPanels.iterator(); iter.hasNext();) {
-			MotivationPanel panel = (MotivationPanel) iter.next();
+		for (Iterator<MotivationPanel> iter = motivationPanels.iterator(); iter.hasNext();) {
+			MotivationPanel panel = iter.next();
 			panel.updateData();
 		}
 		this.repaint();
@@ -93,7 +93,7 @@ public class MotivationsWindow extends JFrame {
 	}
 	
 	public void removeMotivation(Motivation motivation) {
-		for (Iterator iter = motivationPanels.iterator(); iter.hasNext();) {
+		for (Iterator<MotivationPanel> iter = motivationPanels.iterator(); iter.hasNext();) {
 			MotivationPanel panel = (MotivationPanel) iter.next();
 			if(panel.getMotivation() == motivation) {
 				this.jContentPane.remove(panel);

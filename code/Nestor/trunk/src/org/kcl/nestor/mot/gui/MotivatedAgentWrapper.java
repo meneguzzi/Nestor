@@ -22,8 +22,8 @@ public class MotivatedAgentWrapper extends MotivatedAgent {
 	public void readMotivations(String file) throws Exception {
 		this.motivationsWindow = new MotivationsWindow();
 		super.readMotivations(file);
-		for (Iterator iter = this.motivations.iterator(); iter.hasNext();) {
-			Motivation motivation = (Motivation) iter.next();
+		for (Iterator<Motivation> iter = this.motivations.iterator(); iter.hasNext();) {
+			Motivation motivation = iter.next();
 			motivationsWindow.addMotivation(motivation);
 		}
 		motivationsWindow.updateData();
