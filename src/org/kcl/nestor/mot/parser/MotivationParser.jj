@@ -46,6 +46,7 @@ import org.kcl.nestor.mot.MitigationFunction;
 import org.kcl.nestor.mot.Motivation;
 import org.kcl.nestor.mot.MotivationFactory;
 
+@SuppressWarnings("unchecked")
 public class MotivationParser {
 	protected MotivationFactory motivationFactory = MotivationFactory.getMotivationFactory();
 	protected List<Motivation> motivations = new ArrayList<Motivation>();

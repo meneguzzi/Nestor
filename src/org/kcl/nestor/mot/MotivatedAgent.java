@@ -6,7 +6,6 @@ package org.kcl.nestor.mot;
 import jason.JasonException;
 import jason.asSemantics.Event;
 import jason.asSemantics.Intention;
-import jason.asSemantics.TransitionSystem;
 import jason.asSemantics.Unifier;
 import jason.asSyntax.Trigger;
 

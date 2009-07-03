@@ -23,6 +23,7 @@ public class ModularEnvironment<E extends Environment> implements EnvironmentAct
 		this.actions.put(action.getFunctor(), action);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void addExternalAction(Class c) throws Exception {
 		ExternalAction<E> action;
 		action = instantiateAction(ExternalAction.class, c);
@@ -47,7 +48,6 @@ public class ModularEnvironment<E extends Environment> implements EnvironmentAct
 		return instantiateAction(classType, c);
 	}
 	
-	@SuppressWarnings("unchecked")
 	public boolean executeAction(String agName, Structure act) {
 		if(!actions.containsKey(act.getFunctor())) {
 			return false;

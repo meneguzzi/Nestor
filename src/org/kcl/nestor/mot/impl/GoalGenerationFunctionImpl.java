@@ -22,7 +22,7 @@ import org.kcl.nestor.mot.GoalGenerationFunction;
  *
  */
 public class GoalGenerationFunctionImpl extends MotivationFunction implements GoalGenerationFunction {
-	@SuppressWarnings("unused")
+	
 	private static Logger logger = Logger.getLogger(GoalGenerationFunction.class.getName());
 	
 	protected Hashtable<LogicalFormula,Trigger> goals;

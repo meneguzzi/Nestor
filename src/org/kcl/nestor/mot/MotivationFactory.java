@@ -10,7 +10,7 @@ import org.kcl.nestor.mot.impl.MitigationFunctionImpl;
  * @author  meneguzz
  */
 public class MotivationFactory {
-	@SuppressWarnings("unused")
+	
 	private static final Logger logger = Logger.getLogger(MotivationFactory.class.getName());
 	
 	private static MotivationFactory factorySingleton;

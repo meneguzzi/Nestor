@@ -25,6 +25,11 @@ import jason.asSyntax.Term;
  */
 public class export_agent_program extends DefaultInternalAction {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Object execute(TransitionSystem ts, Unifier un, Term[] args)
 			throws Exception {
 		

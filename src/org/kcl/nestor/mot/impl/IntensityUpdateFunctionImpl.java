@@ -23,7 +23,7 @@ import org.kcl.nestor.mot.IntensityUpdateFunction;
  *
  */
 public class IntensityUpdateFunctionImpl extends MotivationFunction implements IntensityUpdateFunction {
-	@SuppressWarnings("unused")
+	
 	private static Logger logger = Logger.getLogger(IntensityUpdateFunction.class.getName());
 	
 	protected Hashtable<LogicalFormula, NumberTerm> beliefCues;

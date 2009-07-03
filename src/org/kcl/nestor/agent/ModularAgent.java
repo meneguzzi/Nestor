@@ -39,9 +39,11 @@ public class ModularAgent extends Agent {
 	protected ActionSelectionFunction actionSelectionFunction = null;
 	protected BeliefRevisionFunction beliefRevisionFunction = null;
 	protected BeliefUpdateFunction beliefUpdateFunction = null;
+	@SuppressWarnings("unchecked")
 	protected EventSelectionFunction eventSelectionFunction = null;
 	protected IntentionSelectionFunction intentionSelectionFunction = null;
 	protected MessageSelectionFunction messageSelectionFunction = null;
+	@SuppressWarnings("unchecked")
 	protected OptionSelectionFunction optionSelectionFunction = null;
 	
 	public ModularAgent() {

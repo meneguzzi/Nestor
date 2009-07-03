@@ -1,7 +1,6 @@
 package org.kcl.nestor.agent.util;
 
 import java.awt.geom.Point2D;
-import java.util.Arrays;
 
 /**
  * A class implementing the Response Curves described by Bob Alexander in 

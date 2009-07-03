@@ -36,6 +36,11 @@ import jason.asSyntax.Term;
 public class drop_motivation extends DefaultInternalAction {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public Object execute(TransitionSystem ts, Unifier un, Term[] args) throws Exception {
 		if(args.length != 1) {
@@ -54,8 +59,8 @@ public class drop_motivation extends DefaultInternalAction {
 			Motivation motivationToDrop = null;
 			
 			//To find the motivation we want to drop, we iterate the pending motivations
-			for (Iterator i = agent.getPendingMotivations().iterator(); i.hasNext();) {
-				Motivation motivation = (Motivation) i.next();
+			for (Iterator<Motivation> i = agent.getPendingMotivations().iterator(); i.hasNext();) {
+				Motivation motivation = i.next();
 				if(motivation.getMotivationName().equals(motivationName)) {
 					//if we find it, we have to keep it in a temporary variable
 					//to avoid a concurrent modification exception.
